@@ -5,6 +5,8 @@ import ProductCard from '../../components/ProductCard.astro';
 import { products, categoryBySlug, inCategory } from '../../lib/catalogue.js';
 import { composition } from '../../lib/nutrition.js';
 import { bannerImage } from '../../lib/banners.js';
+import { purpose } from '../../lib/standards.js';
+import Standards from '../../components/Standards.astro';
 
 export function getStaticPaths() {
   return products.map((product) => ({ params: { slug: product.slug }, props: { product } }));
@@ -113,14 +115,33 @@ function splitIngredients(text) {
 const ingredientList = p.ingredients ? splitIngredients(p.ingredients) : [];
 const listIngredients = ingredientList.length >= 3 && ingredientList.every((s) => s.length <= 150);
 const hasSafety = p.warnings.length > 0 || p.storage.length > 0;
+
+/* What it is for: the range's purpose, when to take it (read from the directions) and what the pack offers */
+const purposeText = purpose[p.category];
+const directionText = p.directions.join(' ');
+const timing = [
+  [/before (a )?(training|workout|exercise|physical)/i, 'Before training'],
+  [/(after|post)[- ](training|workout|exercise)/i, 'After training'],
+  [/before (bed|sleep)|bedtime/i, 'Before bed'],
+  [/morning/i, 'In the morning'],
+  [/meal/i, 'With meals'],
+].filter(([re]) => re.test(directionText)).map(([, label]) => label);
+const capabilities = [
+  [formIcon, 'Format', [p.form, withNote(p.size || '')[0]].filter(Boolean).join(' · ')],
+  p.servings ? ['layers', 'Servings per pack', String(p.servings)] : null,
+  ['leaf', 'Flavours', p.flavours.length ? (p.flavours.length === 1 ? p.flavours[0] : `${p.flavours.length} flavours`) : 'Unflavoured'],
+  p.freeFrom.length ? ['ban', 'Free from', p.freeFrom.slice(0, 3).join(', ') + (p.freeFrom.length > 3 ? ` and ${p.freeFrom.length - 3} more` : '')] : null,
+  hasNutrition ? ['chart', 'Nutrition', 'Full table per serving and per 100 g'] : null,
+  p.directions.length ? ['clock', 'Directions', 'Clear instructions for use'] : null,
+].filter(Boolean);
 ---
 <Base title={p.name} current="products" description={description}>
   <div class="pp">
     <section class="wrap hero">
-      <div class="info">
-        <nav class="crumbs" aria-label="Breadcrumb" data-hero-in>
+      <nav class="crumbs" aria-label="Breadcrumb" data-hero-in>
           <a href="/products/">All products</a><span aria-hidden="true">/</span><a href={`/products/?goal=${category.slug}`}>{category.name}</a>
         </nav>
+      <div class="info">
         <h1 data-hero-title>{p.name}</h1>
         <p class="lead">{p.body[0]}</p>
         {p.body.length > 1 && (
@@ -198,6 +219,30 @@ const hasSafety = p.warnings.length > 0 || p.storage.length > 0;
         </ul>
       </section>
     )}
+
+    <section class="purpose wrap" aria-labelledby="purpose-title">
+      <div class="purpose-copy">
+        <p class="purpose-kicker" data-reveal>{category.name}</p>
+        <h2 id="purpose-title" data-reveal>What it is for</h2>
+        {purposeText && <p class="purpose-text" data-reveal>{purposeText}</p>}
+        {timing.length > 0 && (
+          <div class="timing" data-reveal>
+            <p class="timing-label">Best taken</p>
+            <ul>{timing.map((t) => <li>{t}</li>)}</ul>
+          </div>
+        )}
+        <a class="purpose-link" href={`/products/?goal=${category.slug}`} data-reveal>More in {category.name}<Icon name="arrow" /></a>
+      </div>
+      <ul class="caps">
+        {capabilities.map(([icon, label, value]) => (
+          <li data-reveal>
+            <span class="cap-icon"><Icon name={icon} /></span>
+            <span class="cap-label">{label}</span>
+            <span class="cap-value">{value}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
 
     <section id="nutrition" class="nutrition">
       <div class="wrap nutrition-grid">
@@ -351,6 +396,8 @@ const hasSafety = p.warnings.length > 0 || p.storage.length > 0;
       </section>
     )}
 
+    <Standards variant="compact" />
+
     {related.length > 0 && (
       <section class="wrap related">
         <div class="related-head">
@@ -382,7 +429,7 @@ const hasSafety = p.warnings.length > 0 || p.storage.length > 0;
 
   /* ---------- Hero ---------- */
   .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 80px); align-items: center; padding-block: 24px clamp(40px, 5vw, 72px); }
-  .crumbs { display: flex; flex-wrap: wrap; gap: 8px; font-size: 14px; color: var(--muted); }
+  .crumbs { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px; font-size: 14px; color: var(--muted); }
   .crumbs a { text-decoration: none; }
   .crumbs a:last-of-type { color: var(--ink); font-weight: 600; }
   .crumbs a:hover { text-decoration: underline; text-underline-offset: 3px; }
@@ -432,6 +479,27 @@ const hasSafety = p.warnings.length > 0 || p.storage.length > 0;
   .fact-unit { margin-left: 6px; font-size: .42em; font-weight: 500; color: var(--on-blue-muted); }
   .fact-caption { max-width: 26ch; color: var(--on-blue-muted); }
   .fact-text { max-width: 14ch; font: 600 clamp(24px, 2.4vw, 34px)/1.12 var(--display); }
+
+  /* ---------- What it is for ---------- */
+  .purpose { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.5fr); gap: clamp(28px, 5vw, 80px); align-items: start; padding-block: clamp(56px, 7vw, 104px); }
+  .purpose-kicker { font: 500 13px/1 var(--display); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+  .purpose-copy h2 { margin-top: 16px; }
+  .purpose-text { max-width: 36ch; margin-top: 20px; font: 500 clamp(20px, 2vw, 28px)/1.3 var(--display); }
+  .timing { margin-top: 28px; }
+  .timing-label { font-size: 14px; color: var(--muted); }
+  .timing ul { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .timing li { padding: 8px 14px; border: 1px solid var(--ink); border-radius: 999px; font-size: 14px; font-weight: 600; }
+  .purpose-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 6px; }
+  .purpose-link :global(.icon) { transition: translate .35s var(--ease-out); }
+  .purpose-link:hover :global(.icon) { translate: 4px 0; }
+  .caps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .caps li { display: grid; grid-template-columns: 48px minmax(0, 1fr); column-gap: 16px; align-content: start; padding: 24px; background: var(--ice); border-radius: 4px; transition: background-color .3s, translate .5s var(--ease-out); }
+  .caps li:hover { background: #e9e9e6; translate: 0 -3px; }
+  .caps li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .cap-icon { grid-row: 1 / 3; display: grid; place-items: center; width: 48px; height: 48px; background: var(--ink); color: #fff; border-radius: 50%; }
+  .cap-icon :global(.icon) { width: 22px; height: 22px; }
+  .cap-label { font-size: 13px; color: var(--muted); }
+  .cap-value { margin-top: 2px; font: 600 clamp(17px, 1.5vw, 20px)/1.25 var(--display); }
 
   /* ---------- Nutrition ---------- */
   .nutrition { padding-block: clamp(56px, 7vw, 104px); background: var(--ice); scroll-margin-top: 72px; }
@@ -540,18 +608,22 @@ const hasSafety = p.warnings.length > 0 || p.storage.length > 0;
     .related .product-grid { grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); max-width: calc(var(--n, 4) * 25%); }
   }
   @media (max-width: 900px) {
-    .hero, .nutrition-grid, .more-info { grid-template-columns: minmax(0, 1fr); }
+    .hero, .nutrition-grid, .more-info, .purpose { grid-template-columns: minmax(0, 1fr); }
     .gallery { order: -1; }
+    .crumbs { order: -2; }
     .stage { aspect-ratio: 4 / 3; }
     .main-img { max-width: 320px; }
     .n-aside { position: static; }
     .fact-row { grid-template-columns: minmax(0, 1fr); }
-    .fact-row li { padding-block: 24px; }
+    .fact-row li { padding-block: 20px; }
+    .fact-figure { font-size: clamp(36px, 11vw, 52px); }
     .fact-row li + li { padding-left: 0; border-left: 0; border-top: 1px solid rgba(255, 255, 255, .14); }
     .fact-text { max-width: none; }
     .use.has-photo::after { background: rgba(10, 10, 10, .8); }
   }
   @media (max-width: 560px) {
+    .caps { grid-template-columns: minmax(0, 1fr); }
+    .caps li { padding: 18px; }
     .plate small { display: block; margin-left: 0; }
     .ing-list { columns: 1; }
     .acc-body { padding-left: 0; }

@@ -5,9 +5,9 @@ import '../styles/home.css';
 import { categories, products, forms, inCategory, productBySlug } from '../lib/catalogue.js';
 import { composition } from '../lib/nutrition.js';
 import { bannerImage, bannerVideo } from '../lib/banners.js';
+import Standards from '../components/Standards.astro';
 
-/* Hero: public/banners/hero.mp4 (video) with public/banners/athlete-2 as poster. Both are optional. */
-const heroPhoto = bannerImage('athlete-2');
+/* Hero: public/banners/hero.mp4. Optional; the hero is plain black without it. */
 const heroVideo = bannerVideo('hero');
 const pad = (n) => String(n).padStart(2, '0');
 
@@ -26,8 +26,7 @@ const points = [
     <section class="h-hero on-dark" data-hero>
       <div class="h-hero-stage" data-stage>
         <div class="h-hero-media" data-media>
-          {heroPhoto && <img src={heroPhoto} alt="" fetchpriority="high" />}
-          {heroVideo && <video class="h-hero-video" src={heroVideo} poster={heroPhoto ?? undefined} autoplay muted loop playsinline preload="auto" disablepictureinpicture aria-hidden="true" tabindex="-1"></video>}
+          {heroVideo && <video class="h-hero-video" src={heroVideo} autoplay muted loop playsinline preload="auto" disablepictureinpicture aria-hidden="true" tabindex="-1"></video>}
           <span class="h-hero-shade"></span>
         </div>
         <div class="wrap h-hero-inner" data-hero-inner>
@@ -152,6 +151,8 @@ const points = [
         </div>
       </div>
     </section>
+
+    <Standards variant="compact" />
 
     <section class="h-section h-final">
       <div class="wrap">

@@ -4,6 +4,16 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 
 const footer = document.querySelector('.site-footer');
+
+/* Phones: the footer menus open and close. Desktop shows them all, so the buttons are hidden there. */
+footer?.querySelectorAll('[data-fgroup]').forEach((group) => {
+  const button = group.querySelector('.site-footer__toggle');
+  button?.addEventListener('click', () => {
+    const open = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', String(!open));
+  });
+});
+
 if (footer && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
   gsap.registerPlugin(ScrollTrigger, SplitText);
   const logo = footer.querySelector('.site-footer__logo');

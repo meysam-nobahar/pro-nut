@@ -27,7 +27,15 @@ if (!reduceMotion && 'IntersectionObserver' in window) {
 /* The two videos play only while visible (and not at all with reduced motion); a tap switches them on touch screens */
 document.querySelectorAll('[data-visual]').forEach((visual) => {
   const videos = [...visual.querySelectorAll('video')];
-  if (reduceMotion) return;
+  if (reduceMotion) {
+    /* still frames instead of empty boxes */
+    videos.forEach((video) => {
+      video.preload = 'auto';
+      const still = () => { try { video.currentTime = 1.2; } catch (error) {} };
+      if (video.readyState >= 2) still(); else video.addEventListener('loadeddata', still, { once: true });
+    });
+    return;
+  }
   if ('IntersectionObserver' in window) {
     new IntersectionObserver((entries) => {
       entries.forEach((entry) => videos.forEach((video) => (entry.isIntersecting ? video.play().catch(() => {}) : video.pause())));
@@ -59,7 +67,11 @@ if (motionButton && root.dataset.motionSystem !== 'reduce') {
 const heroVideo = document.querySelector('.h-hero-video');
 if (heroVideo) {
   heroVideo.loop = true;
-  if (reduceMotion) heroVideo.pause();
+  if (reduceMotion) {
+    /* a still frame of the film instead of an empty or old picture */
+    const still = () => { try { heroVideo.currentTime = 7; } catch (error) {} heroVideo.pause(); };
+    if (heroVideo.readyState >= 2) still(); else heroVideo.addEventListener('loadeddata', still, { once: true });
+  }
   else if ('IntersectionObserver' in window) {
     new IntersectionObserver((entries) => {
       entries.forEach((entry) => (entry.isIntersecting ? heroVideo.play().catch(() => {}) : heroVideo.pause()));

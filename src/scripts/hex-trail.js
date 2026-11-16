@@ -14,6 +14,8 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   let flag = new Uint8Array(0);
   let active = [];
   let raf = 0;
+  const ripples = [];
+  const RIPPLE_MS = 3200;
   const pointer = { x: 0, y: 0, sx: 0, sy: 0, on: false, seen: false };
 
   const resize = () => {
@@ -72,6 +74,33 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
       }
     }
 
+    /* touch screens have no pointer, so a faint ripple of cells spreads from a random spot now and then */
+    if (ripples.length) {
+      const now = performance.now();
+      for (let r = ripples.length - 1; r >= 0; r--) {
+        const age = (now - ripples[r].t0) / RIPPLE_MS;
+        if (age >= 1) { ripples.splice(r, 1); continue; }
+        const ring = age * radius * 7;
+        const reach = ring + radius * 1.4;
+        const rx = ripples[r].x, ry = ripples[r].y;
+        const c0 = Math.max(0, Math.floor((rx - reach) / (SQRT3 * radius)) - 1);
+        const c1 = Math.min(cols - 1, Math.ceil((rx + reach) / (SQRT3 * radius)) + 1);
+        const r0 = Math.max(0, Math.floor((ry - reach) / (1.5 * radius)) - 1);
+        const r1 = Math.min(rows - 1, Math.ceil((ry + reach) / (1.5 * radius)) + 1);
+        for (let row = r0; row <= r1; row++) {
+          for (let col = c0; col <= c1; col++) {
+            const d = Math.hypot(centerX(col, row) - rx, centerY(row) - ry);
+            const band = (d - ring) / (radius * 1.1);
+            const e = Math.exp(-band * band) * (1 - age) * 0.75;
+            if (e < 0.05) continue;
+            const i = row * cols + col;
+            if (e > energy[i]) energy[i] = e;
+            if (!flag[i]) { flag[i] = 1; active.push(i); }
+          }
+        }
+      }
+    }
+
     ctx.clearRect(0, 0, width, height);
     for (let k = active.length - 1; k >= 0; k--) {
       const i = active[k];
@@ -86,7 +115,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
       const col = i % cols, row = (i - col) / cols;
       drawCell(centerX(col, row), centerY(row), energy[i]);
     }
-    if (pointer.on || active.length) raf = requestAnimationFrame(step);
+    if (pointer.on || active.length || ripples.length) raf = requestAnimationFrame(step);
     else ctx.clearRect(0, 0, width, height);
   };
 
@@ -108,4 +137,17 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   let timer = 0;
   addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(resize, 150); });
   resize();
+
+  /* no mouse (phones, tablets): the cells animate on their own, softly and only now and then */
+  if (!matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    let timer2 = 0;
+    const spawn = () => {
+      if (!document.hidden) {
+        ripples.push({ x: width * (0.12 + Math.random() * 0.76), y: height * (0.15 + Math.random() * 0.7), t0: performance.now() });
+        wake();
+      }
+      timer2 = setTimeout(spawn, 3600 + Math.random() * 3400);
+    };
+    timer2 = setTimeout(spawn, 1800);
+  }
 }

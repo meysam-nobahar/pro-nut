@@ -124,19 +124,33 @@ const fullTitle = title ? `${title} | Royal Nutrition` : 'Royal Nutrition | Spor
             <img class="site-footer__logo" src="/logo.png" alt="Royal Nutrition Pro logo" width="133" height="134" loading="lazy" />
             <h2>{brand.tagline}</h2>
           </div>
-          <nav class="site-footer__nav" aria-label="Product ranges">
-            <a href="/products/">All products</a>
-            {categories.slice(0, 4).map((c) => <a href={`/products/?goal=${c.slug}`}>{c.name}</a>)}
-          </nav>
-          <nav class="site-footer__nav" aria-label="More ranges">
-            {categories.slice(4).map((c) => <a href={`/products/?goal=${c.slug}`}>{c.name}</a>)}
-          </nav>
-          <nav class="site-footer__nav" aria-label="Company links">
-            <a href="/about/">About</a>
-            <a href="/contact/">Contact</a>
-            <a href={`mailto:${brand.emails.info}`}>{brand.emails.info}</a>
-            <a href={`mailto:${brand.emails.office}`}>{brand.emails.office}</a>
-          </nav>
+          <div class="site-footer__group" data-fgroup>
+            <button class="site-footer__toggle" type="button" aria-expanded="false" aria-controls="footer-ranges">Product ranges<Icon name="plus" /></button>
+            <div class="site-footer__panel" id="footer-ranges">
+              <div class="site-footer__panel-in site-footer__panel-in--two">
+                <nav class="site-footer__nav" aria-label="Product ranges">
+                  <a href="/products/">All products</a>
+                  {categories.slice(0, 4).map((c) => <a href={`/products/?goal=${c.slug}`}>{c.name}</a>)}
+                </nav>
+                <nav class="site-footer__nav" aria-label="More ranges">
+                  {categories.slice(4).map((c) => <a href={`/products/?goal=${c.slug}`}>{c.name}</a>)}
+                </nav>
+              </div>
+            </div>
+          </div>
+          <div class="site-footer__group" data-fgroup>
+            <button class="site-footer__toggle" type="button" aria-expanded="false" aria-controls="footer-company">Company<Icon name="plus" /></button>
+            <div class="site-footer__panel" id="footer-company">
+              <div class="site-footer__panel-in">
+                <nav class="site-footer__nav" aria-label="Company links">
+                  <a href="/about/">About</a>
+                  <a href="/contact/">Contact</a>
+                  <a href={`mailto:${brand.emails.info}`}>{brand.emails.info}</a>
+                  <a href={`mailto:${brand.emails.office}`}>{brand.emails.office}</a>
+                </nav>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="site-footer__brand-row">

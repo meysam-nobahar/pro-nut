@@ -5,7 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 
 const root = document.documentElement;
-const SKIP = '.card, .h-card, .h-item, .h-promo, table, form, .mega, .h-mq, details, .filters, .crumbs, .seg, .tag, .btn, a, button, label, [data-reveal], [data-hero-in], [data-hero-title], [data-card], [data-no-split]';
+const SKIP = '.card, .h-card, .h-item, .h-promo, table, form, .mega, .h-mq, details, .filters, .crumbs, .seg, .tag, .btn, a, button, label, [data-reveal], [data-hero-in], [data-hero-title], [data-card], [data-fade], [data-no-split]';
 
 const lift = () => {
   window.__textReady = true;
@@ -76,6 +76,19 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
           });
         }
       });
+      /* blocks marked data-fade rise in once, the first time they are reached */
+      const fades = gsap.utils.toArray('[data-fade]');
+      if (fades.length) {
+        gsap.set(fades, { autoAlpha: 0, y: 36 });
+        fades.forEach((el, i) => {
+          ScrollTrigger.create({
+            trigger: el,
+            start: 'top 92%',
+            once: true,
+            onEnter: () => gsap.to(el, { autoAlpha: 1, y: 0, duration: 1.3, ease: 'power3.out', delay: Math.min(i % 4, 3) * 0.08 }),
+          });
+        });
+      }
     } finally {
       lift();
       ScrollTrigger.refresh();
