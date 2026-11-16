@@ -55,24 +55,10 @@ if (motionButton && root.dataset.motionSystem !== 'reduce') {
   });
 }
 
-/* Hero video: it plays only the clean stretch of the film (no title cards or black dips), paused with reduced motion and while the hero is off screen */
+/* Hero video: loops from the first frame to the end, paused with reduced motion and while the hero is off screen */
 const heroVideo = document.querySelector('.h-hero-video');
 if (heroVideo) {
-  const LOOP_START = 9.3;
-  const LOOP_END = 18.2;
-  const begin = () => { if (heroVideo.duration > LOOP_END) heroVideo.currentTime = LOOP_START; };
-  if (heroVideo.readyState >= 1) begin(); else heroVideo.addEventListener('loadedmetadata', begin, { once: true });
-  heroVideo.removeAttribute('loop');
-  let watching = 0;
-  const watch = () => {
-    if (heroVideo.duration > LOOP_END && (heroVideo.currentTime >= LOOP_END || heroVideo.ended)) {
-      heroVideo.currentTime = LOOP_START;
-      heroVideo.play().catch(() => {});
-    }
-    watching = heroVideo.paused ? 0 : requestAnimationFrame(watch);
-  };
-  heroVideo.addEventListener('play', () => { if (!watching) watching = requestAnimationFrame(watch); });
-  heroVideo.addEventListener('ended', () => { heroVideo.currentTime = LOOP_START; heroVideo.play().catch(() => {}); });
+  heroVideo.loop = true;
   if (reduceMotion) heroVideo.pause();
   else if ('IntersectionObserver' in window) {
     new IntersectionObserver((entries) => {
