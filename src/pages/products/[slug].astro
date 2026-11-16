@@ -1,0 +1,568 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { products, categoryBySlug, inCategory } from '../../lib/catalogue.js';
+import { composition } from '../../lib/nutrition.js';
+import { bannerImage } from '../../lib/banners.js';
+
+export function getStaticPaths() {
+  return products.map((product) => ({ params: { slug: product.slug }, props: { product } }));
+}
+
+const { product: p } = Astro.props;
+const category = categoryBySlug[p.category];
+const position = products.findIndex((x) => x.slug === p.slug) + 1;
+const related = inCategory(p.category).filter((x) => x.slug !== p.slug).slice(0, 4);
+const hasNutrition = p.nutrition.length > 0;
+const multipleImages = p.images.length > 1;
+const labelled = p.images.every((i) => i.label);
+const flavourPicker = multipleImages && labelled && p.flavours.length > 1;
+const formIcon = ['powder', 'capsules', 'tablets', 'liquid'].includes(p.form?.toLowerCase()) ? p.form.toLowerCase() : 'package';
+const description = `${p.name}: ${p.body[0]}`.slice(0, 155);
+const usePhoto = bannerImage('athlete-2');
+const VISIBLE_ROWS = 6;
+
+const num = (s) => parseFloat(String(s).replace(',', '.'));
+const pad = (n) => String(n).padStart(2, '0');
+
+/* "300 tablets (827.1 g)" -> value plus a quiet note */
+const withNote = (v) => {
+  const m = String(v).match(/^(.*?)\s*\((.*)\)$/);
+  return m ? [m[1], m[2]] : [String(v), ''];
+};
+const specs = [
+  ['Format', p.form, formIcon],
+  ['Pack size', p.size, 'package'],
+  ['One serving', p.servingSize, 'scoop'],
+  ['Servings per pack', p.servings, 'layers'],
+].filter(([, v]) => v).map(([k, v, icon]) => [k, ...withNote(v), icon]);
+
+/* Key facts: a leading figure becomes a big number, the rest its caption */
+const facts = p.highlights.map((h) => {
+  const ratio = h.match(/^(\d+(?::\d+)+)\s+(.+)$/);
+  if (ratio) return { figure: ratio[1], caption: ratio[2] };
+  const m = h.match(/^(\d+(?:[.,]\d+)?)(\s?(?:g|mg|µg|kcal|%))?\s+(.+)$/);
+  if (m) return { count: num(m[1]), decimals: (m[1].split(/[.,]/)[1] ?? '').length, unit: (m[2] ?? '').trim(), caption: m[3] };
+  return { text: h };
+});
+
+/* Nutrition: every value is split into amount and note, and gets a bar where a bar means something */
+const parseValue = (v) => {
+  const pct = v.match(/\(\s*([\d.,]+)\s*%/);
+  const m = v.match(/^([\d.,]+)\s*(g|mg|µg|mcg|ml)\b/);
+  let mass = null;
+  if (m) {
+    const n = num(m[1]);
+    mass = m[2] === 'g' || m[2] === 'ml' ? n * 1000 : m[2] === 'mg' ? n : n / 1000;
+  }
+  return { mass, pct: pct ? num(pct[1]) : null };
+};
+const sections = p.nutrition.map((section) => {
+  const cols = section.columns ?? p.columns;
+  const amino = /amino acid/i.test(section.title ?? '');
+  const rows = section.rows.map((r) => {
+    const stars = (r.label.match(/\*+$/) ?? [''])[0];
+    return {
+      label: r.label.replace(/\*+$/, ''),
+      stars,
+      indent: r.indent,
+      total: /^total/i.test(r.label),
+      main: r.values.map((v) => withNote(v)[0]),
+      note: r.values.map((v) => withNote(v)[1]),
+      parsed: r.values.map(parseValue),
+    };
+  });
+  const max = cols.map((_, c) => Math.max(0, ...rows.filter((r) => !r.total && r.parsed[c]?.pct == null).map((r) => r.parsed[c]?.mass ?? 0)));
+  let hasNrv = false;
+  for (const r of rows) {
+    r.bars = cols.map((_, c) => {
+      const v = r.parsed[c];
+      if (!v) return null;
+      if (v.pct != null) { hasNrv = true; return { w: Math.min(v.pct, 100) / 100, nrv: true }; }
+      if (v.mass != null && !r.total && max[c] > 0) return { w: Math.max(v.mass / max[c], 0.012) };
+      return null;
+    });
+  }
+  const figures = rows.length <= 2;
+  const showBars = !figures && rows.filter((r) => r.bars[0]).length >= 3;
+  const extra = figures ? 0 : Math.max(0, rows.length - VISIBLE_ROWS);
+  return { title: section.title, cols, rows, amino, figures, showBars, hasNrv: showBars && hasNrv, extra: extra >= 2 ? extra : 0 };
+});
+const anyBars = sections.some((s) => s.showBars);
+const anyNrv = sections.some((s) => s.hasNrv);
+const aminoLegend = sections.some((s) => s.amino)
+  ? p.footnotes.filter((f) => /^\*+/.test(f)).map((f) => ({ stars: f.match(/^\*+/)[0].length, text: f.replace(/^\*+\s*/, '') }))
+  : [];
+const comp = composition(p);
+
+/* Ingredients: split on commas that are not inside brackets or between digits */
+function splitIngredients(text) {
+  const out = [];
+  let depth = 0;
+  let cur = '';
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if ('([{'.includes(ch)) depth++;
+    if (')]}'.includes(ch)) depth = Math.max(0, depth - 1);
+    if (ch === ',' && depth === 0 && !(/\d/.test(text[i - 1] ?? '') && /\d/.test(text[i + 1] ?? ''))) { out.push(cur); cur = ''; } else cur += ch;
+  }
+  out.push(cur);
+  return out.map((s) => s.trim().replace(/\s*\.$/, '')).filter(Boolean);
+}
+const ingredientList = p.ingredients ? splitIngredients(p.ingredients) : [];
+const listIngredients = ingredientList.length >= 3 && ingredientList.every((s) => s.length <= 150);
+const hasSafety = p.warnings.length > 0 || p.storage.length > 0;
+---
+<Base title={p.name} current="products" description={description}>
+  <div class="pp">
+    <section class="wrap hero">
+      <div class="info">
+        <nav class="crumbs" aria-label="Breadcrumb" data-hero-in>
+          <a href="/products/">All products</a><span aria-hidden="true">/</span><a href={`/products/?goal=${category.slug}`}>{category.name}</a>
+        </nav>
+        <h1 data-hero-title>{p.name}</h1>
+        <p class="lead">{p.body[0]}</p>
+        {p.body.length > 1 && (
+          <details class="more" data-hero-in>
+            <summary><span class="when-closed">Read more</span><span class="when-open">Read less</span><Icon name="plus" /></summary>
+            {p.body.slice(1).map((para) => <p>{para}</p>)}
+          </details>
+        )}
+
+        {flavourPicker && (
+          <div class="flavours" data-hero-in>
+            <p class="mini">Flavour: <strong data-flavour-name>{p.images[0].label}</strong></p>
+            <div class="flavour-row" role="group" aria-label="Choose flavour">
+              {p.images.map((img, i) => (
+                <button type="button" class="chip" data-img={img.src} data-label={img.label} data-alt={`${p.name}, ${img.label} pack`} aria-pressed={i === 0 ? 'true' : 'false'}>{img.label}</button>
+              ))}
+            </div>
+          </div>
+        )}
+        {!flavourPicker && p.flavours.length > 0 && (
+          <div class="flavours" data-hero-in>
+            <p class="mini">{p.flavours.length > 1 ? 'Available flavours' : 'Flavour'}</p>
+            <p class="flav-text">{p.flavours.join(' · ')}</p>
+          </div>
+        )}
+
+        <dl class="plate" data-hero-in>
+          {specs.map(([k, v, note, icon]) => (
+            <div>
+              <Icon name={icon} />
+              <dt>{k}</dt>
+              <dd>{v}{note && <small>{note}</small>}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div class="gallery" data-hero-in>
+        <div class="stage" data-stage>
+          <span class="mark tl" aria-hidden="true"></span><span class="mark tr" aria-hidden="true"></span><span class="mark bl" aria-hidden="true"></span><span class="mark br" aria-hidden="true"></span>
+          <span class="tag">Product {pad(position)} of {products.length}</span>
+          <img class="main-img" data-main src={p.images[0].src} alt={`${p.name}${p.images[0].label ? `, ${p.images[0].label}` : ''} pack`} width="880" height="880" fetchpriority="high" />
+        </div>
+        {multipleImages && !flavourPicker && (
+          <div class="thumbs" role="group" aria-label="Pack views">
+            {p.images.map((img, i) => (
+              <button type="button" class="thumb" data-img={img.src} data-alt={`${p.name}, ${img.label ?? `view ${i + 1}`} pack`} aria-pressed={i === 0 ? 'true' : 'false'}>
+                <img src={img.thumb} alt="" width="72" height="72" loading="lazy" />
+                {img.label && <span>{img.label}</span>}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+
+    {facts.length > 0 && (
+      <section class="facts on-dark" aria-label="Key facts">
+        <ul class="wrap fact-row">
+          {facts.map((f) => (
+            <li data-reveal>
+              {f.text ? (
+                <p class="fact-text">{f.text}</p>
+              ) : (
+                <>
+                  <p class="fact-figure">
+                    {f.figure ?? <span data-count={f.count} data-decimals={f.decimals}>{f.count}</span>}
+                    {f.unit && <span class="fact-unit">{f.unit}</span>}
+                  </p>
+                  <p class="fact-caption">{f.caption}</p>
+                </>
+              )}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <section id="nutrition" class="nutrition">
+      <div class="wrap nutrition-grid">
+        <div class="n-aside">
+          <h2>Nutrition facts</h2>
+          {hasNutrition ? (
+            <>
+              {(p.servingSize || p.servings) && (
+                <p class="n-lead">
+                  {p.servingSize && <>One serving is <strong>{p.servingSize}</strong>.</>}
+                  {p.servings && <> A pack holds <strong>{p.servings}</strong> servings.</>}
+                </p>
+              )}
+              {comp && (
+                <figure class="comp" data-reveal data-bars-root>
+                  <figcaption>What 100 g is made of</figcaption>
+                  <div class="comp-bar" role="img" aria-label={comp.map((c) => `${c.name} ${c.g} g`).join(', ')}>
+                    {comp.map((c) => <i class={`t${c.tone}`} style={`flex-grow:${c.g}`}></i>)}
+                  </div>
+                  <ul>
+                    {comp.map((c) => <li><i class={`sw t${c.tone}`} aria-hidden="true"></i><span>{c.name}</span><b>{c.g} g</b></li>)}
+                  </ul>
+                </figure>
+              )}
+              {anyBars && <p class="hint">Each bar compares an amount with the largest one in its table.{anyNrv && ' A striped bar shows the share of the daily reference value.'}</p>}
+              {p.footnotes.length > 0 && <ul class="footnotes" data-reveal>{p.footnotes.map((f) => <li>{f}</li>)}</ul>}
+            </>
+          ) : (
+            <p class="n-lead">Full nutrition information for this product is being updated.</p>
+          )}
+        </div>
+
+        {hasNutrition && (
+          <div class="n-main">
+            {sections.map((s) => (
+              <div class="sheet" data-sheet data-reveal>
+                <div class="sheet-head">
+                  <h3>{s.title ?? (s.figures ? 'Active ingredients' : 'Nutrients')}</h3>
+                  {!s.figures && (s.cols.length > 1 ? (
+                    <div class="seg" role="group" aria-label="Amount shown">
+                      {s.cols.map((c, i) => <button type="button" data-col={i} aria-pressed={i === 0 ? 'true' : 'false'}>{c}</button>)}
+                    </div>
+                  ) : (
+                    <p class="sheet-col">{s.cols[0]}</p>
+                  ))}
+                </div>
+
+                {s.figures ? (
+                  <div class="figs">
+                    {s.rows.map((r) => (
+                      <div class="fig">
+                        <p class="fig-label">{r.label}{r.stars && <sup>{r.stars}</sup>}</p>
+                        <div class="fig-cols">
+                          {s.cols.map((c, i) => (
+                            <div>
+                              <p class="fig-val">{r.main[i]}</p>
+                              {r.note[i] && <p class="fig-note">{r.note[i]}</p>}
+                              <p class="fig-col">{c}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <table class:list={[{ 'no-bars': !s.showBars, amino: s.amino }]} data-bars-root>
+                    <thead class="sr">
+                      <tr><th scope="col">{s.amino ? 'Amino acid' : 'Nutrient'}</th>{s.showBars && <th></th>}<th scope="col" data-col-name>{s.cols[0]}</th></tr>
+                    </thead>
+                    <tbody>
+                      {s.rows.map((r, i) => (
+                        <tr class:list={[{ sub: r.indent, total: r.total, extra: s.extra > 0 && i >= VISIBLE_ROWS }, `s${r.stars.length}`]} style={`--i:${i}`} data-row data-main={JSON.stringify(r.main)} data-note={JSON.stringify(r.note)} data-bars={JSON.stringify(r.bars.map((b) => (b ? [b.w, b.nrv ? 1 : 0] : null)))}>
+                          <th scope="row">{r.label}{r.stars && <sup>{r.stars}</sup>}</th>
+                          {s.showBars && (
+                            <td class="bar-cell" aria-hidden="true">
+                              <span class:list={['bar', { empty: !r.bars[0] }]}><i class:list={[{ nrv: r.bars[0]?.nrv }]} style={`--w:${r.bars[0]?.w ?? 0}`} data-bar></i></span>
+                            </td>
+                          )}
+                          <td class="val"><span data-val>{r.main[0]}</span><small data-note>{r.note[0]}</small></td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+                {s.extra > 0 && (
+                  <button type="button" class="show-more" data-more aria-expanded="false">
+                    <span class="when-closed">Show all {s.rows.length} rows</span><span class="when-open">Show fewer rows</span><Icon name="plus" />
+                  </button>
+                )}
+                {s.amino && aminoLegend.length > 0 && (
+                  <ul class="legend">
+                    {aminoLegend.map((l) => <li><i class={`sw s${l.stars}`} aria-hidden="true"></i>{l.text}</li>)}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+
+    {p.directions.length > 0 && (
+      <section id="use" class:list={['use', 'on-dark', { 'has-photo': usePhoto }]}>
+        {usePhoto && <img class="use-photo" src={usePhoto} alt="" loading="lazy" />}
+        <div class="wrap use-inner">
+          <p class="use-kicker"><Icon name="clock" />How to use</p>
+          {p.directions.map((d, i) => <p class:list={['use-text', { first: i === 0 }]}>{d}</p>)}
+        </div>
+      </section>
+    )}
+
+    {(p.ingredients || p.freeFrom.length > 0 || hasSafety) && (
+      <section class="wrap more-info">
+        <h2>More about this product</h2>
+        <div class="acc">
+          {p.ingredients && (
+            <details data-reveal>
+              <summary><Icon name="flask" /><span>Ingredients</span>{listIngredients && <em>{ingredientList.length}</em>}<Icon name="plus" /></summary>
+              <div class="acc-body">
+                {listIngredients ? (
+                  <ol class="ing-list">
+                    {ingredientList.map((item, i) => <li><span class="ing-n">{pad(i + 1)}</span><span>{item}</span></li>)}
+                  </ol>
+                ) : (
+                  <p>{p.ingredients}</p>
+                )}
+              </div>
+            </details>
+          )}
+          {p.freeFrom.length > 0 && (
+            <details data-reveal>
+              <summary><Icon name="ban" /><span>Free from</span><em>{p.freeFrom.length}</em><Icon name="plus" /></summary>
+              <div class="acc-body">
+                <ul class="free">{p.freeFrom.map((f) => <li>{f}</li>)}</ul>
+              </div>
+            </details>
+          )}
+          {p.warnings.length > 0 && (
+            <details data-reveal>
+              <summary><Icon name="alert" /><span>Before you use it</span><Icon name="plus" /></summary>
+              <div class="acc-body">{p.warnings.map((w) => <p>{w}</p>)}</div>
+            </details>
+          )}
+          {p.storage.length > 0 && (
+            <details data-reveal>
+              <summary><Icon name="thermometer" /><span>Storage</span><Icon name="plus" /></summary>
+              <div class="acc-body">{p.storage.map((s) => <p>{s}</p>)}</div>
+            </details>
+          )}
+        </div>
+      </section>
+    )}
+
+    {related.length > 0 && (
+      <section class="wrap related">
+        <div class="related-head">
+          <h2>More in {category.name}</h2>
+          <a href={`/products/?goal=${category.slug}`}>View the range</a>
+        </div>
+        <div class="product-grid" style={`--n:${related.length}`}>
+          {related.map((r) => <ProductCard product={r} />)}
+        </div>
+      </section>
+    )}
+  </div>
+</Base>
+
+<script>
+  import '../../scripts/product-motion.js';
+</script>
+
+<style>
+  .pp { overflow-x: clip; }
+  :global(html.motion) .pp [data-reveal], :global(html.motion) .pp [data-hero-in] { opacity: 0; }
+  .when-open, [open] > summary .when-closed, [aria-expanded='true'] .when-closed { display: none; }
+  [open] > summary .when-open, [aria-expanded='true'] .when-open { display: inline; }
+  summary { list-style: none; cursor: pointer; }
+  summary::-webkit-details-marker { display: none; }
+  summary :global(.icon:last-child), .show-more :global(.icon) { transition: rotate .3s var(--ease-out); }
+  [open] > summary :global(.icon:last-child), .show-more[aria-expanded='true'] :global(.icon) { rotate: 45deg; }
+  h2 { font-size: clamp(30px, 3.4vw, 46px); font-weight: 600; }
+
+  /* ---------- Hero ---------- */
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 80px); align-items: center; padding-block: 24px clamp(40px, 5vw, 72px); }
+  .crumbs { display: flex; flex-wrap: wrap; gap: 8px; font-size: 14px; color: var(--muted); }
+  .crumbs a { text-decoration: none; }
+  .crumbs a:last-of-type { color: var(--ink); font-weight: 600; }
+  .crumbs a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  h1 { margin-top: 16px; font-size: clamp(40px, 5.6vw, 84px); font-weight: 600; line-height: 1; }
+  .lead { margin-top: 24px; max-width: 52ch; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.55; }
+  .more { margin-top: 12px; max-width: 56ch; }
+  .more summary { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+  .more p { margin-top: 12px; color: var(--muted); }
+
+  .mini { margin-bottom: 8px; font-size: 14px; color: var(--muted); }
+  .mini strong { color: var(--ink); font-weight: 600; }
+  .flavours { margin-top: 28px; }
+  .flavour-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { min-height: 44px; padding: 8px 16px; background: var(--white); border: 1px solid var(--line); border-radius: 8px; font-size: 15px; font-weight: 500; cursor: pointer; transition: border-color .16s, background-color .16s, color .16s; }
+  .chip:hover { border-color: var(--ink); }
+  .chip[aria-pressed='true'] { background: var(--ink); border-color: var(--ink); color: var(--white); }
+  .flav-text { font-weight: 500; }
+
+  .plate { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin: 32px 0 0; overflow: hidden; background: var(--line); border: 1px solid var(--line); border-radius: 12px; }
+  .plate div { display: grid; grid-template-columns: 24px minmax(0, 1fr); column-gap: 12px; padding: 16px; background: var(--white); }
+  .plate div:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .plate :global(.icon) { grid-row: 1 / 3; width: 24px; height: 24px; margin-top: 2px; }
+  .plate dt { font-size: 13px; color: var(--muted); }
+  .plate dd { margin: 0; font: 600 17px/1.3 var(--display); }
+  .plate small { margin-left: 8px; font: 400 13px/1.3 var(--body); color: var(--muted); }
+
+  .stage { position: relative; display: grid; place-items: center; aspect-ratio: 1 / 1; padding: clamp(32px, 5vw, 72px); background: var(--ice); border-radius: 4px; }
+  .mark { position: absolute; width: 16px; height: 16px; border: 0 solid var(--ink); }
+  .mark.tl { left: 16px; top: 16px; border-width: 1.5px 0 0 1.5px; }
+  .mark.tr { right: 16px; top: 16px; border-width: 1.5px 1.5px 0 0; }
+  .mark.bl { left: 16px; bottom: 16px; border-width: 0 0 1.5px 1.5px; }
+  .mark.br { right: 16px; bottom: 16px; border-width: 0 1.5px 1.5px 0; }
+  .main-img { mix-blend-mode: multiply; width: 100%; max-width: 560px; aspect-ratio: 1; object-fit: contain; transition: opacity .25s; will-change: transform; }
+  .main-img.is-swapping { opacity: 0; }
+  .tag { position: absolute; left: 44px; top: 14px; font: 500 13px/1.5 var(--display); color: var(--muted); font-variant-numeric: tabular-nums; }
+  .thumbs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 12px; }
+  .thumb { display: flex; align-items: center; gap: 8px; padding: 4px 12px 4px 4px; background: var(--white); border: 1px solid var(--line); border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; }
+  .thumb img { width: 48px; height: 48px; }
+  .thumb[aria-pressed='true'] { border-color: var(--ink); }
+
+  /* ---------- Key facts ---------- */
+  .facts { background: var(--night); color: var(--white); }
+  .fact-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .fact-row li { display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; padding: clamp(28px, 3.4vw, 48px) 24px clamp(28px, 3.4vw, 48px) 0; }
+  .fact-row li + li { padding-left: 24px; border-left: 1px solid rgba(255, 255, 255, .14); }
+  .fact-figure { font: 600 clamp(44px, 5.2vw, 76px)/1 var(--display); font-variant-numeric: tabular-nums; }
+  .fact-unit { margin-left: 6px; font-size: .42em; font-weight: 500; color: var(--on-blue-muted); }
+  .fact-caption { max-width: 26ch; color: var(--on-blue-muted); }
+  .fact-text { max-width: 14ch; font: 600 clamp(24px, 2.4vw, 34px)/1.12 var(--display); }
+
+  /* ---------- Nutrition ---------- */
+  .nutrition { padding-block: clamp(56px, 7vw, 104px); background: var(--ice); scroll-margin-top: 72px; }
+  .nutrition-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.5fr); gap: clamp(24px, 5vw, 80px); align-items: start; }
+  .n-aside { position: sticky; top: 104px; }
+  .n-lead { margin-top: 16px; max-width: 34ch; font-size: 18px; line-height: 1.5; }
+  .n-lead strong { font-weight: 600; }
+  .hint { margin-top: 24px; max-width: 40ch; font-size: 14px; color: var(--muted); }
+  .footnotes { margin-top: 12px; font-size: 13px; color: var(--muted); }
+
+  .comp { margin: 32px 0 0; }
+  .comp figcaption { font-size: 14px; font-weight: 600; }
+  .comp-bar { display: flex; gap: 2px; height: 40px; margin-top: 12px; overflow: hidden; border-radius: 4px; clip-path: inset(0); transition: clip-path 1s var(--ease-out); }
+  .comp.pre .comp-bar { clip-path: inset(0 100% 0 0); }
+  .comp-bar i { min-width: 3px; }
+  .t0 { background: var(--ink); }
+  .t1 { background: #6e6e71; }
+  .t2 { background: #a9a9a6; }
+  .t3 { background: repeating-linear-gradient(135deg, #c9c9c5 0 2px, transparent 2px 6px); }
+  .comp ul { margin-top: 12px; }
+  .comp li { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .comp li b { margin-left: auto; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .comp .sw { width: 12px; height: 12px; border-radius: 2px; }
+
+  .n-main { display: grid; gap: 24px; min-width: 0; }
+  .sheet { padding: clamp(20px, 2.6vw, 32px); background: var(--white); border-radius: 12px; }
+  .sheet-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+  .sheet-head h3 { font-size: 20px; font-weight: 600; }
+  .sheet-col { font-size: 14px; font-weight: 600; color: var(--muted); }
+  .seg { display: flex; gap: 2px; max-width: 100%; overflow-x: auto; padding: 4px; background: var(--ice); border-radius: 10px; scrollbar-width: none; }
+  .seg button { flex: none; min-height: 36px; padding: 6px 14px; background: none; border: 0; border-radius: 6px; font-size: 14px; font-weight: 600; color: var(--muted); cursor: pointer; transition: background-color .2s, color .2s; }
+  .seg button:hover { color: var(--ink); }
+  .seg button[aria-pressed='true'] { background: var(--ink); color: var(--white); }
+
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  tbody tr { border-top: 1px solid var(--line); }
+  :global(html.js) .sheet:not(.is-open) tr.extra { display: none; }
+  tbody th { width: 32%; padding: 12px 16px 12px 0; font-weight: 500; text-align: left; }
+  tbody th sup { margin-left: 2px; color: var(--muted); }
+  .sub th { padding-left: 16px; font-weight: 400; color: var(--muted); }
+  .total th, .total .val { font-weight: 700; }
+  .bar-cell { padding: 0 16px; }
+  .bar { display: block; height: 8px; overflow: hidden; background: var(--ice); border-radius: 2px; }
+  .bar.empty { background: none; }
+  .bar i { display: block; height: 100%; background: var(--ink); border-radius: 2px; transform: scaleX(var(--w)); transform-origin: left; transition: transform .8s var(--ease-out); transition-delay: calc(var(--i) * 28ms); }
+  .bar i.nrv { background: repeating-linear-gradient(135deg, var(--ink) 0 2px, transparent 2px 5px); }
+  .amino .s0 .bar i { background: #b5b5b2; }
+  .amino .s1 .bar i { background: #6e6e71; }
+  [data-bars-root].pre .bar i { transform: scaleX(0); }
+  [data-bars-root].live .bar i { transition-delay: 0s; }
+  .val { width: 1%; padding: 12px 0; text-align: right; white-space: nowrap; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .val small { margin-left: 8px; font-size: 13px; font-weight: 500; color: var(--muted); }
+  .val small:empty { display: none; }
+  .no-bars tbody th { width: auto; }
+
+  .show-more { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 48px; margin-top: 4px; background: none; border: 0; border-top: 1px solid var(--line); font-size: 15px; font-weight: 600; cursor: pointer; transition: background-color .2s; }
+  .show-more:hover { background: var(--mist); }
+  :global(html:not(.js)) .show-more { display: none; }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 16px; font-size: 13px; color: var(--muted); }
+  .legend li { display: flex; align-items: center; gap: 8px; }
+  .legend .sw { width: 16px; height: 8px; border-radius: 2px; background: #b5b5b2; }
+  .legend .sw.s1 { background: #6e6e71; }
+  .legend .sw.s2 { background: var(--ink); }
+
+  .figs { display: grid; gap: 16px; }
+  .fig { padding-top: 16px; border-top: 1px solid var(--line); }
+  .fig-label { font-weight: 600; color: var(--muted); }
+  .fig-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; margin-top: 12px; }
+  .fig-val { font: 600 clamp(36px, 4.4vw, 60px)/1 var(--display); font-variant-numeric: tabular-nums; }
+  .fig-note { margin-top: 4px; font-size: 14px; color: var(--muted); }
+  .fig-col { margin-top: 8px; font-size: 14px; color: var(--muted); }
+
+  /* ---------- How to use ---------- */
+  .use { position: relative; isolation: isolate; overflow: hidden; background: var(--night); color: var(--white); scroll-margin-top: 72px; }
+  .use-photo { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; filter: grayscale(1) contrast(1.1); }
+  .use.has-photo::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(10, 10, 10, .94) 0%, rgba(10, 10, 10, .78) 45%, rgba(10, 10, 10, .3) 100%); }
+  .use-inner { padding-block: clamp(64px, 9vw, 136px); }
+  .use-kicker { display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; color: var(--on-blue-muted); }
+  .use-text { max-width: 44ch; margin-top: 12px; font-size: 17px; color: var(--on-blue-muted); }
+  .use-text.first { max-width: 24ch; margin-top: 16px; font: 600 clamp(26px, 3.2vw, 44px)/1.15 var(--display); color: var(--white); text-wrap: balance; }
+
+  /* ---------- More about this product ---------- */
+  .more-info { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.5fr); gap: clamp(24px, 5vw, 80px); align-items: start; padding-block: clamp(56px, 7vw, 104px) 0; }
+  .acc { border-bottom: 1px solid var(--line); }
+  .acc details { border-top: 1px solid var(--line); }
+  .acc summary { display: flex; align-items: center; gap: 16px; min-height: 72px; font: 600 20px/1.2 var(--display); transition: padding-left .3s var(--ease-out); }
+  .acc summary:hover { padding-left: 8px; }
+  .acc summary span { margin-right: auto; }
+  .acc summary em { font: 500 14px/1 var(--body); color: var(--muted); font-variant-numeric: tabular-nums; }
+  .acc-body { padding: 0 0 24px 40px; }
+  .acc-body p { max-width: 64ch; color: var(--muted); }
+  .acc-body p + p { margin-top: 8px; }
+  .ing-list { columns: 2; column-gap: 40px; margin: 0; padding: 0; list-style: none; }
+  .ing-list li { display: flex; gap: 12px; padding: 8px 0; break-inside: avoid; font-size: 15px; }
+  .ing-n { flex: none; width: 24px; font: 500 13px/1.8 var(--display); color: var(--muted); font-variant-numeric: tabular-nums; }
+  .free { display: flex; flex-wrap: wrap; gap: 8px; }
+  .free li { padding: 6px 12px; border: 1px solid var(--line); border-radius: 6px; font-size: 14px; font-weight: 600; }
+
+  .related { padding-block: clamp(56px, 7vw, 96px); }
+  .related-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+  .related-head h2 { font-size: clamp(26px, 3vw, 38px); }
+  .related-head a { font-weight: 600; text-underline-offset: 4px; }
+
+  @media (min-width: 901px) {
+    .related .product-grid { grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); max-width: calc(var(--n, 4) * 25%); }
+  }
+  @media (max-width: 900px) {
+    .hero, .nutrition-grid, .more-info { grid-template-columns: minmax(0, 1fr); }
+    .gallery { order: -1; }
+    .stage { aspect-ratio: 4 / 3; }
+    .main-img { max-width: 320px; }
+    .n-aside { position: static; }
+    .fact-row { grid-template-columns: minmax(0, 1fr); }
+    .fact-row li { padding-block: 24px; }
+    .fact-row li + li { padding-left: 0; border-left: 0; border-top: 1px solid rgba(255, 255, 255, .14); }
+    .fact-text { max-width: none; }
+    .use.has-photo::after { background: rgba(10, 10, 10, .8); }
+  }
+  @media (max-width: 560px) {
+    .plate small { display: block; margin-left: 0; }
+    .ing-list { columns: 1; }
+    .acc-body { padding-left: 0; }
+    tbody tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; }
+    tbody th { grid-area: 1 / 1; width: auto; padding-bottom: 4px; }
+    .val { grid-area: 1 / 2; width: auto; padding-bottom: 4px; }
+    .bar-cell { grid-area: 2 / 1 / 3 / -1; padding: 0 0 12px; }
+    table:not(.no-bars) .sub .bar-cell { padding-left: 16px; }
+    .no-bars tbody th, .no-bars .val { padding-bottom: 12px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bar i, .main-img, .comp-bar { transition: none; }
+  }
+</style>

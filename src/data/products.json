@@ -1,0 +1,4589 @@
+{
+  "categories": [
+    {
+      "slug": "protein-mass",
+      "name": "Protein & Mass",
+      "blurb": "Whey, gainer and protein-based amino tablets."
+    },
+    {
+      "slug": "amino-recovery",
+      "name": "Amino Acids & Recovery",
+      "blurb": "BCAA, EAA and glutamine in powder, tablet and liquid form."
+    },
+    {
+      "slug": "creatine-strength",
+      "name": "Creatine & Strength",
+      "blurb": "Creatine, beta alanine and HMB."
+    },
+    {
+      "slug": "pre-workout-pump",
+      "name": "Pre-Workout & Pump",
+      "blurb": "Pre-workout blends, arginine, citrulline and taurine."
+    },
+    {
+      "slug": "hormone-support",
+      "name": "Hormone Support",
+      "blurb": "Plant extracts, D-aspartic acid, zinc and GABA formulas."
+    },
+    {
+      "slug": "weight-management",
+      "name": "Weight Management",
+      "blurb": "Carnitine, CLA and multi-ingredient formulas."
+    },
+    {
+      "slug": "health-wellness",
+      "name": "Health & Wellness",
+      "blurb": "Daily vitamins, minerals and general support."
+    }
+  ],
+  "products": [
+    {
+      "slug": "whey-protein",
+      "name": "Whey Protein",
+      "category": "protein-mass",
+      "form": "Powder",
+      "size": "2000 g",
+      "servingSize": "1 scoop (30 g)",
+      "servings": "66",
+      "flavours": [
+        "Chocolate",
+        "Cappuccino",
+        "Ice Cream Vanilla",
+        "Sniker Cookie"
+      ],
+      "body": [
+        "Royal Nutrition Whey Protein is a food supplement in powder form based on premium quality whey protein concentrate that delivers a full spectrum of amino acids with high biological value."
+      ],
+      "highlights": [
+        "22.5 g protein per serving",
+        "Full amino acid profile",
+        "4 flavours"
+      ],
+      "ingredients": "Ultrafiltred whey protein concentrate (contains emulsifier: soy lecithin), cocoa (contains emulsifier: soy lecithin), flavours, thickening agent (xanthan gum), sweeteners ( sucralose, acesulfame potassium).",
+      "directions": [
+        "Mix 1 heaping scoop (30 g) with 150 ml water. Depending on your nutritional needs, use 2-4 servings daily."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Sugar",
+        "Artificial Colour",
+        "Preservatives"
+      ],
+      "footnotes": [
+        "* Essential amino acids",
+        "** Branched amino acids"
+      ],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "Per serving (30 g)",
+        "Per 100 g"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Energy",
+              "indent": false,
+              "values": [
+                "499.7 kJ / 118.3 kcal",
+                "1665.6 kJ / 394.4 kcal"
+              ]
+            },
+            {
+              "label": "Protein",
+              "indent": false,
+              "values": [
+                "22.5 g",
+                "75.1 g"
+              ]
+            },
+            {
+              "label": "Carbohydrates",
+              "indent": false,
+              "values": [
+                "1.6 g",
+                "5.4 g"
+              ]
+            },
+            {
+              "label": "of which sugars",
+              "indent": true,
+              "values": [
+                "1.4 g",
+                "4.7 g"
+              ]
+            },
+            {
+              "label": "Fat",
+              "indent": false,
+              "values": [
+                "2.3 g",
+                "7.6 g"
+              ]
+            },
+            {
+              "label": "of which saturates",
+              "indent": true,
+              "values": [
+                "1.4 g",
+                "4.8 g"
+              ]
+            },
+            {
+              "label": "Fibers",
+              "indent": false,
+              "values": [
+                "0.7 g",
+                "2.2 g"
+              ]
+            },
+            {
+              "label": "Sodium",
+              "indent": false,
+              "values": [
+                "0.08 g",
+                "0.26 g"
+              ]
+            },
+            {
+              "label": "Calcium",
+              "indent": false,
+              "values": [
+                "148 mg (18.4% RDA)",
+                "490 mg (61.3% RDA)"
+              ]
+            },
+            {
+              "label": "Phosphorus",
+              "indent": false,
+              "values": [
+                "144 mg (20.6% RDA)",
+                "480 mg (68.6% RDA)"
+              ]
+            },
+            {
+              "label": "Potassium",
+              "indent": false,
+              "values": [
+                "231 mg (11.6% RDA)",
+                "770 mg (38.5% RDA)"
+              ]
+            },
+            {
+              "label": "Magnesium",
+              "indent": false,
+              "values": [
+                "32 mg (8.5% RDA)",
+                "106 mg (28.3% RDA)"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Amino acid profile",
+          "rows": [
+            {
+              "label": "Leucine**",
+              "indent": false,
+              "values": [
+                "2510 mg",
+                "8368 mg"
+              ]
+            },
+            {
+              "label": "Isoleucine**",
+              "indent": false,
+              "values": [
+                "1464 mg",
+                "4881 mg"
+              ]
+            },
+            {
+              "label": "Valine**",
+              "indent": false,
+              "values": [
+                "1420 mg",
+                "4734 mg"
+              ]
+            },
+            {
+              "label": "Aspartic acid",
+              "indent": false,
+              "values": [
+                "2357 mg",
+                "7856 mg"
+              ]
+            },
+            {
+              "label": "Glutamic acid",
+              "indent": false,
+              "values": [
+                "3756 mg",
+                "12520 mg"
+              ]
+            },
+            {
+              "label": "Serine",
+              "indent": false,
+              "values": [
+                "1156 mg",
+                "3854 mg"
+              ]
+            },
+            {
+              "label": "Glycine",
+              "indent": false,
+              "values": [
+                "462 mg",
+                "1541 mg"
+              ]
+            },
+            {
+              "label": "Histidine",
+              "indent": false,
+              "values": [
+                "440 mg",
+                "1468 mg"
+              ]
+            },
+            {
+              "label": "Arginine",
+              "indent": false,
+              "values": [
+                "671 mg",
+                "2238 mg"
+              ]
+            },
+            {
+              "label": "Threonine*",
+              "indent": false,
+              "values": [
+                "1630 mg",
+                "5432 mg"
+              ]
+            },
+            {
+              "label": "Alanine",
+              "indent": false,
+              "values": [
+                "1178 mg",
+                "3927 mg"
+              ]
+            },
+            {
+              "label": "Proline",
+              "indent": false,
+              "values": [
+                "1047 mg",
+                "3490 mg"
+              ]
+            },
+            {
+              "label": "Tyrosine",
+              "indent": false,
+              "values": [
+                "716 mg",
+                "2385 mg"
+              ]
+            },
+            {
+              "label": "Methionine*",
+              "indent": false,
+              "values": [
+                "507 mg",
+                "1688 mg"
+              ]
+            },
+            {
+              "label": "Cystine",
+              "indent": false,
+              "values": [
+                "551 mg",
+                "1835 mg"
+              ]
+            },
+            {
+              "label": "Phenylalanine*",
+              "indent": false,
+              "values": [
+                "782 mg",
+                "2606 mg"
+              ]
+            },
+            {
+              "label": "Lysine*",
+              "indent": false,
+              "values": [
+                "2059 mg",
+                "6864 mg"
+              ]
+            },
+            {
+              "label": "Tryptophan*",
+              "indent": false,
+              "values": [
+                "396 mg",
+                "1322 mg"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/whey-protein/01.webp",
+          "thumb": "/products/whey-protein/01-440.webp",
+          "label": "Chocolate"
+        },
+        {
+          "src": "/products/whey-protein/02.webp",
+          "thumb": "/products/whey-protein/02-440.webp",
+          "label": "Cappuccino"
+        },
+        {
+          "src": "/products/whey-protein/03.webp",
+          "thumb": "/products/whey-protein/03-440.webp",
+          "label": "Ice Cream Vanilla"
+        },
+        {
+          "src": "/products/whey-protein/04.webp",
+          "thumb": "/products/whey-protein/04-440.webp",
+          "label": "Sniker Cookie"
+        }
+      ]
+    },
+    {
+      "slug": "royal-mass",
+      "name": "Royal Mass",
+      "category": "protein-mass",
+      "form": "Powder",
+      "size": "3628 g (8 lb)",
+      "servingSize": "2 heaping scoops (100 g)",
+      "servings": "36",
+      "flavours": [
+        "Triple Chocolate",
+        "French Vanilla",
+        "Creamy Strawberry",
+        "Banana Split"
+      ],
+      "body": [
+        "Royal Nutrition Royal Mass is a gainer powder combining a carbohydrate matrix and a protein matrix with L-glutamine, creatine monohydrate, HMB, L-citrulline, BCAA and B vitamins. A 100 g serving provides 30 g of protein and 48.8 g of carbohydrates."
+      ],
+      "highlights": [
+        "30 g protein per serving",
+        "333 kcal per serving",
+        "4 flavours"
+      ],
+      "ingredients": "Carbohydrate Matrix (dextrose monohydrate, maltodextrin, waxy maize starch), Protein Matrix (whey protein concentrate, skimmed milk powder), low fat cocoa powder (Triple Chocolate flavour), anti-caking agents (tricalcium phosphate, silicon dioxide), L-Glutamine, Creatine monohydrate, HMB (Calcium β-Hydroxy-β-Methyl Butyrate), L-Citrulline DL-malate, flavours, BCAA mix 4:1:1 (L-Leucine, L-Valine, L-Isoleucine), magnesium carbonate, L-Arginine Kyowa®, thickener (xanthan gum), colour (carmine, Creamy Strawberry flavour), taurine, sweeteners (sucralose, acesulfame potassium), zinc citrate trihydrate, Vitamin Matrix (nicotinamide (vit. B3), calcium D-pantothenate (vit. B5), thiamine mononitrate (vit. B1), riboflavin (vit. B2), pyridoxine hydrochloride (vit. B6)).",
+      "directions": [
+        "Mix 2 heaping scoops (~ 100 g) with 300 – 400 ml water or milk and shake for 30 seconds. Take after training and as a snack if you have a high energy demand."
+      ],
+      "freeFrom": [],
+      "footnotes": [
+        "*% RDA – recommended daily allowance (based on a 2,000 calorie diet)"
+      ],
+      "warnings": [
+        "Allergy Information Contains milk components. May contain traces of soy, egg and wheat (gluten).",
+        "Important Information: This product is a food supplement. Use this product in conjunction with food as part of a healthy, balanced diet, not as a substitute for such. Keep out of reach of children. It is intended for only 18 years of age or older. Not intended for use by pregnant or breastfeeding women! Don’t exceed the recommended daily dosage."
+      ],
+      "storage": [
+        "Store in a cool, dry place. Do not expose to excessive heat, moisture or sunlight. Use before the expiration date written on the pack"
+      ],
+      "columns": [
+        "Per 100 g"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Energy",
+              "indent": false,
+              "values": [
+                "1413.4 kJ / 333.2 kcal"
+              ]
+            },
+            {
+              "label": "Protein",
+              "indent": false,
+              "values": [
+                "30 g"
+              ]
+            },
+            {
+              "label": "Carbohydrates",
+              "indent": false,
+              "values": [
+                "48.8 g"
+              ]
+            },
+            {
+              "label": "of which sugars",
+              "indent": true,
+              "values": [
+                "38.8 g"
+              ]
+            },
+            {
+              "label": "Total Fat",
+              "indent": false,
+              "values": [
+                "1.7 g"
+              ]
+            },
+            {
+              "label": "of which saturated",
+              "indent": true,
+              "values": [
+                "1 g"
+              ]
+            },
+            {
+              "label": "Fiber",
+              "indent": false,
+              "values": [
+                "1.5 g"
+              ]
+            },
+            {
+              "label": "Sodium",
+              "indent": false,
+              "values": [
+                "0.12 g"
+              ]
+            },
+            {
+              "label": "Potassium",
+              "indent": false,
+              "values": [
+                "420 mg (21%*)"
+              ]
+            },
+            {
+              "label": "Phosphorus",
+              "indent": false,
+              "values": [
+                "161 mg (23%*)"
+              ]
+            },
+            {
+              "label": "Calcium",
+              "indent": false,
+              "values": [
+                "156 mg (19.5%*)"
+              ]
+            },
+            {
+              "label": "Magnesium",
+              "indent": false,
+              "values": [
+                "295 mg (78.7%*)"
+              ]
+            },
+            {
+              "label": "Zinc",
+              "indent": false,
+              "values": [
+                "8.4 mg (84%*)"
+              ]
+            },
+            {
+              "label": "L-Glutamine",
+              "indent": false,
+              "values": [
+                "1800 mg"
+              ]
+            },
+            {
+              "label": "Creatine monohydrate",
+              "indent": false,
+              "values": [
+                "1200 mg"
+              ]
+            },
+            {
+              "label": "HMB",
+              "indent": false,
+              "values": [
+                "1200 mg"
+              ]
+            },
+            {
+              "label": "L-Citrulline DL-Malate",
+              "indent": false,
+              "values": [
+                "1200 mg"
+              ]
+            },
+            {
+              "label": "BCAA mix 4:1:1",
+              "indent": false,
+              "values": [
+                "900 mg"
+              ]
+            },
+            {
+              "label": "of which L-Leucine",
+              "indent": true,
+              "values": [
+                "600 mg"
+              ]
+            },
+            {
+              "label": "L-Valine",
+              "indent": true,
+              "values": [
+                "150 mg"
+              ]
+            },
+            {
+              "label": "L-Isoleucine",
+              "indent": true,
+              "values": [
+                "150 mg"
+              ]
+            },
+            {
+              "label": "L-Arginine Kyowa",
+              "indent": false,
+              "values": [
+                "500 mg"
+              ]
+            },
+            {
+              "label": "Taurine",
+              "indent": false,
+              "values": [
+                "100 mg"
+              ]
+            },
+            {
+              "label": "Niacin (Vitamin B3)",
+              "indent": false,
+              "values": [
+                "6 mg (37.5%*)"
+              ]
+            },
+            {
+              "label": "Pantothenic acid (Vitamin B5)",
+              "indent": false,
+              "values": [
+                "2.4 mg (40%*)"
+              ]
+            },
+            {
+              "label": "Thiamine (Vitamin B1)",
+              "indent": false,
+              "values": [
+                "1 mg (90.9%*)"
+              ]
+            },
+            {
+              "label": "Riboflavin (Vitamin B2)",
+              "indent": false,
+              "values": [
+                "1 mg (71.42%*)"
+              ]
+            },
+            {
+              "label": "Pyridoxine hydrochloride (Vitamin B6)",
+              "indent": false,
+              "values": [
+                "1 mg (71.4%*)"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Amino acid profile",
+          "rows": [
+            {
+              "label": "Leucine",
+              "indent": false,
+              "values": [
+                "3377 mg"
+              ]
+            },
+            {
+              "label": "Isoleucine",
+              "indent": false,
+              "values": [
+                "1681 mg"
+              ]
+            },
+            {
+              "label": "Valine",
+              "indent": false,
+              "values": [
+                "1635 mg"
+              ]
+            },
+            {
+              "label": "Aspartic acid",
+              "indent": false,
+              "values": [
+                "3071 mg"
+              ]
+            },
+            {
+              "label": "Glutamic acid",
+              "indent": false,
+              "values": [
+                "5150 mg"
+              ]
+            },
+            {
+              "label": "Serine",
+              "indent": false,
+              "values": [
+                "1407 mg"
+              ]
+            },
+            {
+              "label": "Glycine",
+              "indent": false,
+              "values": [
+                "602 mg"
+              ]
+            },
+            {
+              "label": "Histidine",
+              "indent": false,
+              "values": [
+                "660 mg"
+              ]
+            },
+            {
+              "label": "Arginine",
+              "indent": false,
+              "values": [
+                "908 mg"
+              ]
+            },
+            {
+              "label": "Threonine",
+              "indent": false,
+              "values": [
+                "1438 mg"
+              ]
+            },
+            {
+              "label": "Alanine",
+              "indent": false,
+              "values": [
+                "1309 mg"
+              ]
+            },
+            {
+              "label": "Proline",
+              "indent": false,
+              "values": [
+                "1663 mg"
+              ]
+            },
+            {
+              "label": "Tyrosine",
+              "indent": false,
+              "values": [
+                "1169 mg"
+              ]
+            },
+            {
+              "label": "Methionine",
+              "indent": false,
+              "values": [
+                "727 mg"
+              ]
+            },
+            {
+              "label": "Cysteine",
+              "indent": false,
+              "values": [
+                "790 mg"
+              ]
+            },
+            {
+              "label": "Phenylalanine",
+              "indent": false,
+              "values": [
+                "1154 mg"
+              ]
+            },
+            {
+              "label": "Lysine",
+              "indent": false,
+              "values": [
+                "2745 mg"
+              ]
+            },
+            {
+              "label": "Tryptophan",
+              "indent": false,
+              "values": [
+                "517 mg"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/royal-mass/01.webp",
+          "thumb": "/products/royal-mass/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "amino-10000",
+      "name": "Amino 10000",
+      "category": "protein-mass",
+      "form": "Tablets",
+      "size": "300 tablets (827.1 g)",
+      "servingSize": "5 tablets",
+      "servings": "60",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition Amino 10000 is manufactured from high-quality, high-biological value whey protein to ensure optimal results. Also provides the optimal supply of nourishment needed by the muscles after a heavy training session or physical exertion to help repair muscle fibres and assist in the muscle growth process."
+      ],
+      "highlights": [
+        "10 g amino acids per 5 tablets",
+        "Whey protein base",
+        "Full amino acid profile"
+      ],
+      "ingredients": "Whey protein concentrate, binder (microcrystalline cellulose), lubricant (magnesium stearate), moisture absorber (silicon dioxide), coating (polyvinyl alcohol, polyethylene glycol).",
+      "directions": [
+        "Take 5 tablets 2 to 3 times a day, preferably between meals or before sleep."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Sugar",
+        "Salt",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [
+        "* Essential amino acids",
+        "** Branched amino acids"
+      ],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "5 tablets",
+        "15 tablets",
+        "Per 100 g"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Energy",
+              "indent": false,
+              "values": [
+                "200.9 kJ / 47.4 kcal",
+                "602.6 kJ / 142.2 kcal",
+                "1454.8 kJ / 343.1 kcal"
+              ]
+            },
+            {
+              "label": "Protein",
+              "indent": false,
+              "values": [
+                "10 g",
+                "30 g",
+                "72.5 g"
+              ]
+            },
+            {
+              "label": "Carbohydrates",
+              "indent": false,
+              "values": [
+                "1 g",
+                "3 g",
+                "7.2 g"
+              ]
+            },
+            {
+              "label": "of which sugars",
+              "indent": true,
+              "values": [
+                "1 g",
+                "3 g",
+                "7.2 g"
+              ]
+            },
+            {
+              "label": "Fat",
+              "indent": false,
+              "values": [
+                "0.4 g",
+                "1.1 g",
+                "2.7 g"
+              ]
+            },
+            {
+              "label": "of which saturates",
+              "indent": true,
+              "values": [
+                "0.1 g",
+                "0.4 g",
+                "0.9 g"
+              ]
+            },
+            {
+              "label": "Fibers",
+              "indent": false,
+              "values": [
+                "0 g",
+                "0 g",
+                "0 g"
+              ]
+            },
+            {
+              "label": "Sodium",
+              "indent": false,
+              "values": [
+                "0.02 g",
+                "0.06 g",
+                "0.18 g"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Amino acid profile",
+          "rows": [
+            {
+              "label": "Total amino acids",
+              "indent": false,
+              "values": [
+                "10000 mg"
+              ]
+            },
+            {
+              "label": "Leucine**",
+              "indent": false,
+              "values": [
+                "1040 mg"
+              ]
+            },
+            {
+              "label": "Isoleucine**",
+              "indent": false,
+              "values": [
+                "590 mg"
+              ]
+            },
+            {
+              "label": "Valine**",
+              "indent": false,
+              "values": [
+                "510 mg"
+              ]
+            },
+            {
+              "label": "Aspartic acid",
+              "indent": false,
+              "values": [
+                "1080 mg"
+              ]
+            },
+            {
+              "label": "Glutamic acid",
+              "indent": false,
+              "values": [
+                "1780 mg"
+              ]
+            },
+            {
+              "label": "Serine",
+              "indent": false,
+              "values": [
+                "490 mg"
+              ]
+            },
+            {
+              "label": "Glycine",
+              "indent": false,
+              "values": [
+                "170 mg"
+              ]
+            },
+            {
+              "label": "Histidine",
+              "indent": false,
+              "values": [
+                "180 mg"
+              ]
+            },
+            {
+              "label": "Arginine",
+              "indent": false,
+              "values": [
+                "240 mg"
+              ]
+            },
+            {
+              "label": "Threonine*",
+              "indent": false,
+              "values": [
+                "710 mg"
+              ]
+            },
+            {
+              "label": "Alanine",
+              "indent": false,
+              "values": [
+                "490 mg"
+              ]
+            },
+            {
+              "label": "Proline",
+              "indent": false,
+              "values": [
+                "590 mg"
+              ]
+            },
+            {
+              "label": "Tyrosine",
+              "indent": false,
+              "values": [
+                "290 mg"
+              ]
+            },
+            {
+              "label": "Methionine*",
+              "indent": false,
+              "values": [
+                "210 mg"
+              ]
+            },
+            {
+              "label": "Cystine",
+              "indent": false,
+              "values": [
+                "230 mg"
+              ]
+            },
+            {
+              "label": "Phenylalanine*",
+              "indent": false,
+              "values": [
+                "310 mg"
+              ]
+            },
+            {
+              "label": "Lysine*",
+              "indent": false,
+              "values": [
+                "910 mg"
+              ]
+            },
+            {
+              "label": "Tryptophan*",
+              "indent": false,
+              "values": [
+                "180 mg"
+              ]
+            }
+          ],
+          "columns": [
+            "5 tablets"
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/amino-10000/01.webp",
+          "thumb": "/products/amino-10000/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "amino-whey-2400",
+      "name": "Amino Whey 2400",
+      "category": "protein-mass",
+      "form": "Tablets",
+      "size": "480 tablets",
+      "servingSize": "3 tablets",
+      "servings": "160",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition Amino Whey 2400 delivers a full spectrum of essential, conditionally essential and non-essential amino acids derived from high-quality whey protein and whey peptides, fortified with free amino acids and digestive enzymes to ensure optimal results."
+      ],
+      "highlights": [
+        "Full Spectrum Amino Acid Formula",
+        "2400 mg Amino Acids/Serving",
+        "Fortified with BCAAs"
+      ],
+      "ingredients": "Whey powder, Whey protein concentrate, Whey peptides, BCAAs 2:1:1 (L-leucine, L-isoleucine, L-valine), Digestive enzyme blend (amylase, protease, cellulase, lactase and lipase), binder (microcrystalline cellulose), lubricant (magnesium stearate), moisture absorber (silicon dioxide).",
+      "directions": [
+        "Take 3 tablets 1 to 3 times a day, preferably between meals, 30-45 minutes before workouts, and/or immediately after workouts."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Sugar",
+        "Salt",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [
+        "* Essential amino acids",
+        "** Branched amino acids"
+      ],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "3 tablets",
+        "9 tablets"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Energy",
+              "indent": false,
+              "values": [
+                "54.4 kJ / 7.2 kcal",
+                "163.2 kJ / 21.6 kcal"
+              ]
+            },
+            {
+              "label": "Protein",
+              "indent": false,
+              "values": [
+                "2.4 g",
+                "7.2 g"
+              ]
+            },
+            {
+              "label": "Carbohydrates",
+              "indent": false,
+              "values": [
+                "0.8 g",
+                "2.4 g"
+              ]
+            },
+            {
+              "label": "Sodium",
+              "indent": false,
+              "values": [
+                "0.02 g",
+                "0.06 g"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Amino acid profile",
+          "rows": [
+            {
+              "label": "Total amino acids",
+              "indent": false,
+              "values": [
+                "2400 mg"
+              ]
+            },
+            {
+              "label": "Leucine**",
+              "indent": false,
+              "values": [
+                "254 mg"
+              ]
+            },
+            {
+              "label": "Isoleucine**",
+              "indent": false,
+              "values": [
+                "149 mg"
+              ]
+            },
+            {
+              "label": "Valine**",
+              "indent": false,
+              "values": [
+                "138 mg"
+              ]
+            },
+            {
+              "label": "Aspartic acid",
+              "indent": false,
+              "values": [
+                "242 mg"
+              ]
+            },
+            {
+              "label": "Glutamic acid",
+              "indent": false,
+              "values": [
+                "362 mg"
+              ]
+            },
+            {
+              "label": "Serine",
+              "indent": false,
+              "values": [
+                "117 mg"
+              ]
+            },
+            {
+              "label": "Glycine",
+              "indent": false,
+              "values": [
+                "77 mg"
+              ]
+            },
+            {
+              "label": "Histidine",
+              "indent": false,
+              "values": [
+                "46 mg"
+              ]
+            },
+            {
+              "label": "Arginine",
+              "indent": false,
+              "values": [
+                "62 mg"
+              ]
+            },
+            {
+              "label": "Threonine*",
+              "indent": false,
+              "values": [
+                "158 mg"
+              ]
+            },
+            {
+              "label": "Alanine",
+              "indent": false,
+              "values": [
+                "114 mg"
+              ]
+            },
+            {
+              "label": "Proline",
+              "indent": false,
+              "values": [
+                "163 mg"
+              ]
+            },
+            {
+              "label": "Tyrosine",
+              "indent": false,
+              "values": [
+                "74 mg"
+              ]
+            },
+            {
+              "label": "Methionine*",
+              "indent": false,
+              "values": [
+                "47 mg"
+              ]
+            },
+            {
+              "label": "Cystine",
+              "indent": false,
+              "values": [
+                "60 mg"
+              ]
+            },
+            {
+              "label": "Phenylalanine*",
+              "indent": false,
+              "values": [
+                "78 mg"
+              ]
+            },
+            {
+              "label": "Lysine*",
+              "indent": false,
+              "values": [
+                "218 mg"
+              ]
+            },
+            {
+              "label": "Tryptophan*",
+              "indent": false,
+              "values": [
+                "43 mg"
+              ]
+            }
+          ],
+          "columns": [
+            "3 tablets"
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/amino-whey-2400/01.webp",
+          "thumb": "/products/amino-whey-2400/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "amino-whey-3600",
+      "name": "Amino Whey 3600",
+      "category": "protein-mass",
+      "form": "Tablets",
+      "size": "300 tablets",
+      "servingSize": "3 tablets",
+      "servings": "100",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition Amino Whey 3600 delivers a full spectrum of essential, conditionally essential and non-essential amino acids derived from high-quality whey protein and whey peptides, fortified with free amino acids and digestive enzymes to ensure optimal results."
+      ],
+      "highlights": [
+        "Full Spectrum Amino Acid Formula",
+        "3600 mg Amino Acids/Serving",
+        "Fortified with BCAAs"
+      ],
+      "ingredients": "Whey powder, Whey protein concentrate, Whey peptides, BCAAs 2:1:1 (L-leucine, L-isoleucine, L-valine), Digestive enzyme blend (amylase, protease, cellulase, lactase and lipase), binder (microcrystalline cellulose), lubricant (magnesium stearate), moisture absorber (silicon dioxide).",
+      "directions": [
+        "Take 3 tablets 1 to 3 times a day, preferably between meals, 30-45 minutes before workouts, and/or immediately after workouts."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Sugar",
+        "Salt",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [
+        "* Essential amino acids",
+        "** Branched amino acids"
+      ],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "3 tablets",
+        "9 tablets"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Energy",
+              "indent": false,
+              "values": [
+                "74.8 kJ / 17.6 kcal",
+                "224.4 kJ / 52.8 kcal"
+              ]
+            },
+            {
+              "label": "Protein",
+              "indent": false,
+              "values": [
+                "3.6 g",
+                "10.8 g"
+              ]
+            },
+            {
+              "label": "Carbohydrates",
+              "indent": false,
+              "values": [
+                "0.8 g",
+                "2.4 g"
+              ]
+            },
+            {
+              "label": "Sodium",
+              "indent": false,
+              "values": [
+                "0.02 g",
+                "0.06 g"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Amino acid profile",
+          "rows": [
+            {
+              "label": "Total amino acids",
+              "indent": false,
+              "values": [
+                "3600 mg"
+              ]
+            },
+            {
+              "label": "Leucine**",
+              "indent": false,
+              "values": [
+                "380 mg"
+              ]
+            },
+            {
+              "label": "Isoleucine**",
+              "indent": false,
+              "values": [
+                "223 mg"
+              ]
+            },
+            {
+              "label": "Valine**",
+              "indent": false,
+              "values": [
+                "208 mg"
+              ]
+            },
+            {
+              "label": "Aspartic acid",
+              "indent": false,
+              "values": [
+                "364 mg"
+              ]
+            },
+            {
+              "label": "Glutamic acid",
+              "indent": false,
+              "values": [
+                "544 mg"
+              ]
+            },
+            {
+              "label": "Serine",
+              "indent": false,
+              "values": [
+                "175 mg"
+              ]
+            },
+            {
+              "label": "Glycine",
+              "indent": false,
+              "values": [
+                "115 mg"
+              ]
+            },
+            {
+              "label": "Histidine",
+              "indent": false,
+              "values": [
+                "68 mg"
+              ]
+            },
+            {
+              "label": "Arginine",
+              "indent": false,
+              "values": [
+                "94 mg"
+              ]
+            },
+            {
+              "label": "Threonine*",
+              "indent": false,
+              "values": [
+                "238 mg"
+              ]
+            },
+            {
+              "label": "Alanine",
+              "indent": false,
+              "values": [
+                "172 mg"
+              ]
+            },
+            {
+              "label": "Proline",
+              "indent": false,
+              "values": [
+                "245 mg"
+              ]
+            },
+            {
+              "label": "Tyrosine",
+              "indent": false,
+              "values": [
+                "110 mg"
+              ]
+            },
+            {
+              "label": "Methionine*",
+              "indent": false,
+              "values": [
+                "71 mg"
+              ]
+            },
+            {
+              "label": "Cystine",
+              "indent": false,
+              "values": [
+                "90 mg"
+              ]
+            },
+            {
+              "label": "Phenylalanine*",
+              "indent": false,
+              "values": [
+                "118 mg"
+              ]
+            },
+            {
+              "label": "Lysine*",
+              "indent": false,
+              "values": [
+                "326 mg"
+              ]
+            },
+            {
+              "label": "Tryptophan*",
+              "indent": false,
+              "values": [
+                "65 mg"
+              ]
+            }
+          ],
+          "columns": [
+            "3 tablets"
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/amino-whey-3600/01.webp",
+          "thumb": "/products/amino-whey-3600/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "amino-beef",
+      "name": "Amino Beef",
+      "category": "protein-mass",
+      "form": "Tablets",
+      "size": "400 tablets",
+      "servingSize": "4 tablets",
+      "servings": "100",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition Amino Beef delivers a blend of superior beef amino acids derived from high-quality beef protein hydrolysate and isolate. It’s also a great way to tap into all the advantages of beef, without suffering from any of the disadvantages, such as the high fat content."
+      ],
+      "highlights": [
+        "1 Gram of Beef Protein Per Tablet",
+        "Superior Beef Amino Acids"
+      ],
+      "ingredients": "Beef Amino Acid Complex (Beef Protein Hydrolisate, Beef Protein Isolate), binder (microcrystalline cellulose), lubricant (stearic acid, magnesium stearate), moisture absorber (di-calcium phosphate).",
+      "directions": [
+        "Take 4 tablets with each meal to help increase the amino acid content of the meal or take in between meals to help supply a steady flow of quality amino acids into your body. Daily intake can be increased gradually to 6 tablets per sitting."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "4 tablets",
+        "6 tablets"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Energy",
+              "indent": false,
+              "values": [
+                "68 kJ / 16 kcal",
+                "102 kJ / 24 kcal"
+              ]
+            },
+            {
+              "label": "Protein",
+              "indent": false,
+              "values": [
+                "4 g",
+                "6 g"
+              ]
+            },
+            {
+              "label": "Total amino acids",
+              "indent": false,
+              "values": [
+                "4000 mg",
+                "—"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/amino-beef/01.webp",
+          "thumb": "/products/amino-beef/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "glutamine-powder",
+      "name": "Glutamine Powder",
+      "category": "amino-recovery",
+      "form": "Powder",
+      "size": "300 g",
+      "servingSize": "½ scoop (4 g)",
+      "servings": "25",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition Glutamine Powder is a pure L-glutamine dietary supplement. L-Glutamine is important for repairing and building muscle and reducing muscle catabolism (breakdown) making it a valuable aid for those undergoing heavy workouts. People who engage in intense exercise have an increased dietary requirement to restore L-glutamine levels to normal to avoid loss of muscle mass."
+      ],
+      "highlights": [
+        "100% L-glutamine",
+        "4 g per serving",
+        "Unflavoured"
+      ],
+      "ingredients": "100% L-Glutamine powder.",
+      "directions": [
+        "Take ½ scoop (4 g) mixed with 300 ml water or juice, 3 times daily.",
+        "On workout days: 1st serving in the morning after getting up, 2nd serving immediately after workout, 3rd serving at bedtime.",
+        "On non-workout days: 1st serving in the morning after getting up, 2nd serving between meals, 3rd serving at bedtime."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt",
+        "Artificial Colour",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "Per serving (4 g)",
+        "Per 3 servings (12 g)",
+        "Per 100 g"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "L-Glutamine",
+              "indent": false,
+              "values": [
+                "4000 mg",
+                "12000 mg",
+                "100 g"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/glutamine-powder/01.webp",
+          "thumb": "/products/glutamine-powder/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "anabolic-glutamine",
+      "name": "Anabolic Glutamine",
+      "category": "amino-recovery",
+      "form": "Powder",
+      "size": "255 g",
+      "servingSize": "about 2 scoops (7.5 g)",
+      "servings": "34",
+      "flavours": [
+        "Cherry",
+        "Mango"
+      ],
+      "body": [
+        "Royal Nutrition Anabolic Glutamine contains 4 g of glutamine from five sources per serving, combined with an amino acid and plant extract matrix that includes BCAA 2:1:1."
+      ],
+      "highlights": [
+        "4 g glutamine matrix per serving",
+        "1.5 g BCAA 2:1:1 per serving",
+        "2 flavours"
+      ],
+      "ingredients": "Glutamine Matrix [L-Glutamine, Glutamine Alpha-Ketoglutarate, Glutamine Peptide, Glutamine Malate, Glutamine Micronized], Anabolic Matrix [BCAAs 2:1:1 (L-Leucine, L-Isoleucine, L-Valine), L-Alanine, L-Arginine, L-Threonine, Glycine, Taurine, Tribulus terrestris extract (fruit) (standardized to contain 90% saponins), Ashwagandha extract (standardized to contain 7% withanolides), Black Pepper Fruit Extract (Piper Nigrum, 95 % piperine)], acidifier (citric acid), flavors, color (beetroot red – for cherry flavor, riboflavin – for mango flavor), sweeteners (sucralose, acesulfame potassium).",
+      "directions": [
+        "Mix about 2 scoops (approx. 7.5 g) with preferred amount of water and shake vigorously for 30 seconds! Use 1- 2 times daily. For post-workout recovery, take 1 serving not more than 30 minutes after exercise."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "Per serving (7.5 g)",
+        "Per 100 g"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Glutamine Matrix",
+              "indent": false,
+              "values": [
+                "4000 mg",
+                "53.3 g"
+              ]
+            },
+            {
+              "label": "Anabolic Matrix",
+              "indent": false,
+              "values": [
+                "3000 mg",
+                "40 g"
+              ]
+            },
+            {
+              "label": "BCAAs 2:1:1",
+              "indent": false,
+              "values": [
+                "1500 mg",
+                "20000 mg"
+              ]
+            },
+            {
+              "label": "L-Alanine",
+              "indent": false,
+              "values": [
+                "500 mg",
+                "6667 mg"
+              ]
+            },
+            {
+              "label": "L-Arginine",
+              "indent": false,
+              "values": [
+                "250 mg",
+                "3333 mg"
+              ]
+            },
+            {
+              "label": "L-Threonine",
+              "indent": false,
+              "values": [
+                "200 mg",
+                "2667 mg"
+              ]
+            },
+            {
+              "label": "Glycine",
+              "indent": false,
+              "values": [
+                "150 mg",
+                "2000 mg"
+              ]
+            },
+            {
+              "label": "Taurine",
+              "indent": false,
+              "values": [
+                "150 mg",
+                "2000 mg"
+              ]
+            },
+            {
+              "label": "Tribulus terrestris extract",
+              "indent": false,
+              "values": [
+                "150 mg",
+                "2000 mg"
+              ]
+            },
+            {
+              "label": "Ashwagandha extract",
+              "indent": false,
+              "values": [
+                "95 mg",
+                "1266 mg"
+              ]
+            },
+            {
+              "label": "Black Pepper Fruit Extract",
+              "indent": false,
+              "values": [
+                "5 mg",
+                "67 mg"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/anabolic-glutamine/01.webp",
+          "thumb": "/products/anabolic-glutamine/01-440.webp",
+          "label": "Cherry"
+        },
+        {
+          "src": "/products/anabolic-glutamine/02.webp",
+          "thumb": "/products/anabolic-glutamine/02-440.webp",
+          "label": "Mango"
+        }
+      ]
+    },
+    {
+      "slug": "bcaa-2-1-1",
+      "name": "BCAA 2:1:1",
+      "category": "amino-recovery",
+      "form": "Tablets",
+      "size": "180 tablets",
+      "servingSize": "5 tablets",
+      "servings": "36",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition BCAA 2:1:1 is particularly suited to supplement the diet of athletes who undergo intense and prolonged performance with a concentrated form of branched chain amino acids. BCAA are of special importance to athletes, because they are metabolized in the muscle, rather than in the liver. BCAA are the most abundant amino acids found in muscle tissue and are the most readily absorbed group of amino acids."
+      ],
+      "highlights": [
+        "5000 mg BCAA per 5 tablets",
+        "2:1:1 ratio"
+      ],
+      "ingredients": "BCAA branched amino acids 2:1:1 (L-Leucine, L-Isoleucine, L-Valine), binder (microcrystalline cellulose), lubricant (magnesium stearate), moisture absorber (silicon dioxide).",
+      "directions": [
+        "Take 5 tablets per day with water or other liquid of your choice 30-40 minutes before or after training. On days when you do not practice physical activity sports the product can be taken at any time of the day."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "5 tablets"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "BCAA branched amino acids 2:1:1",
+              "indent": false,
+              "values": [
+                "5000 mg"
+              ]
+            },
+            {
+              "label": "L-Leucine",
+              "indent": false,
+              "values": [
+                "2500 mg"
+              ]
+            },
+            {
+              "label": "L-Isoleucine",
+              "indent": false,
+              "values": [
+                "1250 mg"
+              ]
+            },
+            {
+              "label": "L-Valine",
+              "indent": false,
+              "values": [
+                "1250 mg"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/bcaa-2-1-1/01.webp",
+          "thumb": "/products/bcaa-2-1-1/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "strong-bcaa",
+      "name": "Strong BCAA",
+      "category": "amino-recovery",
+      "form": "Powder",
+      "size": "300 g",
+      "servingSize": "2 heaping scoops (10 g)",
+      "servings": "30",
+      "flavours": [
+        "Strawberry",
+        "Orange"
+      ],
+      "body": [
+        "Royal Nutrition Strong BCAA supercharges your body’s amino acid levels with 5 g of BCAA and 1 g of glutamine / serving to aid muscle synthesis of new cells and prevent post-workout fatigue.",
+        "Free form of amino-acids are fast absorbed, which means that you can use the product before, after or even during your workout to minimize muscle breakdown and promote recovery."
+      ],
+      "highlights": [
+        "5 g BCAA per serving",
+        "1 g glutamine per serving",
+        "2 flavours"
+      ],
+      "ingredients": "BCAA branched amino acids 2:1:1 (L-Leucine, L-Isoleucine, L-Valine), maltodextrin, L-glutamine, acidifier (citric acid),flavors, color (beetroot red – for strawberry flavor, paprika extract – for orange flavor), sweeteners (sucralose, acesulfame potassium) .",
+      "directions": [
+        "Mix 2 heaping scoops ( approx. 10 g) with preferred amount of water and shake vigorously for 30 seconds! Use 1- 2 times daily for optimal results – before a meal or training and after training or before sleep. Do not exceed the recommended dosage."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt",
+        "Preservatives"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "Per serving (10 g)",
+        "Per 100 g"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "BCAA 2:1:1",
+              "indent": false,
+              "values": [
+                "5000 mg",
+                "50 g"
+              ]
+            },
+            {
+              "label": "L-Leucine",
+              "indent": true,
+              "values": [
+                "2500 mg",
+                "25 g"
+              ]
+            },
+            {
+              "label": "L-Valine",
+              "indent": true,
+              "values": [
+                "1250 mg",
+                "12.5 g"
+              ]
+            },
+            {
+              "label": "L-Isoleucine",
+              "indent": true,
+              "values": [
+                "1250 mg",
+                "12.5 g"
+              ]
+            },
+            {
+              "label": "L-Glutamine",
+              "indent": false,
+              "values": [
+                "1000 mg",
+                "10 g"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/strong-bcaa/01.webp",
+          "thumb": "/products/strong-bcaa/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "bcaa-liquid",
+      "name": "BCAA Liquid",
+      "category": "amino-recovery",
+      "form": "Liquid",
+      "size": "500 ml",
+      "servingSize": "25 ml",
+      "servings": "20",
+      "flavours": [
+        "Lemon"
+      ],
+      "body": [
+        "Royal Nutrition BCAA Liquid is a food supplement that delivers 5000 mg branched amino acids/serving and a high dosage of vitamin B6. BCAAs are indicated to supplement the diet of athletes, while vitamin B6 contributes to normal protein, glycogen and energy-yielding metabolism and supports the reduction of tiredness and fatigue. This vitamin also helps regulate hormonal activity."
+      ],
+      "highlights": [
+        "5000 mg BCAA per serving",
+        "Enriched with vitamin B6",
+        "Lemon flavour"
+      ],
+      "ingredients": "Water, soluble BCAA 2:1:1 (L-Leucine, L-Valine, L-Isoleucine), acidifier (lactic acid, flavor, sweetners (sucralose, acesulfame potassium), thickening agent (xanthan gum), preservatives (potasium sorbate, sodium benzoate), pyridoxine hydrochloride (vitamin B6).",
+      "directions": [
+        "Take 25 ml daily, 30 minutes before training or immediately after. Shake well before use. Possible sediment should not be deemed a fault."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt"
+      ],
+      "footnotes": [
+        "*% NRV: nutrient reference values"
+      ],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "Per serving (25 ml)",
+        "Per 100 ml"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Energy",
+              "indent": false,
+              "values": [
+                "85 kJ / 20 kcal",
+                "340 kJ / 80 kcal"
+              ]
+            },
+            {
+              "label": "Protein",
+              "indent": false,
+              "values": [
+                "5 g",
+                "20 g"
+              ]
+            },
+            {
+              "label": "Carbohydrates",
+              "indent": false,
+              "values": [
+                "0 g",
+                "0 g"
+              ]
+            },
+            {
+              "label": "Fat",
+              "indent": false,
+              "values": [
+                "0 g",
+                "0 g"
+              ]
+            },
+            {
+              "label": "Branched Chain Amino Acids",
+              "indent": false,
+              "values": [
+                "5000 mg",
+                "20000 mg"
+              ]
+            },
+            {
+              "label": "L-Leucine (BCAA)",
+              "indent": false,
+              "values": [
+                "2500 mg",
+                "10000 mg"
+              ]
+            },
+            {
+              "label": "L-Valine (BCAA)",
+              "indent": false,
+              "values": [
+                "1250 mg",
+                "5000 mg"
+              ]
+            },
+            {
+              "label": "L-Isoleucine (BCAA)",
+              "indent": false,
+              "values": [
+                "1250 mg",
+                "5000 mg"
+              ]
+            },
+            {
+              "label": "Vitamin B6",
+              "indent": false,
+              "values": [
+                "10.5 mg (750% *)",
+                "42 mg (3000% *)"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/bcaa-liquid/01.webp",
+          "thumb": "/products/bcaa-liquid/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "eaa",
+      "name": "EAA",
+      "category": "amino-recovery",
+      "form": "Powder",
+      "size": "250 g",
+      "servingSize": "2/3 scoop (7 g)",
+      "servings": "35",
+      "flavours": [
+        "Sour Cherry",
+        "Blueberry"
+      ],
+      "body": [
+        "Royal Nutrition EAA is a powdered supplement product that contains a unique essential amino acids blend in a highly purified, free, crystalline form. It contains the eight essential amino acids in a specific ratio to one another that is optimal for the conversion to the body’s own protein."
+      ],
+      "highlights": [
+        "8 essential amino acids",
+        "5000 mg per serving",
+        "2 flavours"
+      ],
+      "ingredients": "Essential Amino Acids Mix (L-leucine, L-valine, L-isoleucine, L-lysine HCl, L-phenylalanine, L-threonine, L-methionine, L-tryptophan), maltodextrin, acidifiers (citric acid, malic acid), flavours, sweeteners (sucralose, acesulfame potassium), color (red beetroot for sour cherry and blueberry flavors).",
+      "directions": [
+        "Mix 2/3 scoop ( approx. 7 g) with preferred amount of water and take 2 servings between meals, before, during or after your workout or anytime you like."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "Per serving (7 g)",
+        "Per 100 g"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Energy",
+              "indent": false,
+              "values": [
+                "112.1 kJ / 26.4 kcal",
+                "1601.4 kJ / 376.8 kcal"
+              ]
+            },
+            {
+              "label": "Protein",
+              "indent": false,
+              "values": [
+                "5 g",
+                "71.4 g"
+              ]
+            },
+            {
+              "label": "Carbohydrates",
+              "indent": false,
+              "values": [
+                "1.6 g",
+                "22.8 g"
+              ]
+            },
+            {
+              "label": "Fat",
+              "indent": false,
+              "values": [
+                "0 g",
+                "0 g"
+              ]
+            },
+            {
+              "label": "Essential Amino Acids",
+              "indent": false,
+              "values": [
+                "5000 mg",
+                "71428 mg"
+              ]
+            },
+            {
+              "label": "L-Leucine (BCAA)",
+              "indent": false,
+              "values": [
+                "1000 mg",
+                "14286 mg"
+              ]
+            },
+            {
+              "label": "L-Valine (BCAA)",
+              "indent": false,
+              "values": [
+                "800 mg",
+                "11428 mg"
+              ]
+            },
+            {
+              "label": "L-Isoleucine (BCAA)",
+              "indent": false,
+              "values": [
+                "750 mg",
+                "10714 mg"
+              ]
+            },
+            {
+              "label": "L-lysine HCl",
+              "indent": false,
+              "values": [
+                "700 mg",
+                "10000 mg"
+              ]
+            },
+            {
+              "label": "L-phenylalanine",
+              "indent": false,
+              "values": [
+                "650 mg",
+                "9286 mg"
+              ]
+            },
+            {
+              "label": "L-threonine",
+              "indent": false,
+              "values": [
+                "550 mg",
+                "7857 mg"
+              ]
+            },
+            {
+              "label": "L-methionine",
+              "indent": false,
+              "values": [
+                "350 mg",
+                "5000 mg"
+              ]
+            },
+            {
+              "label": "L-tryptophan",
+              "indent": false,
+              "values": [
+                "200 mg",
+                "2857 mg"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/eaa/01.webp",
+          "thumb": "/products/eaa/01-440.webp",
+          "label": "Sour Cherry"
+        },
+        {
+          "src": "/products/eaa/02.webp",
+          "thumb": "/products/eaa/02-440.webp",
+          "label": "Blueberry"
+        }
+      ]
+    },
+    {
+      "slug": "creatine-natur",
+      "name": "Creatine Natur",
+      "category": "creatine-strength",
+      "form": "Powder",
+      "size": "300 g",
+      "servingSize": "1½ scoop (5 g)",
+      "servings": "25",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition Creatine Natur is a food supplement, suitable for adults performing high intensity exercise, which provides 5 g creatine per daily dose. Creatine is a precursor to the bio-energetic fuel creatine phosphate, which replenishes cellular ATP (adenosine triphosphate) levels during maximum intensity contractions. Supplementing with creatine can increase levels of creatine phosphate in the muscle improving work output capacity, power, recovery and muscle hydration. When muscles are hydrated, muscle catabolism (breakdown) is minimized.",
+        "Creatine increases physical performance in successive bursts of short-term, high intensity exercise*."
+      ],
+      "highlights": [
+        "100% creatine monohydrate",
+        "5 g per serving",
+        "Unflavoured"
+      ],
+      "ingredients": "100% Creatine monohydrate.",
+      "directions": [
+        "Add 5 g (1 ½ scoop) product in 500 ml water and take 1 time a day before or after physical activity."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt",
+        "Artificial Colour",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "The beneficial effect is obtained with a daily intake of 3 g of creatine.",
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "Per serving (5 g)",
+        "Per 100 g"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Creatine monohydrate",
+              "indent": false,
+              "values": [
+                "5000 mg",
+                "100 g"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/creatine-natur/01.webp",
+          "thumb": "/products/creatine-natur/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "anabolic-creatine",
+      "name": "Anabolic Creatine 12",
+      "category": "creatine-strength",
+      "form": "Powder",
+      "size": "255 g",
+      "servingSize": "about 2 scoops (7.5 g)",
+      "servings": "34",
+      "flavours": [
+        "Pear",
+        "Cola",
+        "Blue Raspberry"
+      ],
+      "body": [
+        "Royal Nutrition Anabolic Creatine 12 is a multi-component formula with 12 types of creatine and an Anabolic Matrix of amino acids and plant extracts. Creatine increases physical performance in successive bursts of short-term, high-intensity exercise; the effect is obtained with a daily intake of 3 g."
+      ],
+      "highlights": [
+        "12 types of creatine",
+        "5 g creatine matrix per serving",
+        "3 flavours"
+      ],
+      "ingredients": "Creatine Matrix [Creatine Monohydrate, Creatine AKG 1:1, Creatine Ethyl Ester Malate, Tri Creatine Malate, Di Creatine Malate, Buffered Creatine Monohydrate, Creatine HCl, Tri Creatine Citrate, Micronized Creatine Monohidrate, Creatine Pyruvate, Creatine Magnesium Chelate, Creatine Nitrate], Anabolic Matrix [Taurine, Anhydrous Betaine, L-Citrulline DL-Malate, L-Arginine, L-Ornithine HCl, Fenugreek Seed Extract (Trigonella foenum-graecum, 10% proteins), Tribulus terrestris extract (fruit) (standardized to contain 90% saponins), Black Pepper Fruit Extract (Piper Nigrum, 95 % piperine)], acidifier (citric acid), flavors, color (beetroot red and blue spirulina extract – for blue raspberry flavor, caramel – for clear cola flavor, E141i – for pear flavor), sweeteners (sucralose, acesulfame potassium).",
+      "directions": [
+        "Mix about 2 scoops ( approx. 7.5 g) with preferred amount of water and shake vigorously for 30 seconds! Use 1- 2 times daily between meals. On the training day, take 1 dose 30 minutes before or during your workout."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "Per serving (7.5 g)",
+        "Per 100 g"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Creatine Matrix",
+              "indent": false,
+              "values": [
+                "5000 mg",
+                "66.7 g"
+              ]
+            },
+            {
+              "label": "Anabolic Matrix",
+              "indent": false,
+              "values": [
+                "2000 mg",
+                "26.6 g"
+              ]
+            },
+            {
+              "label": "Taurine",
+              "indent": false,
+              "values": [
+                "1000 mg",
+                "13333 mg"
+              ]
+            },
+            {
+              "label": "Anhydrous Betaine",
+              "indent": false,
+              "values": [
+                "200 mg",
+                "2857 mg"
+              ]
+            },
+            {
+              "label": "L-Citrulline DL-Malate",
+              "indent": false,
+              "values": [
+                "200 mg",
+                "2857 mg"
+              ]
+            },
+            {
+              "label": "L-Arginine",
+              "indent": false,
+              "values": [
+                "200 mg",
+                "2857 mg"
+              ]
+            },
+            {
+              "label": "L-Ornithine HCl",
+              "indent": false,
+              "values": [
+                "100 mg",
+                "1426 mg"
+              ]
+            },
+            {
+              "label": "Fenugreek Seed Extract",
+              "indent": false,
+              "values": [
+                "100 mg",
+                "1426 mg"
+              ]
+            },
+            {
+              "label": "Tribulus terrestris extract",
+              "indent": false,
+              "values": [
+                "195 mg",
+                "2600 mg"
+              ]
+            },
+            {
+              "label": "Black Pepper Fruit Extract",
+              "indent": false,
+              "values": [
+                "5 mg",
+                "67 mg"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/anabolic-creatine/01.webp",
+          "thumb": "/products/anabolic-creatine/01-440.webp",
+          "label": "Pear"
+        },
+        {
+          "src": "/products/anabolic-creatine/02.webp",
+          "thumb": "/products/anabolic-creatine/02-440.webp",
+          "label": "Cola"
+        },
+        {
+          "src": "/products/anabolic-creatine/03.webp",
+          "thumb": "/products/anabolic-creatine/03-440.webp",
+          "label": "Blue Raspberry"
+        }
+      ]
+    },
+    {
+      "slug": "beta-alanine-1200",
+      "name": "Beta Alanine 1200",
+      "category": "creatine-strength",
+      "form": "Capsules",
+      "size": "90 capsules",
+      "servingSize": "2 capsules",
+      "servings": "45",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition Beta Alanine 1200 is Food supplement suitable for high-intensity, repetitive exercises with tendency to hyperacidity in the muscles which is performance limiting. This amino acid supplement increases the muscle carnosine level which enhances the effect of the intracellular acid buffer capacity. Consequently, an improved performance in anaerobic lactic sports can be achieved. The product is designed for pro-active people and sportsmen."
+      ],
+      "highlights": [
+        "1200 mg per capsule",
+        "Taken before training"
+      ],
+      "ingredients": "Beta alanine, anticaking agents (magnesium stearate, silicon dioxide). Capsule Shell [gelling agent (gelatine), color ( titanium dioxide)].",
+      "directions": [
+        "Take 2-4 capsules before the physical performance. Do not exceed the recommended dosage."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Beta Alanine may cause a harmless, temporary tingling sensation on the skin for some individuals. Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "2 capsules",
+        "4 capsules"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Beta alanine",
+              "indent": false,
+              "values": [
+                "2400 mg",
+                "4800 mg"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/beta-alanine-1200/01.webp",
+          "thumb": "/products/beta-alanine-1200/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "beta-alanine-powder",
+      "name": "Beta Alanine Powder",
+      "category": "creatine-strength",
+      "form": "Powder",
+      "size": "300 g",
+      "servingSize": "¾ scoops (3.5 g)",
+      "servings": "85",
+      "flavours": [
+        "Melon",
+        "Kiwi Lime"
+      ],
+      "body": [
+        "Royal Nutrition Beta Alanine Powder is suitable for athletes and active people who wish to give their body a beta alanine intake. Take Beta-Alanine right before workouts to help increase muscle strength and power through with endurance. Muscle fatigue will be put on delay so you can engage in a workout as intense as you set your mind to."
+      ],
+      "highlights": [
+        "3000 mg per serving",
+        "Taken before training",
+        "2 flavours"
+      ],
+      "ingredients": "Beta Alanine, acidifier (citric acid), anti-caking agent (silicon dioxide, tricalcium phosphate), flavors, color (riboflavin – for mango flavor, E141i – for kiwi lime flavor), sweeteners (sucralose, acesulfame potassium).",
+      "directions": [
+        "Mix ¾ scoop ( approx. 3.5 g) with preferred amount of water and shake vigorously for 30 seconds! Use one serving daily, preferably right before workout."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage. Beta-Alanine may cause a harmless, temporary tingling sensation on the skin for some individuals. After a few weeks of supplementation with Beta-Alanine, this sensation normally lessens or subsides."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "Per serving (3.5 g)",
+        "Per 100 g"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Energy value",
+              "indent": false,
+              "values": [
+                "0 kJ / 0 kcal",
+                "0 kJ / 0 kcal"
+              ]
+            },
+            {
+              "label": "Proteins as free amino acids",
+              "indent": false,
+              "values": [
+                "0 g",
+                "0 g"
+              ]
+            },
+            {
+              "label": "Carbohydrates",
+              "indent": false,
+              "values": [
+                "0 g",
+                "0 g"
+              ]
+            },
+            {
+              "label": "Fats",
+              "indent": false,
+              "values": [
+                "0 g",
+                "0 g"
+              ]
+            },
+            {
+              "label": "Beta Alanine",
+              "indent": false,
+              "values": [
+                "3000 mg",
+                "85715 mg"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/beta-alanine-powder/01.webp",
+          "thumb": "/products/beta-alanine-powder/01-440.webp",
+          "label": "Melon"
+        },
+        {
+          "src": "/products/beta-alanine-powder/02.webp",
+          "thumb": "/products/beta-alanine-powder/02-440.webp",
+          "label": "Kiwi Lime"
+        }
+      ]
+    },
+    {
+      "slug": "hmb-strong",
+      "name": "HMB Strong",
+      "category": "creatine-strength",
+      "form": "Capsules",
+      "size": "90 capsules",
+      "servingSize": "2 capsules",
+      "servings": "45",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition HMB Strong supplements your diet with a high dose of HMB (beta-hydroxy beta-methylbutyrate), a compound the body makes from the amino acid leucine. Intended for athletes and physically active people."
+      ],
+      "highlights": [
+        "2200 mg HMB per 2 capsules",
+        "For active people"
+      ],
+      "ingredients": "Calcium β-hydroxy-β-methylbutyrate. Capsule Shell [gelling agent (gelatine), color ( titanium dioxide)].",
+      "directions": [
+        "Take 2-4 capsules daily; for optimal results take 1 capsule two up to four times a day (before breakfast, before and after training and before sleep)."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "2 capsules",
+        "4 capsules"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "HMB Ca (Calcium β-hydroxy-β-methylbutyrate)",
+              "indent": false,
+              "values": [
+                "2200 mg",
+                "4400 mg"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/hmb-strong/01.webp",
+          "thumb": "/products/hmb-strong/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "weiler",
+      "name": "Weiler",
+      "category": "pre-workout-pump",
+      "form": "Powder",
+      "size": "300 g",
+      "servingSize": "1½ scoops (15 g)",
+      "servings": null,
+      "flavours": [
+        "Blackberry & Raspberry-Lemonade",
+        "Strawberry Ice Tea"
+      ],
+      "body": [
+        "Weiler is a pre-workout powder built from four complexes: Pump, Strength & Performance, Superior Energy, and Focus & Cognition. Each 15 g serving contains 200 mg of caffeine."
+      ],
+      "highlights": [
+        "4 active complexes",
+        "200 mg caffeine per serving",
+        "2 flavours"
+      ],
+      "ingredients": "Pump Complex: L-Citrulline DL-Malate, L-Arginine Alpha Ketoglutarate 2:1, L-Arginine, Vitamin B3, Black pepper fruit extract (Piper Nigrum, 95% piperine), trisodium citrate, magnesium citrate, potassium chloride. Strength & Performance & Absorption Complex: Beta Alanine, Siberian Ginseng root extract (Eleutherococcus senticosus). Superior Energy Complex: Maltodextrin, L-Tyrosine, Vitamin B12. Focus & Cognition Complex: Anhydrous Caffeine, Taurine, L-Theanine.",
+      "directions": [
+        "Take 1 ½ scoop = 15 g mixed with 300- 400 ml of water 20-30 minutes before training. Do not exceed 30 g per day."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage. Not intended for use by individuals under the age of 18, pregnant or nursing women. Do not consume caffeine from other sources while taking this product as too much caffeine may cause nervousness, irritability, sleeplessness, and occasionally rapid heartbeat."
+      ],
+      "storage": [],
+      "columns": [
+        "Per serving (15 g)",
+        "Per 100 g"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Energy",
+              "indent": false,
+              "values": [
+                "201.5 kJ / 47.41 kcal",
+                "1343.3 kJ / 316.0 kcal"
+              ]
+            },
+            {
+              "label": "Protein as free amino acids",
+              "indent": false,
+              "values": [
+                "10.49 g",
+                "69.99 g"
+              ]
+            },
+            {
+              "label": "Carbohydrate",
+              "indent": false,
+              "values": [
+                "1.35 g",
+                "9.0 g"
+              ]
+            },
+            {
+              "label": "of which sugars",
+              "indent": true,
+              "values": [
+                "0.10 g",
+                "0.67 g"
+              ]
+            },
+            {
+              "label": "Fat",
+              "indent": false,
+              "values": [
+                "0 g",
+                "0 g"
+              ]
+            },
+            {
+              "label": "of which saturates",
+              "indent": true,
+              "values": [
+                "0 g",
+                "0 g"
+              ]
+            },
+            {
+              "label": "Sodium",
+              "indent": false,
+              "values": [
+                "0.12 g",
+                "0.8 g"
+              ]
+            },
+            {
+              "label": "Chloride",
+              "indent": false,
+              "values": [
+                "0.082 g (10.24% RNV)",
+                "0.547 g (68.3% RNV)"
+              ]
+            },
+            {
+              "label": "Magnesium",
+              "indent": false,
+              "values": [
+                "0.026 g (7.1% RNV)",
+                "0.179 g (47.7% RNV)"
+              ]
+            },
+            {
+              "label": "Pump Complex",
+              "indent": false,
+              "values": [
+                "6830 mg",
+                "45519 mg"
+              ]
+            },
+            {
+              "label": "Strength & Performance Complex",
+              "indent": false,
+              "values": [
+                "3300 mg",
+                "21335 mg"
+              ]
+            },
+            {
+              "label": "Superior Energy Complex",
+              "indent": false,
+              "values": [
+                "1926 mg",
+                "12834 mg"
+              ]
+            },
+            {
+              "label": "Focus & Cognition Complex",
+              "indent": false,
+              "values": [
+                "1400 mg",
+                "9332 mg"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/weiler/01.webp",
+          "thumb": "/products/weiler/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "aakg",
+      "name": "AAKG 1200",
+      "category": "pre-workout-pump",
+      "form": "Capsules",
+      "size": "120 capsules",
+      "servingSize": "2 capsules",
+      "servings": "60",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition AAKG 1200 supplements your diet with 1200 mg of L-Arginine AKG / capsule, the amino acid that consists of 2 Arginine molecules bonded to 1 Alpha-Ketoglutarate molecule in a perfect 2:1 ratio and acts as a Nitric Oxide Booster."
+      ],
+      "highlights": [
+        "1200 mg per capsule",
+        "2:1 arginine to AKG ratio"
+      ],
+      "ingredients": "L-Arginine alpha ketoglutarate. Capsule Shell [gelling agent (gelatine), color (titanium dioxide)].",
+      "directions": [
+        "Take 2 capsules before training or in the morning on an empty stomach."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "2 capsules"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "L-Arginine alpha ketoglutarate",
+              "indent": false,
+              "values": [
+                "2400 mg"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/aakg/01.webp",
+          "thumb": "/products/aakg/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "arginine",
+      "name": "Arginine 1250",
+      "category": "pre-workout-pump",
+      "form": "Capsules",
+      "size": "120 or 90 capsules",
+      "servingSize": "2 capsules",
+      "servings": "60",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition Arginine 1250 supplements your diet with a concentrated pure crystalline form of the non-essential amino acid L-Arginine, one of the basic human body amino acids. One of the key health benefits of L-arginine is that it is used in the body to make a special gas called nitric oxide which dilates and relaxes blood vessels thus maintain normal blood pressure and contributes to the maintenance of healthy cardiovascular system."
+      ],
+      "highlights": [
+        "1250 mg per capsule",
+        "Pure crystalline L-arginine"
+      ],
+      "ingredients": "L-Arginine. Capsule Shell [gelling agent (gelatine), color ( titanium dioxide)].",
+      "directions": [
+        "Take 2 capsules before training or in the morning on an empty stomach."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "2 capsules"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "L-Arginine",
+              "indent": false,
+              "values": [
+                "2500 mg"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/arginine/01.webp",
+          "thumb": "/products/arginine/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "citrulline",
+      "name": "Citrulline",
+      "category": "pre-workout-pump",
+      "form": "Powder",
+      "size": "250 g",
+      "servingSize": "2 scoops (7 g)",
+      "servings": "35",
+      "flavours": [
+        "Peach Ice Tea",
+        "Mango"
+      ],
+      "body": [
+        "Royal Nutrition Citrulline is suitable for athletes and active people who wish to give their body a citrulline intake. It protects muscles from fatigue and helps to regain full strength after heavy and intense workouts. The increased synthesis of nitric oxide provides to better blood flow and significantly better transport of oxygen and nutrients to the cells. This formula is easy to prepare and easily absorbed by the body."
+      ],
+      "highlights": [
+        "5000 mg per serving",
+        "Taken before training",
+        "2 flavours"
+      ],
+      "ingredients": "L-citrulline, L-citrulline DL-malate 2:1, maltodextrine, anti-caking agent (silicon dioxide), acidifier (citric acid), flavors, color (carmine – for peach ice tea flavor, riboflavin – for mango and peach ice tea flavor), sweeteners (sucralose, acesulfame potassium).",
+      "directions": [
+        "Mix 2 scoops ( approx. 7 g) with preferred amount of water and shake vigorously for 30 seconds! Use one serving daily, preferably before workout."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "Per serving (7 g)",
+        "Per 100 g"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Energy",
+              "indent": false,
+              "values": [
+                "87.3 kJ / 20.6 kcal",
+                "1247.8 kJ / 293.6 kcal"
+              ]
+            },
+            {
+              "label": "Protein",
+              "indent": false,
+              "values": [
+                "5 g",
+                "71.4 g"
+              ]
+            },
+            {
+              "label": "Carbohydrates",
+              "indent": false,
+              "values": [
+                "0.1 g",
+                "2 g"
+              ]
+            },
+            {
+              "label": "Fat",
+              "indent": false,
+              "values": [
+                "0 g",
+                "0 g"
+              ]
+            },
+            {
+              "label": "L-Citrulline (from L-Citrulline and L-Citrulline DL-malate 2:1)",
+              "indent": false,
+              "values": [
+                "5000 mg",
+                "71430 mg"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/citrulline/01.webp",
+          "thumb": "/products/citrulline/01-440.webp",
+          "label": "Peach Ice Tea"
+        },
+        {
+          "src": "/products/citrulline/02.webp",
+          "thumb": "/products/citrulline/02-440.webp",
+          "label": "Mango"
+        }
+      ]
+    },
+    {
+      "slug": "taurine-1200",
+      "name": "Taurine 1200",
+      "category": "pre-workout-pump",
+      "form": "Tablets",
+      "size": "90 tablets",
+      "servingSize": "1 tablet",
+      "servings": "90",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition Taurine 1200 delivers a high-quality source of taurine, a sulfur-containing, antioxidant amino acid that supports antioxidation, aids in osmoregulation (maintenance of proper concentrations of ions) inside the cell, membrane stabilization, bile acid conjugation, neuroprotection and athletic performance."
+      ],
+      "highlights": [
+        "1200 mg per tablet",
+        "Take 1 to 3 tablets daily"
+      ],
+      "ingredients": "Taurine, Binder (Microcrystalline Cellulose), Lubricant (Magnesium Stearate), Moisture Absorber (Silicon Dioxide).",
+      "directions": [
+        "Take 1-3 tablets a day depending on effort intensity, drinking with large amount of water."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "1 tablet",
+        "3 tablets"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Taurine",
+              "indent": false,
+              "values": [
+                "1200 mg",
+                "3600 mg"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/taurine-1200/01.webp",
+          "thumb": "/products/taurine-1200/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "taurine-powder",
+      "name": "Taurine Powder",
+      "category": "pre-workout-pump",
+      "form": "Powder",
+      "size": "250 g",
+      "servingSize": "¾ scoops (3.5 g)",
+      "servings": "71",
+      "flavours": [
+        "Green Apple"
+      ],
+      "body": [
+        "Royal Nutrition Taurine Powder is an exceptional source of this essential amino acid. Taurine is a sulfur containing amino acid that is manufactured from cysteine in the body. It is one of the most abundant amino acid in body and is found in the muscles and nervous system. Taurine participates in many metabolic processes and is involved in glucose uptake. As such, it helps energy production, improve athletic performance. Taurine is concentrated in parts of the body that have the most electrical activity, for example, the eye, brain and heart."
+      ],
+      "highlights": [
+        "3000 mg per serving",
+        "Green Apple flavour"
+      ],
+      "ingredients": "Taurine, acidifier (citric acid), anti-caking agent (silicon dioxide), flavors, color (E141i – for green apple flavor), sweeteners (sucralose, acesulfame potassium).",
+      "directions": [
+        "Mix ¾ scoop ( approx. 3.5 g) with preferred amount of water and shake vigorously for 30 seconds! Use one serving daily, preferably 30 minutes before workout."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "Per serving (3.5 g)",
+        "Per 100 g"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Energy",
+              "indent": false,
+              "values": [
+                "0 kJ / 0 kcal",
+                "0 kJ / 0 kcal"
+              ]
+            },
+            {
+              "label": "Protein",
+              "indent": false,
+              "values": [
+                "0 g",
+                "0 g"
+              ]
+            },
+            {
+              "label": "Carbohydrates",
+              "indent": false,
+              "values": [
+                "0 g",
+                "0 g"
+              ]
+            },
+            {
+              "label": "Fat",
+              "indent": false,
+              "values": [
+                "0 g",
+                "0 g"
+              ]
+            },
+            {
+              "label": "Taurine",
+              "indent": false,
+              "values": [
+                "3000 mg",
+                "85715 mg"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/taurine-powder/01.webp",
+          "thumb": "/products/taurine-powder/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "testo-booster",
+      "name": "Testo Booster",
+      "category": "hormone-support",
+      "form": "Capsules",
+      "size": "90 capsules",
+      "servingSize": "1 capsule",
+      "servings": "90",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition Testo Booster is a food supplement based on D-aspartic acid and zinc, combined with cordyceps, avena sativa, maca, fenugreek, gynostemma and black pepper extracts. Zinc contributes to the maintenance of normal testosterone levels in the blood."
+      ],
+      "highlights": [
+        "8 key ingredients",
+        "700 mg D-aspartic acid per capsule",
+        "With zinc"
+      ],
+      "ingredients": "D-Aspartic acid, Cordyceps mushrooms extract (Cordyceps Sinensis, 10 % polysaccharides), Avena Sativa 10 :1 extract (Avena Sativa), Maca root 2:1 extract (Lepidium Meyenii ), Fenugreek seed extract (Trigonella foenum-graecum, 10% proteins),Gynostemma leaf extract (Gynostemma Pentaphyllum, 98 % gypenosides), zinc citrate, Black Pepper fruit extract (Piper Nigrum, 95 % piperine). Capsule Shell [gelling agent (gelatine), color ( titanium dioxide)].",
+      "directions": [
+        "Take 1-2 capsules daily."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "1 capsule",
+        "2 capsules"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "D-Aspartic acid",
+              "indent": false,
+              "values": [
+                "700 mg",
+                "1400 mg"
+              ]
+            },
+            {
+              "label": "Cordyceps mushrooms extract (10% polysaccharides)",
+              "indent": false,
+              "values": [
+                "50 mg",
+                "100 mg"
+              ]
+            },
+            {
+              "label": "Avena Sativa 10:1 extract",
+              "indent": false,
+              "values": [
+                "50 mg",
+                "100 mg"
+              ]
+            },
+            {
+              "label": "Maca root 2:1 extract",
+              "indent": false,
+              "values": [
+                "50 mg",
+                "100 mg"
+              ]
+            },
+            {
+              "label": "Fenugreek seed extract (10% proteins)",
+              "indent": false,
+              "values": [
+                "50 mg",
+                "100 mg"
+              ]
+            },
+            {
+              "label": "Gynostemma leaf extract (98% gypenosides)",
+              "indent": false,
+              "values": [
+                "50 mg",
+                "100 mg"
+              ]
+            },
+            {
+              "label": "Black pepper fruit extract (95% piperine)",
+              "indent": false,
+              "values": [
+                "3 mg",
+                "6 mg"
+              ]
+            },
+            {
+              "label": "Zinc",
+              "indent": false,
+              "values": [
+                "5 mg (50% RDA*)",
+                "10 mg (100% RDA*)"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/testo-booster/01.webp",
+          "thumb": "/products/testo-booster/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "tribulus",
+      "name": "Tribulus 1250",
+      "category": "hormone-support",
+      "form": "Capsules",
+      "size": "90 capsules",
+      "servingSize": "2 capsules",
+      "servings": "45",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition Tribulus is formulated with Tribulus terrestris fruit extract, standardised to 90% saponins."
+      ],
+      "highlights": [
+        "1250 mg extract per capsule",
+        "90% saponins"
+      ],
+      "ingredients": "Tribulus terrestris extract (fruit) (standardized to contain 90% saponins) . Capsule Shell [gelling agent (gelatine), color ( titanium dioxide)].",
+      "directions": [
+        "Take 1 capsule 2 times daily with or without meals."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "1 capsule",
+        "2 capsules"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Tribulus terrestris extract (fruit)",
+              "indent": false,
+              "values": [
+                "1250 mg",
+                "2500 mg"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/tribulus/01.webp",
+          "thumb": "/products/tribulus/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "d-bol",
+      "name": "D Bol",
+      "category": "hormone-support",
+      "form": "Capsules",
+      "size": "90 capsules",
+      "servingSize": "2 capsules",
+      "servings": "45",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition D Bol is a blend of tribulus, maca, cordyceps and fenugreek extracts with amino acids, magnesium, zinc and vitamin B6, intended for active men. Zinc contributes to the maintenance of normal testosterone levels and to normal protein synthesis. Vitamin B6 contributes to the regulation of hormonal activity."
+      ],
+      "highlights": [
+        "Tribulus, maca and fenugreek",
+        "With zinc and vitamin B6",
+        "Taken after training"
+      ],
+      "ingredients": "Tribulus terrestris extract (fruit) (standardized to contain 90% saponins), Trimagnesium citrate, Maca root 2:1 extract (Lepidium Meyenii ), L-Isoleucine, Cordyceps mushrooms extract (Cordyceps Sinensis, 10 % polysaccharides), Fenugreek seed extract (Trigonella foenum-graecum, 10% proteins), L-Arginine, Calcium β-hydroxy-β-methylbutyrate, Zinc citrate, Pyridoxine hydrochloride (Vitamin B6). Capsule Shell [gelling agent (gelatine), color ( titanium dioxide)].",
+      "directions": [
+        "Take 2 capsules with water approximately 45 minutes after your workout. For best results, use for a minimum of 2 months. Use with a suitable diet and exercise programme."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "2 capsules"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Tribulus terrestris extract",
+              "indent": false,
+              "values": [
+                "500 mg"
+              ]
+            },
+            {
+              "label": "of which saponins",
+              "indent": true,
+              "values": [
+                "450 mg"
+              ]
+            },
+            {
+              "label": "Maca root 2:1 extract",
+              "indent": false,
+              "values": [
+                "200 mg"
+              ]
+            },
+            {
+              "label": "L-Isoleucine",
+              "indent": false,
+              "values": [
+                "175 mg"
+              ]
+            },
+            {
+              "label": "Cordyceps mushrooms extract (10 % polysaccharides)",
+              "indent": false,
+              "values": [
+                "150 mg"
+              ]
+            },
+            {
+              "label": "Fenugreek seed extract (10% proteins)",
+              "indent": false,
+              "values": [
+                "125 mg"
+              ]
+            },
+            {
+              "label": "L-Arginine",
+              "indent": false,
+              "values": [
+                "100 mg"
+              ]
+            },
+            {
+              "label": "Calcium β-hydroxy-β-methylbutyrate",
+              "indent": false,
+              "values": [
+                "100 mg"
+              ]
+            },
+            {
+              "label": "Magnesium",
+              "indent": false,
+              "values": [
+                "75 mg (20%*)"
+              ]
+            },
+            {
+              "label": "Zinc",
+              "indent": false,
+              "values": [
+                "4 mg (40%*)"
+              ]
+            },
+            {
+              "label": "Vitamin B6",
+              "indent": false,
+              "values": [
+                "0.8 mg (50%*)"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/d-bol/01.webp",
+          "thumb": "/products/d-bol/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "daa",
+      "name": "DAA",
+      "category": "hormone-support",
+      "form": "Powder",
+      "size": "150 g",
+      "servingSize": "1 ½ scoop (3 g)",
+      "servings": "50",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition DAA is a food supplement containing 100% D-aspartic acid, supplied as an unflavoured powder."
+      ],
+      "highlights": [
+        "100% D-aspartic acid",
+        "3 g per serving",
+        "Unflavoured"
+      ],
+      "ingredients": "100% D-Aspartic acid.",
+      "directions": [
+        "Take 3 g (about 1 ½ scoops) once a day with the preferred amount of water in the morning at breakfast. For best results, use the product continuously for 4-8 weeks after that it’s recommended a break of 2-3 weeks."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt",
+        "Artificial Colour",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "Per serving (3 g)",
+        "Per 100 g"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "D-Aspartic Acid",
+              "indent": false,
+              "values": [
+                "3000 mg",
+                "100 g"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/daa/01.webp",
+          "thumb": "/products/daa/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "zma-gaba",
+      "name": "ZMA & GABA",
+      "category": "hormone-support",
+      "form": "Capsules",
+      "size": "90 capsules",
+      "servingSize": "2 capsules",
+      "servings": "45",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition ZMA & GABA combines magnesium, zinc and vitamin B6 with GABA, piperine and melatonin. Taken before bedtime."
+      ],
+      "highlights": [
+        "Magnesium, zinc and vitamin B6",
+        "150 mg GABA per serving",
+        "Taken before bedtime"
+      ],
+      "ingredients": "Trimagnesium citrate, gamma amino butyric acid (GABA), zinc citrate, pyridoxine hydrochloride (Vitamin B6), black pepper fruit extract (Piper nigrum, 95% piperine), melatonine. Capsule Shell [gelling agent (gelatine), color ( titanium dioxide)].",
+      "directions": [
+        "Take 2 capsules daily 30 to 60 minutes before bedtime. For best results, avoid taking with food or supplements containing calcium."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [
+        "*% NRV: nutrient reference values"
+      ],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "2 capsules"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Magnesium",
+              "indent": false,
+              "values": [
+                "450 mg (120%*)"
+              ]
+            },
+            {
+              "label": "GABA",
+              "indent": false,
+              "values": [
+                "150 mg"
+              ]
+            },
+            {
+              "label": "Zinc",
+              "indent": false,
+              "values": [
+                "30 mg (300%*)"
+              ]
+            },
+            {
+              "label": "Vitamin B6",
+              "indent": false,
+              "values": [
+                "10.5 mg (750%*)"
+              ]
+            },
+            {
+              "label": "Piperine",
+              "indent": false,
+              "values": [
+                "5 mg"
+              ]
+            },
+            {
+              "label": "Melatonin",
+              "indent": false,
+              "values": [
+                "1 mg"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/zma-gaba/01.webp",
+          "thumb": "/products/zma-gaba/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "gaba",
+      "name": "GABA 1600",
+      "category": "hormone-support",
+      "form": "Capsules",
+      "size": "90 capsules",
+      "servingSize": "2 capsules",
+      "servings": "45",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition GABA 1600 delivers a high-quality source of GABA in easy-to-absorb capsules. Gamma-Aminobutyric Acid (GABA) is a naturally occurring amino acid that acts as an inhibitory neurotransmitter in the central nervous system. Its properties are known for adding calming support, plus relaxation to soothe you during times of occasional stress, or lack of sleep. This relaxer is the perfect solution to add to any active routine."
+      ],
+      "highlights": [
+        "800 mg GABA per capsule",
+        "Take 2 capsules daily"
+      ],
+      "ingredients": "Gamma amino butyric acid (GABA). Capsule Shell [gelling agent (gelatine), color (titanium dioxide)].",
+      "directions": [
+        "Take 2 capsules daily, preferably on an empty stomach."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [
+        "*% NRV: nutrient reference values"
+      ],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "2 capsules"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Gamma amino butyric acid (GABA)",
+              "indent": false,
+              "values": [
+                "1600 mg"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/gaba/01.webp",
+          "thumb": "/products/gaba/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "t5-cut",
+      "name": "T5 Cut",
+      "category": "weight-management",
+      "form": "Capsules",
+      "size": "90 capsules",
+      "servingSize": "2 capsules",
+      "servings": "45",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition T5 Cut combines five active ingredients: green tea extract, garcinia cambogia extract, acetyl L-carnitine, anhydrous caffeine and chromium."
+      ],
+      "highlights": [
+        "5 active ingredients",
+        "75 mg caffeine per capsule",
+        "Contains chromium"
+      ],
+      "ingredients": "Green tea extract (leaves) (standardized to contain 50 % polyphenols), Garcinia Cambogia extract (fruit) (standardized to contain 60 % hydroxycitric acid), acetyl L-carnitine, anhydrous caffeine, chromium picolinate. Capsule Shell [gelling agent (gelatine), color ( titanium dioxide)].",
+      "directions": [
+        "Take 1 capsule two times daily – after breakfast and approximately 30 minutes before physical activity."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [
+        "*% NRV: nutrient reference values"
+      ],
+      "warnings": [
+        "Keep out of reach of children. Contains caffeine. Not recommended for children or pregnant women (caffeine content: 150 mg/ 2 capsule, 300 mg/ 4 capsules). The product should not be taken by breast-feeding women and by people with heart conditions, hypertension and hypersensitive to any of the constituents of the product. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "1 capsule",
+        "2 capsules"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Green tea extract",
+              "indent": false,
+              "values": [
+                "300 mg",
+                "600 mg"
+              ]
+            },
+            {
+              "label": "Garcinia Cambogia extract",
+              "indent": false,
+              "values": [
+                "300 mg",
+                "600 mg"
+              ]
+            },
+            {
+              "label": "Acetyl L-carnitine",
+              "indent": false,
+              "values": [
+                "150 mg",
+                "300 mg"
+              ]
+            },
+            {
+              "label": "Anhydrous caffeine",
+              "indent": false,
+              "values": [
+                "75 mg",
+                "150 mg"
+              ]
+            },
+            {
+              "label": "Chromium",
+              "indent": false,
+              "values": [
+                "100 µg (150%*)",
+                "200 µg (300%*)"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/t5-cut/01.webp",
+          "thumb": "/products/t5-cut/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "carnitine-1200",
+      "name": "Carnitine 1200",
+      "category": "weight-management",
+      "form": "Capsules",
+      "size": "120 or 90 capsules",
+      "servingSize": "2 capsules",
+      "servings": "60",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition Carnitine supplements your diet with L-carnitine, an amino acid derivative involved in transporting long-chain fatty acids across the cell membrane."
+      ],
+      "highlights": [
+        "1200 mg per capsule",
+        "Morning and pre-training use"
+      ],
+      "ingredients": "L-Carnitine, anticaking agents (magnesium stearate, silicon dioxide). Capsule Shell [gelling agent (gelatine), color ( titanium dioxide)].",
+      "directions": [
+        "Take one capsule in the morning on an empty stomach and one capsule an hour before the physical performance."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "1 capsule",
+        "2 capsules"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "L-Carnitine",
+              "indent": false,
+              "values": [
+                "1200 mg",
+                "2400 mg"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/carnitine-1200/01.webp",
+          "thumb": "/products/carnitine-1200/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "carnitine-liquid",
+      "name": "Carnitine Liquid",
+      "category": "weight-management",
+      "form": "Liquid",
+      "size": "500 ml",
+      "servingSize": "25 ml",
+      "servings": "20",
+      "flavours": [
+        "Wild Berries"
+      ],
+      "body": [
+        "Royal Nutrition Carnitine Liquid delivers 2000 mg of L-carnitine in every 25 ml serving, in a Wild Berries flavour."
+      ],
+      "highlights": [
+        "2000 mg per serving",
+        "20 servings per bottle",
+        "Wild Berries flavour"
+      ],
+      "ingredients": "Water, fructose, L-carnitine, glycerin, flavour (contains E122*), acidity corrector (sodium citrate), preservatives (potassium sorbate, sodium benzoate), acidifier (citric acid). * May have an adverse effect on activity and attention in children.",
+      "directions": [
+        "Take 25 ml daily, 30 minutes before workout and/or between meals."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "Per serving (25 ml)",
+        "Per 100 ml"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Energy",
+              "indent": false,
+              "values": [
+                "68 kJ / 16 kcal",
+                "272 kJ / 64 kcal"
+              ]
+            },
+            {
+              "label": "Protein",
+              "indent": false,
+              "values": [
+                "2 g",
+                "8 g"
+              ]
+            },
+            {
+              "label": "Carbohydrates",
+              "indent": false,
+              "values": [
+                "2 g",
+                "8 g"
+              ]
+            },
+            {
+              "label": "Fat",
+              "indent": false,
+              "values": [
+                "0 g",
+                "0 g"
+              ]
+            },
+            {
+              "label": "L-Carnitine",
+              "indent": false,
+              "values": [
+                "2000 mg",
+                "8000 mg"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/carnitine-liquid/01.webp",
+          "thumb": "/products/carnitine-liquid/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "cla-softgel",
+      "name": "CLA Softgel 1000",
+      "category": "weight-management",
+      "form": "Capsules",
+      "size": "90 softgels",
+      "servingSize": "3 softgels",
+      "servings": "30",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition CLA supplements your diet with concentrated conjugated linoleic acid, an unsaturated fatty acid that occurs naturally in foods in limited quantities. Intended for athletes and people following a reduced-fat diet."
+      ],
+      "highlights": [
+        "1000 mg per softgel",
+        "For reduced-fat diets"
+      ],
+      "ingredients": "Conjugated Linoleic Acid Oil. Capsule Shell [gelling agent (gelatine), humectant (glycerol, purified water)].",
+      "directions": [
+        "Adults and children over 12 years of age, one capsule three times a day with food; can be increased to a maximum of four capsules if required."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt",
+        "Artificial Colours",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. Do not freeze. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "1 softgel",
+        "3 softgels"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Conjugated Linoleic Acid Oil",
+              "indent": false,
+              "values": [
+                "1000 mg",
+                "3000 mg"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/cla-softgel/01.webp",
+          "thumb": "/products/cla-softgel/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "multivitamin",
+      "name": "Multivitamin",
+      "category": "health-wellness",
+      "form": "Capsules",
+      "size": "60 capsules",
+      "servingSize": "1 capsule",
+      "servings": "60",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition Multivitamin is a once-daily capsule supplying essential vitamins, including B vitamins and vitamins C, E, A and D3. Designed for active people."
+      ],
+      "highlights": [
+        "One capsule daily",
+        "B vitamins and C, E, A, D3"
+      ],
+      "ingredients": null,
+      "directions": [
+        "Take 1 capsule daily with a meal."
+      ],
+      "freeFrom": [],
+      "footnotes": [],
+      "warnings": [],
+      "storage": [],
+      "columns": [],
+      "nutrition": [],
+      "images": [
+        {
+          "src": "/products/multivitamin/01.webp",
+          "thumb": "/products/multivitamin/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "collagen-2250",
+      "name": "Collagen 2250",
+      "category": "health-wellness",
+      "form": "Tablets",
+      "size": "90 tablets",
+      "servingSize": "2 tablets",
+      "servings": "45",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition Collagen tablets are based on hydrolyzed bovine collagen, a protein that provides amino acids. The formula also contains vitamin C, which contributes to normal collagen formation for the normal function of bones, cartilage and skin."
+      ],
+      "highlights": [
+        "Hydrolyzed bovine collagen",
+        "With vitamin C"
+      ],
+      "ingredients": "Hydrolyzed Bovine Collagen Peptides, Vitamin C (Ascorbic Acid), Binder (Microcrystalline Cellulose), Lubricant (Magnesium Stearate, Hydrogenated Cottonseed Oil), Moisture Absorber (Silicon Dioxide).",
+      "directions": [
+        "Take 2 tablets daily on an empty stomach for maximum absorption and wait 30 minutes before eating or before taking any other protein products."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "3 tablets",
+        "6 tablets",
+        "2 tablets"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Energy",
+              "indent": false,
+              "values": [
+                "37.4 kJ / 8.8 kcal",
+                "74.8 kJ / 17.6 kcal",
+                "25.9 kJ / 5.9 kcal"
+              ]
+            },
+            {
+              "label": "Protein",
+              "indent": false,
+              "values": [
+                "2.2 g",
+                "4.4 g",
+                "1.5 g"
+              ]
+            },
+            {
+              "label": "Carbohydrates",
+              "indent": false,
+              "values": [
+                "0 g",
+                "0 g",
+                "0 g"
+              ]
+            },
+            {
+              "label": "Fat",
+              "indent": false,
+              "values": [
+                "0 g",
+                "0 g",
+                "0 g"
+              ]
+            },
+            {
+              "label": "Hydrolyzed Collagen",
+              "indent": false,
+              "values": [
+                "2250 mg",
+                "4500 mg",
+                "1500 mg"
+              ]
+            },
+            {
+              "label": "Vitamin C",
+              "indent": false,
+              "values": [
+                "300 mg (375%*)",
+                "600 mg (750%*)",
+                "200 mg (250%*)"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/collagen-2250/01.webp",
+          "thumb": "/products/collagen-2250/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "liver-protect",
+      "name": "Liver Protect",
+      "category": "health-wellness",
+      "form": "Capsules",
+      "size": "60 capsules",
+      "servingSize": "2 capsules",
+      "servings": null,
+      "flavours": [],
+      "body": [
+        "Royal Nutrition Liver Protect delivers milk thistle and turmeric extracts with choline, N-acetyl L-cysteine and vitamin E. Choline contributes to normal homocysteine metabolism and to the maintenance of normal liver function."
+      ],
+      "highlights": [
+        "Milk thistle extract",
+        "With choline and turmeric",
+        "Taken with a meal"
+      ],
+      "ingredients": "Milk Thistle Extract (Silybum marianum, min. 80 % silymarin), L-Arginine Aspartate, L-Methionine, Choline Bitartrate, N-Acetyl L-Cysteine, L-Glutathione Reduced, Turmeric root extract (Curcuma Longa Linn., min. 70 % curcumin), Vitamin E (D-Alpha-Tocopheryl Acetate). Capsule Shell [gelling agent (gelatine), color (titanium dioxide)].",
+      "directions": [
+        "Take 2 capsules per day preferably during breakfast or lunch, for one month."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [
+        "*% NRV: nutrient reference values"
+      ],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "2 capsules"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Milk Thistle Extract",
+              "indent": false,
+              "values": [
+                "625 mg"
+              ]
+            },
+            {
+              "label": "of which silymarin",
+              "indent": true,
+              "values": [
+                "500 mg"
+              ]
+            },
+            {
+              "label": "L-Arginine L-Aspartate",
+              "indent": false,
+              "values": [
+                "300 mg"
+              ]
+            },
+            {
+              "label": "L- Methionine",
+              "indent": false,
+              "values": [
+                "250 mg"
+              ]
+            },
+            {
+              "label": "Choline Bitartrate",
+              "indent": false,
+              "values": [
+                "250 mg"
+              ]
+            },
+            {
+              "label": "N-Acetyl L-Cysteine",
+              "indent": false,
+              "values": [
+                "150 mg"
+              ]
+            },
+            {
+              "label": "L-Glutathione Reduced",
+              "indent": false,
+              "values": [
+                "100 mg"
+              ]
+            },
+            {
+              "label": "Turmeric root extract",
+              "indent": false,
+              "values": [
+                "51 mg"
+              ]
+            },
+            {
+              "label": "of which curcumin",
+              "indent": true,
+              "values": [
+                "35 mg"
+              ]
+            },
+            {
+              "label": "Vitamin E",
+              "indent": false,
+              "values": [
+                "12 mg (100%*)"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/liver-protect/01.webp",
+          "thumb": "/products/liver-protect/01-440.webp",
+          "label": null
+        }
+      ]
+    },
+    {
+      "slug": "ala-150",
+      "name": "ALA 150",
+      "category": "health-wellness",
+      "form": "Capsules",
+      "size": "90 capsules",
+      "servingSize": "1 capsule",
+      "servings": "90",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition ALA 150 is a product supplementing the diet with highest-quality alpha-lipoic acid (ALA) increasing the efficiency of energy production and protecting against adverse effects of oxygenation. What makes alpha lipoic acid unique is that it works in both water and fats unlike most common antioxidants such as vitamins c and e and is able to recycle antioxidants such as vitamin c and vitamin e after they are depleted."
+      ],
+      "highlights": [
+        "150 mg alpha-lipoic acid per capsule",
+        "Take 1 to 2 capsules daily"
+      ],
+      "ingredients": "Alpha Lipoic Acid. Capsule Shell [gelling agent (gelatine), color (titanium dioxide)], Bulking agent (maltodextrin).",
+      "directions": [
+        "Take 1-2 capsules daily, preferably during meals, for at least 1 month."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [
+        "*% NRV: nutrient reference values"
+      ],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "1 capsule",
+        "2 capsules"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Alpha Lipoic Acid",
+              "indent": false,
+              "values": [
+                "150 mg",
+                "300 mg"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/ala-150/01.webp",
+          "thumb": "/products/ala-150/01-440.webp",
+          "label": "Bottle"
+        },
+        {
+          "src": "/products/ala-150/02.webp",
+          "thumb": "/products/ala-150/02-440.webp",
+          "label": "Box"
+        }
+      ]
+    },
+    {
+      "slug": "chromium-picolinate",
+      "name": "Chromium Picolinate",
+      "category": "health-wellness",
+      "form": "Capsules",
+      "size": "90 capsules",
+      "servingSize": "1 capsule",
+      "servings": "90",
+      "flavours": [],
+      "body": [
+        "Royal Nutrition Chromium Picolinate capsules contain chromium as chromium picolinate. Chromium contributes to the maintenance of normal blood glucose levels."
+      ],
+      "highlights": [
+        "200 µg chromium per capsule",
+        "Essential trace element",
+        "One capsule daily"
+      ],
+      "ingredients": "Chromium picolinate. Capsule Shell [gelling agent (gelatine), color (titanium dioxide)], Bulking agent (maltodextrin).",
+      "directions": [
+        "Take 1 capsule daily, preferably during meals."
+      ],
+      "freeFrom": [
+        "Yeast",
+        "Gluten",
+        "Wheat",
+        "Soya",
+        "Dairy",
+        "Sugar",
+        "Salt",
+        "Preservatives",
+        "Flavourings"
+      ],
+      "footnotes": [
+        "*% NRV: nutrient reference values"
+      ],
+      "warnings": [
+        "Keep out of reach of children. Food Supplements should not be used as a substitute for a varied and balanced diet and healthy lifestyle. Do not exceed the recommended dosage."
+      ],
+      "storage": [
+        "Store in a dry place at the temperature that does not exceed 25 °C and away from direct sunlight. The producer is not liable for any damage caused by improper use or storage."
+      ],
+      "columns": [
+        "1 capsule"
+      ],
+      "nutrition": [
+        {
+          "title": null,
+          "rows": [
+            {
+              "label": "Chromium picolinate",
+              "indent": false,
+              "values": [
+                "1.6 mg"
+              ]
+            },
+            {
+              "label": "of which chromium",
+              "indent": true,
+              "values": [
+                "200 µg (500%*)"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "/products/chromium-picolinate/01.webp",
+          "thumb": "/products/chromium-picolinate/01-440.webp",
+          "label": "Bottle"
+        },
+        {
+          "src": "/products/chromium-picolinate/02.webp",
+          "thumb": "/products/chromium-picolinate/02-440.webp",
+          "label": "Box"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+---
+// One icon set for the whole site: 24px grid, 1.75 stroke, round joins.
+const paths = {
+  arrow: 'M4 12h15M13 6l6 6-6 6',
+  'chevron-down': 'M5 9l7 7 7-7',
+  'chevron-left': 'M15 5l-7 7 7 7',
+  'chevron-right': 'M9 5l7 7-7 7',
+  table: 'M4 5h16v14H4zM4 10h16M4 14.5h16M10 10v9',
+  leaf: 'M5 19c0-8 5-13 14-14 0 9-5 14-14 14zM5 19l7-7',
+  clock: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7.5V12l3 2',
+  shield: 'M12 3l7 3v5.5c0 4.4-2.9 8-7 9.5-4.1-1.5-7-5.1-7-9.5V6zM9 12l2.2 2.2L15.2 10',
+  powder: 'M7 8h10l-1 12H8zM6 5h12v3H6zM10 12.5h4',
+  capsules: 'M14.5 4.5a3.54 3.54 0 0 1 5 5l-10 10a3.54 3.54 0 0 1-5-5zM9.5 9.5l5 5',
+  tablets: 'M10 20a6 6 0 1 0 0-12 6 6 0 0 0 0 12zM7.5 14h5M17.5 10.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z',
+  plus: 'M12 5v14M5 12h14',
+  flask: 'M9 3h6M10 3v6l-5.2 9a2 2 0 0 0 1.7 3h11a2 2 0 0 0 1.7-3L14 9V3M7.5 15h9',
+  ban: 'M12 20.5a8.5 8.5 0 1 0 0-17 8.5 8.5 0 0 0 0 17zM6 6l12 12',
+  package: 'M12 3l8 4.5v9L12 21l-8-4.5v-9zM12 12l8-4.5M12 12v9M12 12L4 7.5M16 5.25l-8 4.5',
+  scoop: 'M3 9h11a5.5 5.5 0 0 1-11 0zM14 9h7',
+  layers: 'M12 3l9 5-9 5-9-5zM3 12.5l9 5 9-5M3 17l9 5 9-5',
+  thermometer: 'M14 14.8V5a2 2 0 0 0-4 0v9.8a4 4 0 1 0 4 0zM12 9v8',
+  alert: 'M12 4l9 16H3zM12 10v4.5M12 17.4v.1',
+  chart: 'M4 20h16M7 20v-7M12 20V5M17 20v-10',
+  liquid: 'M12 3c3.8 4.6 6 7.8 6 11a6 6 0 0 1-12 0c0-3.2 2.2-6.4 6-11zM9 14.5a3 3 0 0 0 3 3',
+};
+const { name } = Astro.props;
+---
+<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={paths[name]} /></svg>

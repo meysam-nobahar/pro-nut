@@ -1,0 +1,309 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import '../styles/home.css';
+import { categories, products, productBySlug, forms, inCategory } from '../lib/catalogue.js';
+import { bannerImage } from '../lib/banners.js';
+import { brand } from '../lib/brand.js';
+
+/* Photos are optional. Drop a file into public/banners/ and it appears;
+   without it the section uses its text-only layout. */
+const heroImage = bannerImage('hero');
+const heroMobile = bannerImage('hero-mobile');
+const athletePortrait = bannerImage('athlete-1');
+const athleteWide = bannerImage('athlete-2');
+
+/* Each range keeps a small preview list; the hover card steps through it as the pointer moves. */
+const rangeAccent = {
+  'protein-mass': '#ff4d5e',
+  'amino-recovery': '#9be84f',
+  'creatine-strength': '#7fa8ff',
+  'pre-workout-pump': '#33d6f5',
+  'hormone-support': '#ffd426',
+  'weight-management': '#ff8b3d',
+  'health-wellness': '#ff7cc3',
+};
+const ranges = categories.map((category, index) => {
+  const items = inCategory(category.slug);
+  return {
+    ...category,
+    number: String(index + 1).padStart(2, '0'),
+    items,
+    names: items.slice(0, 3).map((p) => p.name),
+    more: items.length - 3,
+    previews: JSON.stringify(items.map((p) => ({ name: p.name, src: p.images[0].thumb }))),
+    accent: rangeAccent[category.slug],
+    banner: bannerImage(`index-${category.slug}`),
+  };
+});
+
+/* The brand's own guidance, in its own order. */
+const steps = [
+  { title: 'Eat enough', text: 'To gain muscle, you need to eat enough calories and protein.' },
+  { title: 'Train', text: 'Exercise, ideally with weights.' },
+  { title: 'Then supplement', text: 'Once your nutrition and exercise regimens are under control, you may want to consider our supplements.' },
+];
+
+/* The label card reads straight from the Whey Protein nutrition table. */
+const whey = productBySlug['whey-protein'];
+const wheyValue = (label) => whey.nutrition[0].rows.find((row) => row.label === label).values[0];
+const servingGrams = 30;
+const kcal = parseFloat(wheyValue('Energy').split('/')[1]);
+const macros = ['Protein', 'Carbohydrates', 'Fat'].map((label) => {
+  const grams = parseFloat(wheyValue(label));
+  return { label, grams, share: (grams / servingGrams) * 100 };
+});
+
+const points = [
+  { icon: 'table', title: 'Nutrition table', text: 'Amounts per serving, in clean English.' },
+  { icon: 'leaf', title: 'Ingredients', text: 'The ingredient list for the product.' },
+  { icon: 'clock', title: 'How to use', text: 'Serving size and when to take it.' },
+  { icon: 'shield', title: 'Safety and storage', text: 'Warnings, free-from details and storage advice.' },
+];
+
+const questions = [
+  { q: 'Can I order from this site?', a: 'No. This site is a catalogue, so it has no prices or checkout. To ask about availability, contact us by email.' },
+  { q: 'What will I find on a product page?', a: 'The pack size and serving size, a nutrition table, the ingredient list, directions for use, and warnings and storage advice. One product page is still waiting for its nutrition table.' },
+  { q: 'How do I choose a product?', a: 'Start with your goal, such as protein, recovery or pre-workout. You can also filter the full range by format and flavour.' },
+  { q: 'Do supplements replace a balanced diet?', a: 'No. Food supplements should not be used as a substitute for a varied and balanced diet and a healthy lifestyle. Do not exceed the recommended dosage.' },
+  { q: 'Where is Royal Nutrition based?', a: `${brand.address.join(', ')}.` },
+];
+
+---
+<Base darkHero description={`Browse the full Royal Nutrition range: ${products.length} food supplements with ingredients, directions and nutrition tables.`}>
+  <div class="home">
+    <section class="h-hero on-dark" data-hero>
+      <div class="h-hero-bg" data-hero-bg aria-hidden="true">
+        {heroImage && (
+          <picture>
+            {heroMobile && <source media="(max-width: 760px)" srcset={heroMobile} />}
+            <img src={heroImage} alt="" fetchpriority="high" />
+          </picture>
+        )}
+      </div>
+      <div class="h-hero-shade" aria-hidden="true"></div>
+
+      <div class="wrap h-hero-body" data-hero-copy>
+        <p class="h-pill" data-hero-in><span class="h-pill-dot"></span>European food supplements for bodybuilders</p>
+        <h1 class="h-title" data-hero-title>Train hard.<br />Know what's <em>inside.</em></h1>
+        <p class="h-lede" data-hero-in>A clear catalogue of {products.length} food supplements. Browse by goal or format, then read the ingredients, directions and nutrition table for each one.</p>
+        <div class="h-cta" data-hero-in>
+          <a class="btn invert" href="/products/">Browse all products<Icon name="arrow" /></a>
+          <a class="btn glass" href="#ranges">See the ranges</a>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="h-marquee" aria-hidden="true">
+      {[0, 1].map(() => (
+        <div class="h-marquee-track">
+          {categories.map((category) => <span class="h-marquee-item">{category.name}<img class="h-marquee-mark" src="/logo.png" alt="" width="44" height="44" /></span>)}
+        </div>
+      ))}
+    </div>
+
+    <section class:list={['h-section', 'h-approach', { 'has-photo': athletePortrait }]}>
+      <div class="wrap h-approach-grid">
+        {athletePortrait && (
+          <figure class="h-photo" data-reveal>
+            <img src={athletePortrait} alt="" loading="lazy" data-speed="0.7" />
+          </figure>
+        )}
+        <div class="h-approach-head">
+          <p class="eyebrow" data-reveal>Our approach</p>
+          <h2 class="h-h2 is-compact" data-split>Food first.<br />Training second.<br />Supplements third.</h2>
+          <p class="h-body" data-reveal>Our supplements will help you sculpt a better, healthier and stronger body. They work alongside what you eat and how you train, not instead of it.</p>
+        </div>
+        <ol class="h-steps" data-steps>
+          <span class="h-steps-line" aria-hidden="true"><i data-steps-progress></i></span>
+          {steps.map((step, index) => (
+            <li data-reveal>
+              <span class="h-step-number">{String(index + 1).padStart(2, '0')}</span>
+              <div>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="h-section h-ranges" id="ranges">
+      <div class="wrap">
+        <header class="h-head">
+          <div>
+            <p class="eyebrow" data-reveal>Browse by goal</p>
+            <h2 class="h-h2 is-wide" data-split>Seven ranges.<br />Start with your goal.</h2>
+          </div>
+          <a class="h-link" href="/products/" data-reveal>View all {products.length} products<Icon name="arrow" /></a>
+        </header>
+        <ol class="h-range-list">
+          {ranges.map((range) => (
+            <li data-reveal>
+              <a class="h-range" href={`/products/?goal=${range.slug}`} data-previews={range.previews}>
+                <span class="h-range-number">{range.number}</span>
+                <span class="h-range-name">{range.name}</span>
+                <span class="h-range-products">{range.names.join(', ')}{range.more > 0 && <>, and {range.more} more</>}</span>
+                <span class="h-range-count">{range.items.length} products</span>
+                <span class="h-range-arrow" aria-hidden="true"><Icon name="arrow" /></span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="h-section h-inside">
+      <div class="wrap h-inside-grid">
+        <div>
+          <p class="eyebrow" data-reveal>On product pages</p>
+          <h2 class="h-h2" data-split>The label, made readable.</h2>
+          <p class="h-body" data-reveal>Product pages set out the nutrition table, ingredients, directions and safety notes in plain English.</p>
+          <ul class="h-points">
+            {points.map((point) => (
+              <li data-reveal>
+                <span class="h-points-icon"><Icon name={point.icon} /></span>
+                <span><strong>{point.title}</strong><span class="h-points-text">{point.text}</span></span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="h-label-stage" data-reveal>
+          <div class="h-label">
+            <p class="h-label-kicker">Example: Whey Protein, per {servingGrams} g scoop</p>
+            <p class="h-label-kcal"><b data-count={kcal} data-decimals="1">{kcal}</b>kcal</p>
+            <ul class="h-label-rows">
+              {macros.map((macro) => (
+                <li class="h-label-row">
+                  <span>{macro.label}</span>
+                  <b>{macro.grams} g</b>
+                  <span class="h-bar" aria-hidden="true"><i data-bar style={`--p:${macro.share.toFixed(1)}%`}></i></span>
+                </li>
+              ))}
+            </ul>
+            <a class="h-link" href="/products/whey-protein/#nutrition">Full nutrition table<Icon name="arrow" /></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="h-section h-index">
+      <div class="wrap">
+        <header class="h-head">
+          <div>
+            <p class="eyebrow" data-reveal>The index</p>
+            <h2 class="h-h2" data-split>All {products.length}, by range.</h2>
+          </div>
+          <p class="h-head-note" data-reveal>Every product in the catalogue with its format and pack size. Choose a row to open its page.</p>
+        </header>
+
+        <div class="h-cats">
+          {ranges.map((range, i) => (
+            <article class:list={['h-cat', { 'is-flip': i % 2 === 1 }]} style={`--accent:${range.accent}`} data-reveal>
+              <div class="h-cat-main">
+                <header class="h-cat-head">
+                  <span class="h-cat-number">{range.number}</span>
+                  <div class="h-cat-title">
+                    <h3>{range.name}</h3>
+                    <p>{range.blurb}</p>
+                  </div>
+                  <a class="h-link" href={`/products/?goal=${range.slug}`}>View range<Icon name="arrow" /></a>
+                </header>
+                <table class="h-table">
+                  <caption class="sr-only">{range.name}: {range.items.length} products</caption>
+                  <thead>
+                    <tr><th scope="col">Product</th><th scope="col">Format</th><th scope="col">Pack size</th><th scope="col" class="is-num">Servings</th><th scope="col"><span class="sr-only">Open</span></th></tr>
+                  </thead>
+                  <tbody>
+                    {range.items.map((p) => (
+                      <tr>
+                        <th scope="row"><a href={`/products/${p.slug}/`}>{p.name}</a></th>
+                        <td>{p.form}</td>
+                        <td>{p.size ?? '—'}</td>
+                        <td class="is-num">{p.servings ?? '—'}</td>
+                        <td class="h-table-go" aria-hidden="true"><Icon name="arrow" /></td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <a class:list={['h-cat-banner', { 'has-banner': range.banner }]} href={`/products/?goal=${range.slug}`} aria-label={`View the ${range.name} range`}>
+                {range.banner
+                  ? <img src={range.banner} alt="" loading="lazy" data-speed="0.8" />
+                  : <img class="is-placeholder" src={range.items[0].images[0].src} alt="" width="880" height="880" loading="lazy" />}
+                <span class="h-cat-chip"><b>{range.name}</b><span>{range.items.length} products<Icon name="arrow" /></span></span>
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="h-section h-formats">
+      <div class="wrap">
+        <header class="h-head">
+          <div>
+            <p class="eyebrow" data-reveal>Browse by format</p>
+            <h2 class="h-h2 is-wide" data-split>Or choose how you take it.</h2>
+          </div>
+        </header>
+        <ul class="h-formats-grid">
+          {forms.map((form) => (
+            <li data-reveal>
+              <a class="h-format" href={`/products/?form=${form.slug}`}>
+                <span class="h-format-icon"><Icon name={form.slug} /></span>
+                <span class="h-format-count" data-count={form.count}>{form.count}</span>
+                <span class="h-format-name">{form.name}<Icon name="arrow" /></span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="h-section h-faq">
+      <div class="wrap h-faq-grid">
+        <div>
+          <p class="eyebrow" data-reveal>Good to know</p>
+          <h2 class="h-h2" data-split>Questions, answered plainly.</h2>
+          <a class="h-link" href="/contact/" data-reveal>Ask us something else<Icon name="arrow" /></a>
+        </div>
+        <div class="h-faq-list">
+          {questions.map((item, index) => (
+            <details data-reveal open={index === 0}>
+              <summary>{item.q}<span class="h-faq-mark" aria-hidden="true"></span></summary>
+              <p>{item.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="h-section h-final">
+      <div class="wrap">
+        <div class:list={['h-final-card', 'on-dark', { 'has-photo': athleteWide }]} data-reveal>
+          {athleteWide && <img class="h-final-photo" src={athleteWide} alt="" loading="lazy" />}
+          <span class="h-diamond" style="--s:44px;left:8%;top:18%" aria-hidden="true"></span>
+          <span class="h-diamond is-solid" style="--s:18px;left:15%;top:62%" aria-hidden="true"></span>
+          <span class="h-diamond is-solid" style="--s:30px;right:10%;top:24%" aria-hidden="true"></span>
+          <span class="h-diamond" style="--s:16px;right:17%;top:66%" aria-hidden="true"></span>
+          <h2>Find yours in the full range.</h2>
+          <p>{products.length} products across {categories.length} ranges, with a page for each one.</p>
+          <div class="h-final-cta">
+            <a class="btn invert" href="/products/">Browse all products<Icon name="arrow" /></a>
+            <a class="btn glass" href="/contact/">Contact us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="h-preview" data-preview-card aria-hidden="true"><span class="h-preview-frame"><img alt="" width="440" height="440" /></span><span class="h-preview-name" data-preview-name></span><span class="h-preview-dots" data-preview-dots></span></div>
+  </div>
+</Base>
+
+<script>
+  import '../scripts/home-motion.js';
+</script>

@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Page Not Found" description="This page could not be found.">
+  <div class="wrap page">
+    <h1>This page isn't in the catalogue.</h1>
+    <p>It may have moved, or the link may be out of date.</p>
+    <a class="btn" href="/products/">Browse all products</a>
+  </div>
+</Base>
+
+<style>
+  .page { padding-block: clamp(56px, 8vw, 120px); min-height: 56vh; }
+  h1 { font-size: clamp(32px, 4.8vw, 62px); font-weight: 700; max-width: 18ch; }
+  p { margin: 18px 0 28px; color: var(--muted); font-size: 18px; }
+</style>

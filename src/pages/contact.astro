@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import { brand } from '../lib/brand.js';
+---
+<Base title="Contact" description="Questions or comments? Email the Royal Nutrition team.">
+  <div class="wrap page">
+    <p class="eyebrow">Contact</p>
+    <h1>Let's talk strength.</h1>
+    <p class="lede">A question about a formula, an ingredient or an order? Write to us and a specialist will reply as quickly as possible.</p>
+
+    <ul class="cards">
+      <li>
+        <span class="label">Office</span>
+        <a href={`mailto:${brand.emails.office}`}>{brand.emails.office}</a>
+      </li>
+      <li>
+        <span class="label">Product information</span>
+        <a href={`mailto:${brand.emails.info}`}>{brand.emails.info}</a>
+      </li>
+      <li>
+        <span class="label">Address</span>
+        <address>{brand.address.map((line) => <span>{line}</span>)}</address>
+      </li>
+      <li>
+        <span class="label">Website</span>
+        <a href={brand.website}>www.royalnutrition-pro.com</a>
+      </li>
+    </ul>
+
+    <a class="btn ghost" href="/products/">Enter the range</a>
+  </div>
+</Base>
+
+<style>
+  .page { padding-block: clamp(40px, 6vw, 88px); min-height: 56vh; }
+  h1 { margin-top: 14px; max-width: 18ch; font-size: clamp(32px, 4.8vw, 62px); font-weight: 700; }
+  .lede { margin-top: 18px; color: var(--muted); font-size: 18px; max-width: 54ch; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1px; margin: 36px 0; background: var(--line); border: 1px solid var(--line); }
+  .cards li { padding: 24px; background: var(--white); min-width: 0; }
+  .label { display: block; margin-bottom: 6px; font-size: 14px; color: var(--muted); }
+  .cards a { color: var(--blue); font-weight: 600; text-underline-offset: 4px; overflow-wrap: anywhere; }
+  address { font-style: normal; font-weight: 600; }
+  address span { display: block; }
+</style>

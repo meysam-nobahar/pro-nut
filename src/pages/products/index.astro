@@ -1,0 +1,171 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { categories, products, forms, inCategory } from '../../lib/catalogue.js';
+---
+<Base title="All Products" current="products" description={`The full Royal Nutrition range of ${products.length} food supplements. Filter by goal, format and flavour.`}>
+  <div class="wrap page-head">
+    <h1>All products</h1>
+    <p class="result-line" aria-live="polite"><strong data-count>{products.length}</strong> <span data-count-label>products</span></p>
+  </div>
+
+  <div class="wrap catalogue">
+    <details class="filter-shell" data-filter-shell open>
+      <summary class="filter-toggle">Filters <span data-active-count hidden></span></summary>
+      <form class="filters" data-filters role="search" aria-label="Filter products">
+        <label class="search">
+          <span class="filter-title">Search</span>
+          <input type="search" name="q" placeholder="Name, flavour or format" autocomplete="off" />
+        </label>
+
+        <fieldset>
+          <legend class="filter-title">Goal</legend>
+          <label class="option"><input type="radio" name="goal" value="" checked /> <span>All goals</span> <em>{products.length}</em></label>
+          {categories.map((c) => (
+            <label class="option"><input type="radio" name="goal" value={c.slug} /> <span>{c.name}</span> <em>{inCategory(c.slug).length}</em></label>
+          ))}
+        </fieldset>
+
+        <fieldset>
+          <legend class="filter-title">Format</legend>
+          {forms.map((f) => (
+            <label class="option"><input type="checkbox" name="form" value={f.slug} /> <span>{f.name}</span> <em>{f.count}</em></label>
+          ))}
+        </fieldset>
+
+        <fieldset>
+          <legend class="filter-title">Flavour</legend>
+          <label class="option"><input type="checkbox" name="flavoured" value="1" /> <span>Flavoured only</span> <em>{products.filter((p) => p.flavours.length).length}</em></label>
+        </fieldset>
+
+        <button class="reset" type="button" data-reset hidden>Clear all filters</button>
+      </form>
+    </details>
+
+    <div>
+      <div class="product-grid" data-grid>
+        {products.map((p, i) => <ProductCard product={p} eager={i < 6} />)}
+      </div>
+      <div class="empty" data-empty hidden>
+        <h2>No products match these filters.</h2>
+        <p>Try a different search term, or clear the filters to see the full range.</p>
+        <button class="btn ghost" type="button" data-reset>Clear all filters</button>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<script>
+  const form = document.querySelector('[data-filters]');
+  const cards = [...document.querySelectorAll('[data-card]')];
+  const count = document.querySelector('[data-count]');
+  const countLabel = document.querySelector('[data-count-label]');
+  const empty = document.querySelector('[data-empty]');
+  const grid = document.querySelector('[data-grid]');
+  const resets = document.querySelectorAll('[data-reset]');
+  const activeBadge = document.querySelector('[data-active-count]');
+  const shell = document.querySelector('[data-filter-shell]');
+
+  const narrow = matchMedia('(max-width: 900px)');
+  const syncShell = () => { shell.open = !narrow.matches; };
+  syncShell();
+  narrow.addEventListener('change', syncShell);
+
+  function apply({ pushUrl = true } = {}) {
+    const data = new FormData(form);
+    const q = (data.get('q') || '').trim().toLowerCase();
+    const goal = data.get('goal') || '';
+    const selectedForms = data.getAll('form');
+    const flavoured = data.get('flavoured') === '1';
+
+    let visible = 0;
+    for (const card of cards) {
+      const show =
+        (!goal || card.dataset.goal === goal) &&
+        (!selectedForms.length || selectedForms.includes(card.dataset.form)) &&
+        (!flavoured || card.dataset.flavoured === '1') &&
+        (!q || q.split(/\s+/).every((word) => card.dataset.search.includes(word)));
+      card.hidden = !show;
+      card.style.display = show ? '' : 'none';
+      if (show) visible += 1;
+    }
+
+    count.textContent = visible;
+    countLabel.textContent = visible === 1 ? 'product' : 'products';
+    empty.hidden = visible > 0;
+    grid.hidden = visible === 0;
+    grid.style.display = visible === 0 ? 'none' : '';
+
+    const active = (q ? 1 : 0) + (goal ? 1 : 0) + selectedForms.length + (flavoured ? 1 : 0);
+    form.querySelector('.reset').hidden = active === 0;
+    activeBadge.hidden = active === 0;
+    activeBadge.textContent = active;
+
+    if (pushUrl) {
+      const params = new URLSearchParams();
+      if (q) params.set('q', q);
+      if (goal) params.set('goal', goal);
+      selectedForms.forEach((f) => params.append('form', f));
+      if (flavoured) params.set('flavoured', '1');
+      const search = params.toString();
+      history.replaceState(null, '', search ? `?${search}` : location.pathname);
+    }
+  }
+
+  function readUrl() {
+    const params = new URLSearchParams(location.search);
+    form.elements.q.value = params.get('q') || '';
+    const goal = params.get('goal') || '';
+    const goalInput = form.querySelector(`input[name="goal"][value="${CSS.escape(goal)}"]`);
+    (goalInput || form.querySelector('input[name="goal"][value=""]')).checked = true;
+    const wanted = params.getAll('form');
+    form.querySelectorAll('input[name="form"]').forEach((i) => { i.checked = wanted.includes(i.value); });
+    form.elements.flavoured.checked = params.get('flavoured') === '1';
+  }
+
+  form.addEventListener('input', () => apply());
+  form.addEventListener('submit', (e) => e.preventDefault());
+  resets.forEach((b) => b.addEventListener('click', () => {
+    form.reset();
+    apply();
+  }));
+
+  readUrl();
+  apply({ pushUrl: false });
+</script>
+
+<style>
+  .page-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-block: clamp(28px, 4vw, 48px) 20px; }
+  h1 { font-size: clamp(32px, 4.2vw, 58px); font-weight: 700; }
+  .result-line { color: var(--muted); white-space: nowrap; }
+  .result-line strong { color: var(--blue); font-family: var(--display); font-size: 22px; font-variant-numeric: tabular-nums; }
+
+  .catalogue { display: grid; grid-template-columns: 264px minmax(0, 1fr); gap: 40px; align-items: start; padding-bottom: clamp(48px, 6vw, 88px); }
+
+  .filter-shell { position: sticky; top: 92px; max-height: calc(100vh - 112px); overflow: auto; padding-right: 4px; }
+  .filter-toggle { display: none; }
+  .filters { display: grid; gap: 22px; }
+  .filter-title { display: block; padding: 0; margin-bottom: 8px; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+  .search input { width: 100%; min-height: 44px; padding: 8px 12px; border: 1.5px solid var(--line); border-radius: var(--r-sm); background: var(--white); font-size: 16px; }
+  .search input:focus { border-color: var(--blue); outline: 0; box-shadow: 0 0 0 2px var(--blue); }
+  .search input::placeholder { color: var(--muted); }
+  .option { display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; gap: 10px; align-items: center; min-height: 34px; font-size: 15px; cursor: pointer; }
+  .option:hover span { color: var(--blue); }
+  .option input { width: 16px; height: 16px; margin: 0; accent-color: var(--blue); }
+  .option em { font-style: normal; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .reset { justify-self: start; padding: 4px 0; background: none; border: 0; color: var(--blue); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+  .empty { padding: 56px 24px; border: 1px solid var(--line); text-align: center; }
+  .empty h2 { font-size: 26px; font-weight: 700; }
+  .empty p { margin: 12px auto 24px; color: var(--muted); max-width: 44ch; }
+
+  @media (max-width: 900px) {
+    .catalogue { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+    .filter-shell { position: static; max-height: none; overflow: visible; padding: 0; border: 1px solid var(--line); }
+    .filter-toggle { display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 8px 16px; font-weight: 600; cursor: pointer; }
+    .filter-toggle span { display: inline-grid; place-items: center; min-width: 22px; height: 22px; border-radius: 11px; background: var(--blue); color: var(--white); font-size: 13px; }
+    .filter-toggle span[hidden] { display: none; }
+    .filters { padding: 8px 16px 20px; }
+  }
+</style>

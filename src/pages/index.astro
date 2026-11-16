@@ -1,0 +1,173 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import '../styles/home.css';
+import { categories, products, forms, inCategory, productBySlug } from '../lib/catalogue.js';
+import { composition } from '../lib/nutrition.js';
+import { bannerImage, bannerVideo } from '../lib/banners.js';
+
+/* Hero: public/banners/hero.mp4 (video) with public/banners/athlete-2 as poster. Both are optional. */
+const heroPhoto = bannerImage('athlete-2');
+const heroVideo = bannerVideo('hero');
+const pad = (n) => String(n).padStart(2, '0');
+
+/* The sample chart is a real product's own "Per 100 g" column */
+const sample = productBySlug['whey-protein'];
+const sampleComp = sample ? composition(sample) : null;
+
+const points = [
+  ['chart', 'Know what you take', 'Every nutrient laid out per serving and per 100 g, so you can compare with confidence.'],
+  ['flask', 'Formulated without shortcuts', 'Complete ingredient lists, exactly as printed on the pack, and everything each product is free from.'],
+  ['clock', 'Made to be used', 'Clear directions for every product: how much, how often and when.'],
+];
+---
+<Base darkHero description="Royal Nutrition Pro: professional sports supplements made to make you stronger and remove limits. Built on the best science in Europe and the world.">
+  <div class="home">
+    <section class="h-hero on-dark" data-hero>
+      <div class="h-hero-stage" data-stage>
+        <div class="h-hero-media" data-media>
+          {heroPhoto && <img src={heroPhoto} alt="" fetchpriority="high" />}
+          {heroVideo && <video class="h-hero-video" src={heroVideo} poster={heroPhoto ?? undefined} autoplay muted loop playsinline preload="auto" disablepictureinpicture aria-hidden="true" tabindex="-1"></video>}
+          <span class="h-hero-shade"></span>
+        </div>
+        <div class="wrap h-hero-inner" data-hero-inner>
+          <span class="h-mark tl" aria-hidden="true"></span><span class="h-mark tr" aria-hidden="true"></span>
+          <h1 data-hero-title><span>Professional</span> <span>Supplements</span></h1>
+          <div class="h-hero-cta" data-hero-in>
+            <a class="h-cta" href="/products/">
+              <span class="h-cta-text">Explore supplements</span>
+              <span class="h-cta-icon"><Icon name="arrow" /></span>
+            </a>
+          </div>
+        </div>
+        <button class="h-motion" type="button" data-motion-toggle aria-pressed="false" hidden>
+          <svg class="h-motion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="i-pause" d="M9 5.5v13M15 5.5v13" /><path class="i-play" d="M8 5.5l11 6.5-11 6.5z" /></svg>
+          <span class="h-motion-text">Reduce motion</span>
+        </button>
+        <div class="h-hero-badge" aria-hidden="true">
+          <span class="h-hero-mark">
+            <i class="h-hero-ring"></i>
+            <img src="/logo.png" alt="" width="133" height="134" />
+          </span>
+          <span class="h-hero-captionbox">
+            <i class="h-hero-rule"></i>
+            <span class="h-hero-caption">Royal Nutrition Catalogue</span>
+          </span>
+        </div>
+        <div class="h-mq" aria-label="Product ranges">
+          <div class="h-mq-track">
+            {[0, 1, 2, 3].map((copy) => (
+              <ul class="h-mq-list" aria-hidden={copy > 0 ? 'true' : undefined}>
+                {categories.map((c) => {
+                  const lead = inCategory(c.slug)[0];
+                  return (
+                    <li>
+                      <a class="h-mq-item" href={`/products/?goal=${c.slug}`} tabindex={copy > 0 ? -1 : undefined}>
+                        <span class="h-mq-text">{c.name}</span>
+                        <span class="h-mq-pic"><img src={`/marquee/${lead.slug}.webp`} alt="" width="88" height="88" loading="lazy" /></span>
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="goals" class="h-goals">
+      <div class="wrap">
+        <div class="h-goals-head">
+          <h2>Name your limit. Then break it.</h2>
+          <p>Every range is made for one purpose: to push you past where you stopped yesterday. Choose yours.</p>
+        </div>
+        <div class="h-cards">
+          {categories.map((c) => {
+            const items = inCategory(c.slug);
+            const photo = bannerImage(`ranges/${c.slug}`);
+            return (
+              <article class="h-card" data-card>
+                <a class="h-card-strip" href={`/products/?goal=${c.slug}`} tabindex="-1" aria-hidden="true">
+                  {photo && <img src={photo} alt="" loading="lazy" />}
+                  <span>{c.name}</span>
+                </a>
+                <div class="h-card-body">
+                  <h3 class="sr-only">{c.name}</h3>
+                  <ul>
+                    {items.slice(0, 6).map((p) => <li><a href={`/products/${p.slug}/`} data-src={p.images[0].thumb} data-pack={`/products/${p.slug}/`}>{p.name}</a></li>)}
+                  </ul>
+                  <a class="h-card-all" href={`/products/?goal=${c.slug}`}>View all {items.length}</a>
+                </div>
+                <a class="h-card-pack" href={`/products/${items[0].slug}/`} tabindex="-1" aria-hidden="true">
+                  <img src={items[0].images[0].thumb} alt="" width="440" height="440" loading="lazy" />
+                </a>
+              </article>
+            );
+          })}
+          <article class="h-card is-all" data-card>
+            <a class="h-card-strip" href="/products/" tabindex="-1" aria-hidden="true"><span>All products</span></a>
+            <div class="h-card-body">
+              <h3 class="sr-only">All products</h3>
+              <ul>
+                {forms.map((f) => <li><a href={`/products/?form=${f.slug}`}>{f.name}<em>{f.count}</em></a></li>)}
+              </ul>
+              <a class="h-card-all" href="/products/">View all {products.length}</a>
+            </div>
+            <p class="h-card-count" aria-hidden="true">{products.length}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="h-label">
+      <div class="wrap h-label-grid">
+        <div class="h-visual" data-visual data-reveal tabindex="0" role="img" aria-label="Abstract animation of black spheres. Hover, focus or tap to switch to a second view.">
+          <video class="h-video h-video--base" src="/video/spheres-base.mp4" muted loop playsinline preload="metadata" disablepictureinpicture aria-hidden="true" tabindex="-1"></video>
+          <video class="h-video h-video--alt" src="/video/spheres-alt.mp4" muted loop playsinline preload="metadata" disablepictureinpicture aria-hidden="true" tabindex="-1"></video>
+          <span class="h-mark tl" aria-hidden="true"></span><span class="h-mark tr" aria-hidden="true"></span><span class="h-mark bl" aria-hidden="true"></span><span class="h-mark br" aria-hidden="true"></span>
+          <span class="h-visual-hint" aria-hidden="true"><span class="for-pointer">Hover to switch</span><span class="for-touch">Tap to switch</span></span>
+        </div>
+        <div class="h-label-copy">
+          <h2>Nothing hidden. Nothing guessed.</h2>
+          <ul class="h-points">
+            {points.map(([icon, title, text]) => (
+              <li data-reveal>
+                <Icon name={icon} />
+                <div><h3>{title}</h3><p>{text}</p></div>
+              </li>
+            ))}
+          </ul>
+          {sampleComp && (
+            <a class="h-sample" href={`/products/${sample.slug}/`} data-reveal data-chart>
+              <p class="h-sample-head"><span>{sample.name}: composition per 100 g</span><Icon name="arrow" /></p>
+              <div class="h-comp-bar" role="img" aria-label={sampleComp.map((c) => `${c.name} ${c.g} g`).join(', ')}>
+                {sampleComp.map((c) => <i class={`t${c.tone}`} style={`flex-grow:${c.g}`}></i>)}
+              </div>
+              <ul>
+                {sampleComp.map((c) => <li><i class={`sw t${c.tone}`} aria-hidden="true"></i>{c.name}<b>{c.g} g</b></li>)}
+              </ul>
+            </a>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <section class="h-section h-final">
+      <div class="wrap">
+        <div class="h-final-card" data-reveal>
+          <h2>Your next limit is waiting.</h2>
+          <p>Explore the full range and find what makes you stronger. Questions about a formula? Our team will answer.</p>
+          <div class="h-final-cta">
+            <a class="btn" href="/products/">Enter the range<Icon name="arrow" /></a>
+            <a class="btn ghost" href="/contact/">Speak to our team</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<script>
+  import '../scripts/home-motion.js';
+</script>

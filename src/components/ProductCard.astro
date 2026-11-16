@@ -1,0 +1,23 @@
+---
+import { categoryBySlug, metaLine } from '../lib/catalogue.js';
+
+const { product: p, eager = false } = Astro.props;
+const flavourCount = p.flavours.length;
+---
+<a
+  class="card"
+  href={`/products/${p.slug}/`}
+  data-card
+  data-goal={p.category}
+  data-form={p.form.toLowerCase()}
+  data-flavoured={flavourCount > 0 ? '1' : '0'}
+  data-search={`${p.name} ${categoryBySlug[p.category].name} ${p.form} ${p.flavours.join(' ')}`.toLowerCase()}
+>
+  <img src={p.images[0].thumb} alt={`${p.name} pack`} width="440" height="440" loading={eager ? 'eager' : 'lazy'} decoding="async" />
+  <span class="card-cat">{categoryBySlug[p.category].name}</span>
+  <span class="card-name">{p.name}</span>
+  <span class="card-meta">
+    {metaLine(p)}
+    {flavourCount > 1 && <span class="card-flav"> · {flavourCount} flavours</span>}
+  </span>
+</a>

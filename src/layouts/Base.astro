@@ -1,0 +1,221 @@
+---
+import '../styles/global.css';
+import { categories, inCategory, forms, products } from '../lib/catalogue.js';
+import Icon from '../components/Icon.astro';
+import { brand } from '../lib/brand.js';
+
+// darkHero: the page opens on a dark, full-bleed hero that runs under the header.
+const { title, description, current, darkHero = false } = Astro.props;
+const fullTitle = title ? `${title} | Royal Nutrition` : 'Royal Nutrition | Sports Nutrition Catalogue';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={darkHero ? '#0a0a0a' : '#ffffff'} />
+    <link rel="icon" href="/logo.png" type="image/png" />
+    <script is:inline>
+      // "motion" hides animated elements until the motion script takes over.
+      // If that script never runs, the class is removed so nothing stays hidden.
+      (function () {
+        var root = document.documentElement;
+        root.classList.add('js');
+        // The visitor can switch motion off with the button in the hero. The choice is stored, and every script that asks
+        // matchMedia about reduced motion gets the same answer as for an operating-system setting.
+        var stored = null;
+        try { stored = localStorage.getItem('rn-motion'); } catch (e) {}
+        var systemReduces = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        root.dataset.motionSystem = systemReduces ? 'reduce' : 'full';
+        if (stored === 'off' && !systemReduces) {
+          var original = window.matchMedia.bind(window);
+          var fake = function (query, matches) {
+            return { matches: matches, media: query, onchange: null, addEventListener: function () {}, removeEventListener: function () {}, addListener: function () {}, removeListener: function () {}, dispatchEvent: function () { return false; } };
+          };
+          window.matchMedia = function (query) {
+            if (/prefers-reduced-motion:\s*reduce/.test(query)) return fake(query, true);
+            if (/prefers-reduced-motion:\s*no-preference/.test(query)) return fake(query, false);
+            return original(query);
+          };
+          root.classList.add('motion-off');
+        }
+        if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          root.classList.add('motion', 'tm');
+          setTimeout(function () { if (!window.__motionReady) root.classList.remove('motion'); }, 3500);
+          setTimeout(function () { root.classList.remove('tm'); }, 3500);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header" data-header data-theme={darkHero ? 'dark' : 'light'}>
+      <div class="wrap">
+        <div class="header-bar">
+          <a class="brand" href="/" aria-label="Royal Nutrition home">
+            <img class="brand-mark" src="/logo.png" alt="" width="133" height="134" />
+            <span class="brand-name">Royal Nutrition</span>
+          </a>
+          <nav class="nav" aria-label="Main">
+            <div class="nav-item has-mega" data-mega>
+              <a href="/products/" aria-haspopup="true" aria-expanded="false" aria-controls="mega" aria-current={current === 'products' ? 'page' : undefined}>All products<Icon name="chevron-down" /></a>
+              <div class="mega" id="mega">
+                <div class="mega-card">
+                  <ul class="mega-grid">
+                    {categories.map((c, i) => {
+                      const items = inCategory(c.slug);
+                      return (
+                        <li>
+                          <a href={`/products/?goal=${c.slug}`}>
+                            <span class="mega-n">{String(i + 1).padStart(2, '0')}</span>
+                            <span class="mega-name">{c.name}</span>
+                            <span class="mega-blurb">{c.blurb}</span>
+                            <span class="mega-count">{items.length} products</span>
+                            <img src={items[0].images[0].thumb} alt="" width="72" height="72" loading="lazy" />
+                          </a>
+                        </li>
+                      );
+                    })}
+                    <li class="mega-all">
+                      <a href="/products/">
+                        <span class="mega-all-count">{products.length}</span>
+                        <span class="mega-name">All products<Icon name="arrow" /></span>
+                        <span class="mega-forms">{forms.map((f) => <span>{f.name} <b>{f.count}</b></span>)}</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <a href="/#goals">Browse by goal</a>
+            <a href="/about/" aria-current={current === 'about' ? 'page' : undefined}>About</a>
+            <a class="btn" href="/contact/">Contact</a>
+          </nav>
+          <details class="menu">
+            <summary aria-label="Open menu">
+              <svg width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true"><path d="M0 1h18M0 6h18M0 11h18" stroke="currentColor" stroke-width="1.8"/></svg>
+            </summary>
+            <div class="menu-panel">
+              <details class="menu-sub">
+                <summary>All products<Icon name="chevron-down" /></summary>
+                <ul>
+                  {categories.map((c) => <li><a href={`/products/?goal=${c.slug}`}>{c.name}<em>{inCategory(c.slug).length}</em></a></li>)}
+                  <li><a href="/products/">View all {products.length} products</a></li>
+                </ul>
+              </details>
+              <a href="/#goals">Browse by goal</a>
+              <a href="/about/">About</a>
+              <a class="btn" href="/contact/">Contact</a>
+            </div>
+          </details>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class:list={[{ 'under-header': darkHero }]}><slot /></main>
+
+    <footer class="site-footer on-dark">
+      <div class="footer-dots" aria-hidden="true"><div class="footer-dots__line"></div></div>
+      <div class="site-footer__inner">
+        <div class="site-footer__top">
+          <div class="site-footer__lead">
+            <img class="site-footer__logo" src="/logo.png" alt="Royal Nutrition Pro logo" width="133" height="134" loading="lazy" />
+            <h2>{brand.tagline}</h2>
+          </div>
+          <nav class="site-footer__nav" aria-label="Product ranges">
+            <a href="/products/">All products</a>
+            {categories.slice(0, 4).map((c) => <a href={`/products/?goal=${c.slug}`}>{c.name}</a>)}
+          </nav>
+          <nav class="site-footer__nav" aria-label="More ranges">
+            {categories.slice(4).map((c) => <a href={`/products/?goal=${c.slug}`}>{c.name}</a>)}
+          </nav>
+          <nav class="site-footer__nav" aria-label="Company links">
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
+            <a href={`mailto:${brand.emails.info}`}>{brand.emails.info}</a>
+            <a href={`mailto:${brand.emails.office}`}>{brand.emails.office}</a>
+          </nav>
+        </div>
+
+        <div class="site-footer__brand-row">
+          <a class="site-footer__brand" href="/" aria-label="Royal Nutrition home">
+            <span class="site-footer__wordmark">Royal Nutrition</span>
+          </a>
+        </div>
+
+        <div class="site-footer__legal">
+          <p class="site-footer__copy">© 2026 Royal Nutrition Pro. All rights reserved.</p>
+          <i class="site-footer__sep" aria-hidden="true"></i>
+          <address class="site-footer__address">
+            <svg class="site-footer__flag" viewBox="0 0 22 15" role="img" aria-label="Flag of Poland"><rect width="22" height="7.5" fill="#fff" /><rect y="7.5" width="22" height="7.5" fill="#dc143c" /></svg>
+            <span>{brand.address.join(', ')}</span>
+          </address>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      import '../scripts/smooth-scroll.js';
+      import '../scripts/hex-trail.js';
+      import '../scripts/cursor.js';
+      import '../scripts/footer.js';
+      import '../scripts/text-motion.js';
+    </script>
+    <script is:inline>
+      // Header behaviour: the logo turns with the scroll, and the product menu opens on hover or focus.
+      (function () {
+        var header = document.querySelector('[data-header]');
+        if (!header) return;
+
+        if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          var target = 0, current = 0, running = false;
+          var step = function () {
+            current += (target - current) * 0.14;
+            header.style.setProperty('--spin', current.toFixed(2) + 'deg');
+            if (Math.abs(target - current) > 0.05) requestAnimationFrame(step); else running = false;
+          };
+          var onScroll = function () {
+            target = window.scrollY * 0.3;
+            if (!running) { running = true; requestAnimationFrame(step); }
+          };
+          onScroll();
+          addEventListener('scroll', onScroll, { passive: true });
+        }
+
+        var mega = header.querySelector('[data-mega]');
+        if (mega) {
+          var link = mega.querySelector('a');
+          var set = function (open) { link.setAttribute('aria-expanded', String(open)); };
+          mega.addEventListener('mouseenter', function () { mega.classList.remove('is-closed'); set(true); });
+          mega.addEventListener('mouseleave', function () { mega.classList.remove('is-closed'); set(false); });
+          mega.addEventListener('focusin', function () { mega.classList.remove('is-closed'); set(true); });
+          mega.addEventListener('focusout', function (e) { if (!mega.contains(e.relatedTarget)) set(false); });
+          mega.addEventListener('keydown', function (e) {
+            if (e.key !== 'Escape') return;
+            mega.classList.add('is-closed');
+            set(false);
+            link.focus();
+          });
+          addEventListener('scroll', function () { mega.classList.add('is-closed'); set(false); }, { passive: true });
+        }
+      })();
+    </script>
+    <script is:inline>
+      // The header is light text over a dark hero, and dark text everywhere else.
+      (function () {
+        var header = document.querySelector('[data-header]');
+        var hero = document.querySelector('[data-hero]');
+        if (!header || !hero) return;
+        function update() {
+          if (header.dataset.themeLock) return;
+          header.dataset.theme = window.scrollY < hero.offsetHeight - 70 ? 'dark' : 'light';
+        }
+        update();
+        addEventListener('scroll', update, { passive: true });
+        addEventListener('resize', update);
+      })();
+    </script>
+  </body>
+</html>

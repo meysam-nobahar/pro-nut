@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+*.log
+# supplier bundle, not for publishing
+public/products/Royal-All-Product.zip
+unslop/
