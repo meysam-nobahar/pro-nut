@@ -5,21 +5,46 @@ import '../styles/home.css';
 import { categories, products, forms, inCategory, productBySlug } from '../lib/catalogue.js';
 import { composition } from '../lib/nutrition.js';
 import { bannerImage, bannerVideo } from '../lib/banners.js';
-import Standards from '../components/Standards.astro';
+import { brand } from '../lib/brand.js';
 
 /* Hero: public/banners/hero.mp4. Optional; the hero is plain black without it. */
 const heroVideo = bannerVideo('hero');
+/* Each name in the marquee shows one product photo when hovered (its white background is cut out in the browser, see marquee-preview.js) */
+const highlights = [
+  ['Best Quality', '/about/#standards', 'weiler'],
+  ['Certified Standards', '/about/#standards', 'multivitamin'],
+  ['Whey Protein', '/products/whey-protein/', 'whey-protein'],
+  ['Pure Creatine', '/products/', 'creatine-natur'],
+  ['Pre-Workout', '/products/', 'testo-booster'],
+  ['Amino Recovery', '/products/', 'glutamine-powder'],
+  ['Clean Formulas', '/products/', 't5-cut'],
+].map(([label, href, pack]) => [label, href, `/products/${pack}/01-440.webp`]);
+/* Progressive blur under each tile label: stacked layers, each a little blurrier, faded in by a mask (after ibelick's progressive-blur) */
+const blurLayers = Array.from({ length: 8 }, (_, i) => {
+  const seg = 1 / 9;
+  const stops = [i, i + 1, i + 2, i + 3].map((n, k) => `rgba(255,255,255,${k === 1 || k === 2 ? 1 : 0}) ${(n * seg * 100).toFixed(1)}%`);
+  const g = `linear-gradient(180deg, ${stops.join(', ')})`;
+  return `-webkit-mask-image:${g};mask-image:${g};-webkit-backdrop-filter:blur(${i * 0.5}px);backdrop-filter:blur(${i * 0.5}px)`;
+});
+/* Stack builder: three real products per goal, taken from the catalogue */
+const stacks = [
+  ['muscle', 'Build muscle', 'protein-mass', ['whey-protein', 'creatine-natur', 'strong-bcaa'], 'Protein to build, creatine to push, amino acids to keep going.', ['Build','Power','Endure']],
+  ['recovery', 'Recover faster', 'amino-recovery', ['glutamine-powder', 'eaa', 'multivitamin'], 'Amino acids and daily micronutrients for the hours after training.', ['Repair','Restore','Protect']],
+  ['strength', 'Gain strength', 'creatine-strength', ['creatine-natur', 'beta-alanine-powder', 'hmb-strong'], 'The classic strength base, with a little extra for every set.', ['Power','Endurance','Protect']],
+  ['pump', 'Train harder', 'pre-workout-pump', ['citrulline', 'arginine', 'taurine-powder'], 'A pre-workout trio for pump, focus and endurance.', ['Flow','Drive','Balance']],
+  ['lean', 'Get lean', 'weight-management', ['t5-cut', 'carnitine-liquid', 'cla-softgel'], 'Support for a calorie-controlled plan and steady training.', ['Ignite','Carry','Support']],
+  ['wellness', 'Stay well', 'health-wellness', ['multivitamin', 'collagen-2250', 'liver-protect'], 'Everyday support for joints, liver and general health.', ['Daily','Joints','Liver']],
+].map(([id, label, category, slugs, text, roles]) => ({ id, label, category, categoryName: categories.find((c) => c.slug === category)?.name, text, roles, items: slugs.map((s) => productBySlug[s]).filter(Boolean) }));
+const FIRST_TILES = 4;
+const tiles = categories.slice(0, FIRST_TILES);
 const pad = (n) => String(n).padStart(2, '0');
 
-/* The sample chart is a real product's own "Per 100 g" column */
-const sample = productBySlug['whey-protein'];
-const sampleComp = sample ? composition(sample) : null;
-
-const points = [
-  ['chart', 'Know what you take', 'Every nutrient laid out per serving and per 100 g, so you can compare with confidence.'],
-  ['flask', 'Formulated without shortcuts', 'Complete ingredient lists, exactly as printed on the pack, and everything each product is free from.'],
-  ['clock', 'Made to be used', 'Clear directions for every product: how much, how often and when.'],
-];
+/* Label explorer: the label facts of every product, read in the browser (grouped by range for the picker) */
+const labels = categories.map((c) => ({ name: c.name, items: inCategory(c.slug).map((p) => ({
+  slug: p.slug, name: p.name, cat: c.name, form: p.form, size: p.size, serving: p.servingSize, servings: p.servings,
+  flavours: p.flavours, highlights: p.highlights, free: p.freeFrom, how: p.directions[0] ?? '', img: p.images[0].thumb, comp: composition(p),
+})) }));
+const labelJson = JSON.stringify(labels.flatMap((g) => g.items)).replace(/</g, '\\u003c');
 ---
 <Base darkHero description="Royal Nutrition Pro: professional sports supplements made to make you stronger and remove limits. Built on the best science in Europe and the world.">
   <div class="home">
@@ -53,21 +78,18 @@ const points = [
             <span class="h-hero-caption">Royal Nutrition Catalogue</span>
           </span>
         </div>
-        <div class="h-mq" aria-label="Product ranges">
+        <div class="h-mq" aria-label="Royal Nutrition highlights">
           <div class="h-mq-track">
             {[0, 1, 2, 3].map((copy) => (
               <ul class="h-mq-list" aria-hidden={copy > 0 ? 'true' : undefined}>
-                {categories.map((c) => {
-                  const lead = inCategory(c.slug)[0];
-                  return (
-                    <li>
-                      <a class="h-mq-item" href={`/products/?goal=${c.slug}`} tabindex={copy > 0 ? -1 : undefined}>
-                        <span class="h-mq-text">{c.name}</span>
-                        <span class="h-mq-pic"><img src={`/marquee/${lead.slug}.webp`} alt="" width="88" height="88" loading="lazy" /></span>
-                      </a>
-                    </li>
-                  );
-                })}
+                {highlights.map(([label, href, preview]) => (
+                  <li>
+                    <a class="h-mq-item" href={href} data-preview={preview ?? undefined} tabindex={copy > 0 ? -1 : undefined}>
+                      <span class="h-mq-text">{label}</span>
+                    </a>
+                    <svg class="h-mq-star" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 0 14 9.2 24 12 14 14.8 12 24 10 14.8 0 12 10 9.2Z" fill="currentColor" /></svg>
+                  </li>
+                ))}
               </ul>
             ))}
           </div>
@@ -75,84 +97,118 @@ const points = [
       </div>
     </section>
 
-    <section id="goals" class="h-goals">
+    <section id="goals" class="h-intro" aria-labelledby="intro-title">
       <div class="wrap">
-        <div class="h-goals-head">
-          <h2>Name your limit. Then break it.</h2>
-          <p>Every range is made for one purpose: to push you past where you stopped yesterday. Choose yours.</p>
+        <div class="h-intro-head">
+          <a class="h-pill" href="/products/" data-intro>
+            <span class="h-pill-tag">Range</span>
+            <span class="h-pill-text">{products.length} products in {categories.length} categories</span>
+            <Icon name="arrow" />
+          </a>
+          <h2 id="intro-title" data-no-split data-intro>Fuel every limit with <em>Premium</em> quality <em class="h-type" data-typewriter data-words={JSON.stringify(['Nutrition', 'Protein', 'Recovery', 'Strength', 'Endurance'])}><span class="h-type-text">Nutrition</span><i class="h-type-caret" aria-hidden="true"></i></em>.</h2>
+          <p data-no-split data-intro>Professional supplements for strength, recovery and endurance. Clear labels. Certified standards. Built on European science.</p>
         </div>
-        <div class="h-cards">
-          {categories.map((c) => {
-            const items = inCategory(c.slug);
+        <ul class="h-intro-grid">
+          {tiles.map((c) => {
             const photo = bannerImage(`ranges/${c.slug}`);
             return (
-              <article class="h-card" data-card>
-                <a class="h-card-strip" href={`/products/?goal=${c.slug}`} tabindex="-1" aria-hidden="true">
+              <li data-intro>
+                <a class="h-tile" href={`/products/?goal=${c.slug}`} data-tone={c.slug}>
                   {photo && <img src={photo} alt="" loading="lazy" />}
-                  <span>{c.name}</span>
+                  <span class="h-tile-blur" aria-hidden="true">{blurLayers.map((style) => <i style={style}></i>)}</span>
+                  <span class="h-tile-list" aria-hidden="true">{inCategory(c.slug).slice(0, 6).map((p, n) => <i style={`--i:${n}`}><b>{pad(n + 1)}</b><em>{p.name}</em></i>)}</span>
+                  <span class="h-tile-label">{c.name}</span>
                 </a>
-                <div class="h-card-body">
-                  <h3 class="sr-only">{c.name}</h3>
-                  <ul>
-                    {items.slice(0, 6).map((p) => <li><a href={`/products/${p.slug}/`} data-src={p.images[0].thumb} data-pack={`/products/${p.slug}/`}>{p.name}</a></li>)}
-                  </ul>
-                  <a class="h-card-all" href={`/products/?goal=${c.slug}`}>View all {items.length}</a>
-                </div>
-                <a class="h-card-pack" href={`/products/${items[0].slug}/`} tabindex="-1" aria-hidden="true">
-                  <img src={items[0].images[0].thumb} alt="" width="440" height="440" loading="lazy" />
-                </a>
-              </article>
+              </li>
             );
           })}
-          <article class="h-card is-all" data-card>
-            <a class="h-card-strip" href="/products/" tabindex="-1" aria-hidden="true"><span>All products</span></a>
-            <div class="h-card-body">
-              <h3 class="sr-only">All products</h3>
-              <ul>
-                {forms.map((f) => <li><a href={`/products/?form=${f.slug}`}>{f.name}<em>{f.count}</em></a></li>)}
-              </ul>
-              <a class="h-card-all" href="/products/">View all {products.length}</a>
+          {FIRST_TILES >= categories.length && <li data-intro>
+            <a class="h-tile" href="/products/" data-tone="all">
+              {bannerImage('athlete-1') && <img src={bannerImage('athlete-1')} alt="" loading="lazy" />}
+              <span class="h-tile-blur" aria-hidden="true">{blurLayers.map((style) => <i style={style}></i>)}</span>
+              <span class="h-tile-list" aria-hidden="true">{categories.slice(0, 6).map((c, n) => <i style={`--i:${n}`}><b>{pad(n + 1)}</b><em>{c.name}</em></i>)}</span>
+              <span class="h-tile-label">All products</span>
+            </a>
+          </li>}
+        </ul>
+      </div>
+    </section>
+
+    <section class="h-stack" aria-labelledby="stack-title">
+      <div class="wrap">
+        <div class="h-stack-head" data-reveal>
+          <span class="h-pill h-pill--static"><span class="h-pill-tag">Stacks</span><span class="h-pill-text">Pick a goal</span></span>
+          <h2 id="stack-title" data-no-split>Build your stack.</h2>
+        </div>
+        <div class="h-stack-box" data-stack data-reveal>
+          <div class="h-stack-tabs" role="tablist" aria-label="Choose a goal">
+            {stacks.map((s, n) => <button type="button" role="tab" id={`tab-${s.id}`} aria-controls={`panel-${s.id}`} aria-selected={n === 0 ? 'true' : 'false'} tabindex={n === 0 ? undefined : -1}>{s.label}</button>)}
+          </div>
+          {stacks.map((s, n) => (
+            <div class="h-stack-panel" role="tabpanel" id={`panel-${s.id}`} aria-labelledby={`tab-${s.id}`} hidden={n !== 0}>
+              <p class="h-stack-lead">{s.text}</p>
+              <ol class="h-stack-cards">
+                {s.items.map((p, i) => (
+                  <li style={`--i:${i}`}>
+                    <a class="h-stack-card" href={`/products/${p.slug}/`}>
+                      <img src={p.images[0].thumb} alt="" width="160" height="160" loading="lazy" />
+                      <span class="h-stack-info">
+                        <em class="h-stack-role">{s.roles[i]}</em>
+                        <b>{p.name}</b>
+                        <small>{p.form} · {p.size}</small>
+                        <small>{p.servingSize}</small>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ol>
+              <div class="h-stack-foot">
+                <a class="btn" href={`/products/?goal=${s.category}`}>Explore {s.categoryName}<Icon name="arrow" /></a>
+                <p>Follow the directions printed on each pack.</p>
+              </div>
             </div>
-            <p class="h-card-count" aria-hidden="true">{products.length}</p>
-          </article>
+          ))}
         </div>
       </div>
     </section>
 
     <section class="h-label">
-      <div class="wrap h-label-grid">
+      <div class="wrap">
+        <div class="h-label-head" data-reveal>
+          <h2>Nothing hidden. Nothing guessed.</h2>
+          <p>Open any label in the range before you buy: serving size, composition, flavours, what it is free from and how to take it, exactly as printed on the pack.</p>
+        </div>
+        <div class="h-label-grid">
         <div class="h-visual" data-visual data-reveal tabindex="0" role="img" aria-label="Abstract animation of black spheres. Hover, focus or tap to switch to a second view.">
           <video class="h-video h-video--base" src="/video/spheres-base.mp4" muted loop playsinline preload="metadata" disablepictureinpicture aria-hidden="true" tabindex="-1"></video>
           <video class="h-video h-video--alt" src="/video/spheres-alt.mp4" muted loop playsinline preload="metadata" disablepictureinpicture aria-hidden="true" tabindex="-1"></video>
           <span class="h-mark tl" aria-hidden="true"></span><span class="h-mark tr" aria-hidden="true"></span><span class="h-mark bl" aria-hidden="true"></span><span class="h-mark br" aria-hidden="true"></span>
           <span class="h-visual-hint" aria-hidden="true"><span class="for-pointer">Hover to switch</span><span class="for-touch">Tap to switch</span></span>
         </div>
-        <div class="h-label-copy">
-          <h2>Nothing hidden. Nothing guessed.</h2>
-          <ul class="h-points">
-            {points.map(([icon, title, text]) => (
-              <li data-reveal>
-                <Icon name={icon} />
-                <div><h3>{title}</h3><p>{text}</p></div>
-              </li>
-            ))}
-          </ul>
-          {sampleComp && (
-            <a class="h-sample" href={`/products/${sample.slug}/`} data-reveal data-chart>
-              <p class="h-sample-head"><span>{sample.name}: composition per 100 g</span><Icon name="arrow" /></p>
-              <div class="h-comp-bar" role="img" aria-label={sampleComp.map((c) => `${c.name} ${c.g} g`).join(', ')}>
-                {sampleComp.map((c) => <i class={`t${c.tone}`} style={`flex-grow:${c.g}`}></i>)}
-              </div>
-              <ul>
-                {sampleComp.map((c) => <li><i class={`sw t${c.tone}`} aria-hidden="true"></i>{c.name}<b>{c.g} g</b></li>)}
-              </ul>
-            </a>
-          )}
+        <div class="lx" data-lx data-reveal>
+          <div class="lx-pick">
+            <label class="lx-select">
+              <span class="sr-only">Choose a product</span>
+              <select data-lx-select>
+                {labels.map((g) => <optgroup label={g.name}>{g.items.map((p) => <option value={p.slug} selected={p.slug === 'whey-protein'}>{p.name}</option>)}</optgroup>)}
+              </select>
+              <Icon name="chevron-down" />
+            </label>
+            <button class="lx-step" type="button" data-lx-step="-1" aria-label="Previous product"><Icon name="chevron-left" /></button>
+            <button class="lx-step" type="button" data-lx-step="1" aria-label="Next product"><Icon name="chevron-right" /></button>
+          </div>
+          <article class="lx-card" data-lx-card aria-live="polite"></article>
+          <p class="lx-note">Taken from each product's label. If you have an allergy, always read the pack before use.</p>
+          <script type="application/json" is:inline data-lx-data set:html={labelJson}></script>
         </div>
+        </div>
+        <ul class="h-facts" data-reveal>
+          <li><div class="h-fact"><span class="h-fact-icon"><Icon name="pin" /></span><h3>Made in Europe</h3><p>{brand.address.join(', ')}</p></div></li>
+          <li><a class="h-fact" href="/about/#standards"><span class="h-fact-icon"><Icon name="badge" /></span><h3>ISO 22000 certified</h3><p>GMP and HACCP based production, checked by independent laboratories.</p></a></li>
+          <li><a class="h-fact" href={`mailto:${brand.emails.office}`}><span class="h-fact-icon"><Icon name="mail" /></span><h3>Talk to the team</h3><p>Questions about a formula? Write to our office.</p></a></li>
+        </ul>
       </div>
     </section>
-
-    <Standards variant="compact" />
 
     <section class="h-section h-final">
       <div class="wrap">
@@ -171,4 +227,10 @@ const points = [
 
 <script>
   import '../scripts/home-motion.js';
+  import '../scripts/typewriter.js';
+  import '../scripts/marquee-preview.js';
+  import '../scripts/marquee-speed.js';
+  import '../scripts/tile-carousel.js';
+  import '../scripts/stack-tabs.js';
+  import '../scripts/label-explorer.js';
 </script>

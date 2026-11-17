@@ -18,8 +18,8 @@ if (fine) {
   const labelText = label.querySelector('b');
   let x = innerWidth / 2, y = innerHeight / 2, rx = x, ry = y;
 
-  const views = '[data-cursor], .h-card-strip, .h-card-pack, .h-promo, .h-visual, .h-item, .card, .stage, .mega-grid a';
-  const labels = [['.h-visual', 'Switch'], ['.h-card-strip', 'Open'], ['.h-card-pack', 'Open'], ['.stage', 'View']];
+  const views = '[data-cursor], .h-promo, .h-visual, .h-item, .card, .stage, .mega-grid a';
+  const labels = [['.h-visual', 'Switch'], ['.stage', 'View']];
 
   const setState = (target) => {
     cursor.classList.remove('is-link', 'is-view', 'is-text');

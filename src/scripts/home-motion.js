@@ -9,21 +9,6 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 const root = document.documentElement;
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* The sample chart fills the first time it is seen */
-if (!reduceMotion && 'IntersectionObserver' in window) {
-  const seen = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.remove('pre');
-      seen.unobserve(entry.target);
-    });
-  }, { rootMargin: '0px 0px -12% 0px' });
-  document.querySelectorAll('[data-chart]').forEach((chart) => {
-    chart.classList.add('pre');
-    seen.observe(chart);
-  });
-}
-
 /* The two videos play only while visible (and not at all with reduced motion); a tap switches them on touch screens */
 document.querySelectorAll('[data-visual]').forEach((visual) => {
   const videos = [...visual.querySelectorAll('video')];
@@ -84,7 +69,8 @@ const media = gsap.matchMedia();
 media.add('(prefers-reduced-motion: no-preference)', () => {
   /* Start states are set here, then the CSS gate is lifted, so GSAP owns visibility from now on. */
   gsap.set('[data-reveal]', { autoAlpha: 0, y: 28 });
-  gsap.set('[data-card]', { autoAlpha: 0 });
+  /* Second section: the pill, headline, text and tiles blur in one after another, once */
+  gsap.set('[data-intro]', { autoAlpha: 0, y: -20, filter: 'blur(10px)' });
   gsap.set('[data-hero-in]', { autoAlpha: 0, y: 20 });
   root.classList.remove('motion');
   window.__motionReady = true;
@@ -99,37 +85,25 @@ media.add('(prefers-reduced-motion: no-preference)', () => {
   gsap.to('[data-hero-in]', { autoAlpha: 1, y: 0, duration: 1.1, ease: 'power3.out', stagger: 0.1, delay: 1.15 });
   gsap.from('.h-hero-photo', { scale: 1.08, duration: 1.8, ease: 'power3.out' });
 
+  /* Second section: plays once, when the visitor reaches it. Each item blurs in from above, 0.4 s after the one before. */
+  const introItems = gsap.utils.toArray('[data-intro]');
+  /* on phones the tiles are one stacked deck, so they deal in quickly together instead of one every 0.4 s */
+  const deckStart = matchMedia('(max-width: 700px)').matches ? introItems.findIndex((el) => el.parentElement.classList.contains('h-intro-grid')) : -1;
+  const delayOf = (i) => (deckStart >= 0 && i >= deckStart ? (deckStart + 1) * 0.4 + (i - deckStart) * 0.09 : (i + 1) * 0.4);
+  if (introItems.length) {
+    ScrollTrigger.create({
+      trigger: '.h-intro',
+      start: 'top 55%',
+      once: true,
+      onEnter: () => introItems.forEach((el, i) => gsap.to(el, { autoAlpha: 1, y: 0, filter: 'blur(0px)', duration: 0.5, delay: delayOf(i), ease: 'power2.out', overwrite: true, clearProps: 'filter' })),
+    });
+  }
+
   /* One trigger per block: it plays once, the first time the block is reached */
   gsap.utils.toArray('[data-reveal]').forEach((el) => {
     const delay = Math.min(Array.prototype.indexOf.call(el.parentElement?.children ?? [], el), 5) * 0.06;
     const show = () => gsap.to(el, { autoAlpha: 1, y: 0, duration: 1.3, ease: 'power3.out', delay, overwrite: true });
     ScrollTrigger.create({ trigger: el, start: 'top 92%', once: true, onEnter: show });
-  });
-
-  /* Ranges: each card is drawn open from the top, then its parts follow; it plays once */
-  const cardTimelines = new Map();
-  const cardTimeline = (card, index) => {
-    if (cardTimelines.has(card)) return cardTimelines.get(card);
-    const part = (selector) => card.querySelectorAll(selector);
-    const tl = gsap.timeline({ paused: true, delay: index * 0.12 });
-    tl.set(card, { autoAlpha: 1 }, 0)
-      .fromTo(card, { clipPath: 'inset(0 0 100% 0 round 4px)', y: -72, rotationX: -16, transformPerspective: 900, transformOrigin: '50% 0%' }, { clipPath: 'inset(0 0 0% 0 round 4px)', y: 0, rotationX: 0, duration: 1.7, ease: 'power3.out' }, 0)
-      .from(part('.h-card-strip img'), { scale: 1.4, duration: 1.6, ease: 'power3.out' }, 0)
-      .from(part('.h-card-strip span'), { autoAlpha: 0, y: 24, duration: 0.8, ease: 'power3.out' }, 0.35)
-      .from(part('.h-card-body li'), { autoAlpha: 0, x: -18, duration: 0.6, ease: 'power3.out', stagger: 0.07 }, 0.4)
-      .from(part('.h-card-all'), { autoAlpha: 0, y: 10, duration: 0.5, ease: 'power3.out' }, 0.85)
-      .from(part('.h-card-pack img'), { autoAlpha: 0, y: 56, rotate: -6, duration: 1, ease: 'power3.out' }, 0.5)
-      .from(part('.h-card-count'), { autoAlpha: 0, scale: 0.7, duration: 1, ease: 'power3.out' }, 0.5);
-    cardTimelines.set(card, tl);
-    return tl;
-  };
-  gsap.utils.toArray('[data-card]').forEach((card, i) => {
-    const column = i % 2;
-    const play = () => cardTimeline(card, column).restart();
-    ScrollTrigger.create({ trigger: card, start: 'top 90%', once: true, onEnter: play });
-  });
-  gsap.utils.toArray('.h-card-strip img').forEach((img) => {
-    gsap.fromTo(img, { yPercent: -4 }, { yPercent: 4, ease: 'none', scrollTrigger: { trigger: img.closest('.h-card'), start: 'top bottom', end: 'bottom top', scrub: true } });
   });
 
   addEventListener('load', () => ScrollTrigger.refresh());
@@ -160,18 +134,21 @@ media.add('(prefers-reduced-motion: no-preference)', () => {
         .fromTo(captionEl, { letterSpacing: innerWidth < 560 ? '0.4em' : '0.8em' }, { letterSpacing: spacing, duration: 1.6, ease: 'power3.out' }, 0)
         .fromTo(split.chars, { yPercent: 130, opacity: 0, filter: 'blur(10px)' }, { yPercent: 0, opacity: 1, filter: 'blur(0px)', duration: 1.1, ease: 'power4.out', stagger: 0.05 }, 0.1);
     }
+    /* The animation fills the first part of the pinned scroll; the rest holds the finished frame before the page moves on. */
+    const HOLD_TOTAL = 1.7;
     const film = gsap.timeline({
       defaults: { ease: 'none' },
       scrollTrigger: {
         trigger: hero,
         start: 'top top',
-        end: () => '+=' + Math.round(innerHeight * 0.9),
+        end: () => '+=' + Math.round(innerHeight * 0.9 * HOLD_TOTAL),
         pin: stage,
         scrub: 1.1,
+        refreshPriority: 1, /* the pin adds scroll distance, so it must be measured before the triggers below it */
         invalidateOnRefresh: true,
         onUpdate: (self) => {
-          if (header) header.dataset.theme = self.progress < 0.5 ? 'dark' : 'light';
-          const show = self.progress > 0.62;
+          if (header) header.dataset.theme = self.progress * HOLD_TOTAL < 0.5 ? 'dark' : 'light';
+          const show = self.progress * HOLD_TOTAL > 0.62;
           if (captionIn && show !== captionShown) {
             captionShown = show;
             if (show) captionIn.timeScale(1).play(); else captionIn.timeScale(2).reverse();
@@ -184,11 +161,12 @@ media.add('(prefers-reduced-motion: no-preference)', () => {
       .fromTo(picture, { scale: 1.18 }, { scale: 1, duration: 1 }, 0)
       .to('[data-hero-inner]', { y: -80, autoAlpha: 0, duration: 0.45 }, 0)
       .to('.h-motion', { autoAlpha: 0, duration: 0.3 }, 0)
-      .to(stage, { backgroundColor: '#f2f2f0', duration: 0.4 }, 0.3)
+      .fromTo(stage, { backgroundColor: 'rgba(10, 10, 10, 1)' }, { backgroundColor: 'rgba(10, 10, 10, 0)', duration: 0.4 }, 0.3)
       .fromTo('.h-hero-badge', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 }, 0.5)
       .fromTo('.h-hero-badge img', { scale: 0.4, rotate: -140 }, { scale: 1, rotate: 0, duration: 0.35, ease: 'power2.out' }, 0.5)
       .fromTo('.h-hero-ring', { scale: 0.45, autoAlpha: 0 }, { scale: 1, autoAlpha: 0.8, duration: 0.35, ease: 'power2.out' }, 0.55)
-      .fromTo('.h-mq', { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 0.7);
+      .fromTo('.h-mq', { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 0.7)
+      .to({}, { duration: HOLD_TOTAL - 1 }, 1);
 
     return () => {
       hero.classList.remove('is-film');

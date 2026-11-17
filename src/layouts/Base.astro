@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { categories, inCategory, forms, products } from '../lib/catalogue.js';
 import Icon from '../components/Icon.astro';
 import { brand } from '../lib/brand.js';
+import { seals } from '../lib/standards.js';
 
 // darkHero: the page opens on a dark, full-bleed hero that runs under the header.
 const { title, description, current, darkHero = false } = Astro.props;
@@ -117,62 +118,70 @@ const fullTitle = title ? `${title} | Royal Nutrition` : 'Royal Nutrition | Spor
     <main id="main" class:list={[{ 'under-header': darkHero }]}><slot /></main>
 
     <footer class="site-footer on-dark">
-      <div class="footer-dots" aria-hidden="true"><div class="footer-dots__line"></div></div>
-      <div class="site-footer__inner">
+      <div class="site-footer__card">
         <div class="site-footer__top">
           <div class="site-footer__lead">
-            <img class="site-footer__logo" src="/logo.png" alt="Royal Nutrition Pro logo" width="133" height="134" loading="lazy" />
-            <h2>{brand.tagline}</h2>
+            <a class="site-footer__id" href="/" aria-label="Royal Nutrition home">
+              <img class="site-footer__logo" src="/logo.png" alt="" width="133" height="134" loading="lazy" />
+              <span>Royal Nutrition <em>Pro</em></span>
+            </a>
+            <p class="site-footer__tag">{brand.tagline}. Built on European science, made to remove limits.</p>
+            <ul class="site-footer__seals" aria-label="Standards">
+              {seals.map((s) => <li title={`${s.label}: ${s.sub}`}><b>{s.label}</b>{s.sub.split(" ")[0]}</li>)}
+            </ul>
           </div>
           <div class="site-footer__group" data-fgroup>
-            <button class="site-footer__toggle" type="button" aria-expanded="false" aria-controls="footer-ranges">Product ranges<Icon name="plus" /></button>
+            <h3 class="site-footer__h"><button class="site-footer__toggle" type="button" aria-expanded="false" aria-controls="footer-ranges">Ranges<Icon name="plus" /></button></h3>
             <div class="site-footer__panel" id="footer-ranges">
-              <div class="site-footer__panel-in site-footer__panel-in--two">
+              <div class="site-footer__panel-in">
                 <nav class="site-footer__nav" aria-label="Product ranges">
+                  {categories.map((c) => <a href={`/products/?goal=${c.slug}`}>{c.name}</a>)}
                   <a href="/products/">All products</a>
-                  {categories.slice(0, 4).map((c) => <a href={`/products/?goal=${c.slug}`}>{c.name}</a>)}
-                </nav>
-                <nav class="site-footer__nav" aria-label="More ranges">
-                  {categories.slice(4).map((c) => <a href={`/products/?goal=${c.slug}`}>{c.name}</a>)}
                 </nav>
               </div>
             </div>
           </div>
           <div class="site-footer__group" data-fgroup>
-            <button class="site-footer__toggle" type="button" aria-expanded="false" aria-controls="footer-company">Company<Icon name="plus" /></button>
+            <h3 class="site-footer__h"><button class="site-footer__toggle" type="button" aria-expanded="false" aria-controls="footer-company">Company<Icon name="plus" /></button></h3>
             <div class="site-footer__panel" id="footer-company">
               <div class="site-footer__panel-in">
-                <nav class="site-footer__nav" aria-label="Company links">
-                  <a href="/about/">About</a>
+                <nav class="site-footer__nav" aria-label="Company">
+                  <a href="/about/">About us</a>
+                  <a href="/about/#standards">Our standards</a>
+                  <a href="/#goals">Browse by goal</a>
                   <a href="/contact/">Contact</a>
-                  <a href={`mailto:${brand.emails.info}`}>{brand.emails.info}</a>
-                  <a href={`mailto:${brand.emails.office}`}>{brand.emails.office}</a>
                 </nav>
+              </div>
+            </div>
+          </div>
+          <div class="site-footer__group" data-fgroup>
+            <h3 class="site-footer__h"><button class="site-footer__toggle" type="button" aria-expanded="false" aria-controls="footer-contact">Contact<Icon name="plus" /></button></h3>
+            <div class="site-footer__panel" id="footer-contact">
+              <div class="site-footer__panel-in">
+                <div class="site-footer__nav">
+                  <a href={`mailto:${brand.emails.office}`}>{brand.emails.office}</a>
+                  <a href={`mailto:${brand.emails.info}`}>{brand.emails.info}</a>
+                  <address class="site-footer__address">{brand.address.map((line) => <span>{line}</span>)}</address>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="site-footer__brand-row">
-          <a class="site-footer__brand" href="/" aria-label="Royal Nutrition home">
-            <span class="site-footer__wordmark">Royal Nutrition</span>
-          </a>
-        </div>
-
-        <div class="site-footer__legal">
-          <p class="site-footer__copy">© 2026 Royal Nutrition Pro. All rights reserved.</p>
-          <i class="site-footer__sep" aria-hidden="true"></i>
-          <address class="site-footer__address">
+        <div class="site-footer__bottom">
+          <p>© 2026 Royal Nutrition Pro. All rights reserved.</p>
+          <p class="site-footer__made">
             <svg class="site-footer__flag" viewBox="0 0 22 15" role="img" aria-label="Flag of Poland"><rect width="22" height="7.5" fill="#fff" /><rect y="7.5" width="22" height="7.5" fill="#dc143c" /></svg>
-            <span>{brand.address.join(', ')}</span>
-          </address>
+            Made in Poland, European Union
+          </p>
+          <button class="site-footer__up" type="button" data-to-top>Back to top<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" /></svg></button>
         </div>
       </div>
     </footer>
 
     <script>
       import '../scripts/smooth-scroll.js';
-      import '../scripts/hex-trail.js';
+      import '../scripts/interactive-grid.js';
       import '../scripts/cursor.js';
       import '../scripts/footer.js';
       import '../scripts/text-motion.js';
